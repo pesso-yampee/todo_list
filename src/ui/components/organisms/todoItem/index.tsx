@@ -8,7 +8,7 @@ type Props = {
 
 export function TodoItem({ list }: Props) {
   return (
-    <ul>
+    <ul className={styles.list}>
       {list.map((item) => (
         <li key={uuidv4()}>
           <div className={styles.flexContainer}>
