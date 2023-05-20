@@ -1,5 +1,8 @@
 import { Input } from "ui/components/atoms/Input";
 
 export function SearchTodoInput() {
-  return <Input placeholder="Search Keyword" />;
+  function keyDownEvent() {
+    window.alert("search!!!!!");
+  }
+  return <Input placeholder="Search Keyword" keyDownEvent={keyDownEvent} />;
 }
