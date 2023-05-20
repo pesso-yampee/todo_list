@@ -1,7 +1,11 @@
-import styles from "./App.module.css";
+import { ListPage } from "ui/pages/listPage";
 
 function App() {
-  return <div className={styles.App}></div>;
+  return (
+    <div>
+      <ListPage />
+    </div>
+  );
 }
 
 export default App;

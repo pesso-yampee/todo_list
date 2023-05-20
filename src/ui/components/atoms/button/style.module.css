@@ -1,0 +1,13 @@
+.button {
+  padding: 8px;
+}
+
+.button svg path {
+  transition: fill .3s;
+}
+
+@media (hover: hover) {
+  .button:hover svg path {
+    fill: red;
+  }
+}

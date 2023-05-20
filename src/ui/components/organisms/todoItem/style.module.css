@@ -1,0 +1,12 @@
+.flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border: 1px solid #808080;
+  border-radius: 3px;
+}
+.text {
+  line-height: 1;
+  font-size: 16px;
+}
