@@ -30,7 +30,7 @@ export function DeleteButton({ setList }: Props) {
   }
 
   return (
-    <Button type="button" ariaLabel="delete the todo item" deleteTodo={deleteTodo}>
+    <Button type="button" ariaLabel="delete the todo item" onClick={deleteTodo}>
       <FontAwesomeIcon icon={faTrash} size="1x" />
     </Button>
   );

@@ -13,8 +13,8 @@ export function SearchTodoInput({ setSearchText }: Props) {
   return (
     <Input
       placeholder="Search Keyword"
-      keyDownEvent={undefined}
-      changeEvent={changeHandler}
+      onKeyDown={undefined}
+      onChange={changeHandler}
     />
   );
 }
