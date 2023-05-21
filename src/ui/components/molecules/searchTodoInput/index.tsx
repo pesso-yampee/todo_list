@@ -1,8 +1,20 @@
+import { ChangeEvent } from "react";
 import { Input } from "ui/components/atoms/Input";
 
-export function SearchTodoInput() {
-  function keyDownEvent() {
-    window.alert("search!!!!!");
+type Props = {
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
+};
+
+export function SearchTodoInput({ setSearchText }: Props) {
+  function changeHandler(e: ChangeEvent<HTMLInputElement>) {
+    setSearchText(e.currentTarget.value);
   }
-  return <Input placeholder="Search Keyword" keyDownEvent={keyDownEvent} />;
+
+  return (
+    <Input
+      placeholder="Search Keyword"
+      keyDownEvent={undefined}
+      changeEvent={changeHandler}
+    />
+  );
 }

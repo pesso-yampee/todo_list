@@ -22,5 +22,5 @@ export function NewTodoInput({ setList }: Props) {
     }
   }
 
-  return <Input placeholder="New Todo" keyDownEvent={addToList} />;
+  return <Input placeholder="New Todo" keyDownEvent={addToList} changeEvent={undefined} />;
 }

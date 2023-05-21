@@ -7,17 +7,26 @@ import styles from "./style.module.css";
 
 type TodoProps = {
   text: string;
-}
+};
 
 export function ListPage() {
   const [list, setList] = useState<TodoProps[]>([]);
+  const [searchText, setSearchText] = useState("");
+
+  const filterList = (() => {
+    const result = list.filter((item) => {
+      return item.text.includes(searchText);
+    });
+    return result;
+  })();
+
   return (
     <div className={styles.container}>
       <PageTitle text="Todo List" />
       <div className={styles.contents}>
         <NewTodoInput setList={setList} />
-        <SearchTodoInput />
-        <TodoItem list={list} />
+        <SearchTodoInput setSearchText={setSearchText} />
+        <TodoItem list={searchText === "" ? list : filterList} />
       </div>
     </div>
   );
