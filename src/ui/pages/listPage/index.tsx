@@ -7,6 +7,7 @@ import styles from "./style.module.css";
 
 type TodoProps = {
   text: string;
+  id: string;
 };
 
 export function ListPage() {
@@ -26,7 +27,10 @@ export function ListPage() {
       <div className={styles.contents}>
         <NewTodoInput setList={setList} />
         <SearchTodoInput setSearchText={setSearchText} />
-        <TodoItem list={searchText === "" ? list : filterList} />
+        <TodoItem
+          list={searchText === "" ? list : filterList}
+          setList={setList}
+        />
       </div>
     </div>
   );

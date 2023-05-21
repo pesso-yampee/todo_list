@@ -3,18 +3,18 @@ import styles from "./style.module.css";
 
 type Props = {
   type: "button" | "submit" | "reset" | undefined;
-  clickEvent: () => void;
+  deleteTodo: (e: React.MouseEvent<HTMLButtonElement>) => void;
   ariaLabel: string;
   children: ReactNode;
 };
 
-export function Button({ type, clickEvent, ariaLabel, children }: Props) {
+export function Button({ type, deleteTodo, ariaLabel, children }: Props) {
   return (
     <button
       className={styles.button}
       type={type}
       aria-label={ariaLabel}
-      onClick={clickEvent}
+      onClick={deleteTodo}
     >
       {children}
     </button>
