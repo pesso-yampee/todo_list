@@ -12,10 +12,10 @@ type TodoProps = {
 
 export function TodoListTemplate() {
   const [list, setList] = useState<TodoProps[]>([]);
-  const [searchText, setSearchText] = useState("");
+  const [searchText, setSearchText] = useState<string>("");
 
   const filterList = (() => {
-    const result = list.filter((item) => {
+    const result: TodoProps[] = list.filter((item) => {
       return item.text.includes(searchText);
     });
     return result;

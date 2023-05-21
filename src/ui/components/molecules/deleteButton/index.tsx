@@ -15,10 +15,10 @@ type Props = {
 
 export function DeleteButton({ setList }: Props) {
   function deleteTodo(e: React.MouseEvent<HTMLButtonElement>) {
-    const currentTarget = e.currentTarget;
-    const todoItem = currentTarget.closest("li");
-    const todoItemId = todoItem?.id;
-    const res = window.confirm("本当に削除しますか？");
+    const currentTarget: EventTarget & HTMLButtonElement = e.currentTarget;
+    const todoItem: HTMLLIElement | null = currentTarget.closest("li");
+    const todoItemId: string | undefined = todoItem?.id;
+    const res: boolean = window.confirm("本当に削除しますか？");
 
     if (res) {
       setList((prevTodos) =>

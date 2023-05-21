@@ -14,7 +14,7 @@ type Props = {
 
 export function NewTodoInput({ setList }: Props) {
   function addToList(e: KeyboardEvent<HTMLInputElement>) {
-    let value = "";
+    let value: string = "";
 
     if (e.code === "Enter") {
       value = e.currentTarget.value;
