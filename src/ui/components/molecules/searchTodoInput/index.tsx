@@ -1,20 +1,15 @@
-import { ChangeEvent } from "react";
 import { Input } from "ui/components/atoms/Input";
 
 type Props = {
-  setSearchText: React.Dispatch<React.SetStateAction<string>>;
+  useSetSearchTodo: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export function SearchTodoInput({ setSearchText }: Props) {
-  function changeHandler(e: ChangeEvent<HTMLInputElement>) {
-    setSearchText(e.currentTarget.value);
-  }
-
+export function SearchTodoInput({ useSetSearchTodo }: Props) {
   return (
     <Input
       placeholder="Search Keyword"
       onKeyDown={undefined}
-      onChange={changeHandler}
+      onChange={useSetSearchTodo}
     />
   );
 }
