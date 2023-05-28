@@ -1,10 +1,11 @@
+import { TodoProvider } from "providers/TodoProvider";
 import { ListPage } from "ui/pages/listPage";
 
 function App() {
   return (
-    <div>
+    <TodoProvider>
       <ListPage />
-    </div>
+    </TodoProvider>
   );
 }
 

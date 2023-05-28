@@ -1,12 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { useTodo } from "hooks/useTodo";
 import { Button } from "ui/components/atoms/button";
 
-type Props = {
-  useDeleteTodo: (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-};
+export function DeleteButton() {
+  const { useDeleteTodo } = useTodo();
 
-export function DeleteButton({ useDeleteTodo }: Props) {
   return (
     <Button
       type="button"
