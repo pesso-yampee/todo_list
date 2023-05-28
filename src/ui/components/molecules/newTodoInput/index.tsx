@@ -1,10 +1,9 @@
+import { useTodo } from "hooks/useTodo";
 import { Input } from "ui/components/atoms/Input";
 
-type Props = {
-  useAddToList: (e: React.KeyboardEvent<HTMLInputElement>) => void;
-};
-
-export function NewTodoInput({ useAddToList }: Props) {
+export function NewTodoInput() {
+  const { useAddToList } = useTodo();
+  
   return (
     <Input
       placeholder="New Todo"
