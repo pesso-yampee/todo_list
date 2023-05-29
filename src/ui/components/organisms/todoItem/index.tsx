@@ -1,9 +1,10 @@
+import { useContext } from "react";
 import { DeleteButton } from "ui/components/molecules/deleteButton";
-import { useTodo } from "hooks/useTodo";
 import styles from "./style.module.css";
+import { TodoDispatchContext } from "providers/TodoProvider";
 
 export function TodoItem() {
-  const { useInitializeList } = useTodo();
+  const { useInitializeList } = useContext(TodoDispatchContext);
   const list = useInitializeList();
 
   return (

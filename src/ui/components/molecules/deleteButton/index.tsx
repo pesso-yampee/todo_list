@@ -1,10 +1,11 @@
+import { useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useTodo } from "hooks/useTodo";
 import { Button } from "ui/components/atoms/button";
+import { TodoDispatchContext } from "providers/TodoProvider";
 
 export function DeleteButton() {
-  const { useDeleteTodo } = useTodo();
+  const { useDeleteTodo } = useContext(TodoDispatchContext);
 
   return (
     <Button
