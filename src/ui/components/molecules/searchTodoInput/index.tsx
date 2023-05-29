@@ -1,8 +1,9 @@
-import { useTodo } from "hooks/useTodo";
+import { useContext } from "react";
+import { TodoDispatchContext } from "providers/TodoProvider";
 import { Input } from "ui/components/atoms/Input";
 
 export function SearchTodoInput() {
-  const { useSetSearchTodo } = useTodo();
+  const { useSetSearchTodo } = useContext(TodoDispatchContext);
 
   return (
     <Input

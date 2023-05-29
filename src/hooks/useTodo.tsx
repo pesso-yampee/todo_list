@@ -1,10 +1,14 @@
-import { useContext } from "react";
-import { TodoDispatchContext, TodoStateContext } from "providers/TodoProvider";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
+type TodoProps = {
+  text: string;
+  id: string;
+};
+
 export const useTodo = () => {
-  const { list, searchText } = useContext(TodoStateContext);
-  const { setList, setSearchText } = useContext(TodoDispatchContext);
+  const [list, setList] = useState<TodoProps[]>([]);
+  const [searchText, setSearchText] = useState<string>("");
 
   // Todoを追加する処理
   const useAddToList = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -59,6 +63,8 @@ export const useTodo = () => {
   };
 
   return {
+    list,
+    searchText,
     useAddToList,
     useSetSearchTodo,
     useDeleteTodo,

@@ -1,4 +1,5 @@
-import { createContext, useState } from "react";
+import { useTodo } from "hooks/useTodo";
+import { createContext } from "react";
 
 type Props = {
   children: JSX.Element;
@@ -15,20 +16,38 @@ type TodoStateProps = {
 };
 
 type TodoDispatchProps = {
-  setList: React.Dispatch<React.SetStateAction<TodoProps[]>>;
-  setSearchText: React.Dispatch<React.SetStateAction<string>>;
+  useAddToList: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  useSetSearchTodo: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  useDeleteTodo: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  useFilterList: () => TodoProps[];
+  useInitializeList: () => TodoProps[];
 };
 
 export const TodoStateContext = createContext({} as TodoStateProps);
 export const TodoDispatchContext = createContext({} as TodoDispatchProps);
 
 export function TodoProvider({ children }: Props) {
-  const [list, setList] = useState<TodoProps[]>([]);
-  const [searchText, setSearchText] = useState<string>("");
+  const {
+    list,
+    searchText,
+    useAddToList,
+    useSetSearchTodo,
+    useDeleteTodo,
+    useFilterList,
+    useInitializeList,
+  } = useTodo();
 
   return (
     <TodoStateContext.Provider value={{ list, searchText }}>
-      <TodoDispatchContext.Provider value={{ setList, setSearchText }}>
+      <TodoDispatchContext.Provider
+        value={{
+          useAddToList,
+          useSetSearchTodo,
+          useDeleteTodo,
+          useFilterList,
+          useInitializeList,
+        }}
+      >
         {children}
       </TodoDispatchContext.Provider>
     </TodoStateContext.Provider>

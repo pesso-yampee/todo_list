@@ -1,8 +1,9 @@
-import { useTodo } from "hooks/useTodo";
+import { useContext } from "react";
+import { TodoDispatchContext } from "providers/TodoProvider";
 import { Input } from "ui/components/atoms/Input";
 
 export function NewTodoInput() {
-  const { useAddToList } = useTodo();
+  const { useAddToList } = useContext(TodoDispatchContext);
   
   return (
     <Input
