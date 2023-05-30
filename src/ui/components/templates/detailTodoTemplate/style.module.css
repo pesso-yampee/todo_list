@@ -3,13 +3,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 600px;
   margin-top: 100px;
+  margin-inline: auto;
 }
 
 .contents {
-  max-width: 600px;
   width: 100%;
   margin-top: 20px;
   padding: 20px;
   box-shadow: 0 0 5px #333;
+}
+
+.title,
+.content {
+  padding: 16px;
+  background-color: #808080;
+  border-radius: 5px;
+}
+
+.content {
+  margin-top: 10px;
+}
+
+.title span,
+.content p {
+  color: #fff;
 }

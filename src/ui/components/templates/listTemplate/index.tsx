@@ -1,15 +1,19 @@
 import { PageTitle } from "ui/components/atoms/pageTitle";
-import { NewTodoInput } from "ui/components/molecules/newTodoInput";
 import { SearchTodoInput } from "ui/components/molecules/searchTodoInput";
 import { TodoItem } from "ui/components/organisms/todoItem";
+import { Navigation } from "ui/components/organisms/navigation";
 import styles from "./style.module.css";
 
-export function TodoListTemplate() {
+type Props = {
+  text: string;
+};
+
+export function ListTemplate({ text }: Props) {
   return (
     <div className={styles.container}>
-      <PageTitle text="Todo List" />
+      <Navigation />
+      <PageTitle text={text} />
       <div className={styles.contents}>
-        <NewTodoInput />
         <SearchTodoInput />
         <TodoItem />
       </div>

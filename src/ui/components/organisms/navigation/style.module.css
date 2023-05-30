@@ -1,0 +1,27 @@
+.flexContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.link {
+  padding: 12px 36px;
+  background-color: #333;
+  border: 2px solid #333;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  transition: background-color .4s, color .4s;
+}
+
+@media (hover: hover) {
+  .link:hover {
+    background-color: #fff;
+    color: #333;
+  }
+}
+.link:focus-visible {
+  background-color: #fff;
+  color: #333;
+}

@@ -8,8 +8,9 @@ export function SearchTodoInput() {
   return (
     <Input
       placeholder="Search Keyword"
-      onKeyDown={undefined}
       onChange={useSetSearchTodo}
+      name="search"
+      value={undefined}
     />
   );
 }

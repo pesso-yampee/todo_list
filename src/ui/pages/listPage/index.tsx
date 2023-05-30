@@ -1,5 +1,5 @@
-import { TodoListTemplate } from "ui/components/templates/todoListTemplate";
+import { ListTemplate } from "ui/components/templates/listTemplate";
 
 export function ListPage() {
-  return <TodoListTemplate />;
+  return <ListTemplate text="TodoList" />;
 }
