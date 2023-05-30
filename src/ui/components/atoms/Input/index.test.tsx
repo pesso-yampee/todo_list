@@ -6,8 +6,9 @@ describe("<Input />", () => {
     render(
       <Input
         placeholder=""
-        onKeyDown={() => {}}
         onChange={() => {}}
+        name=""
+        value=""
       />
     );
     const inputElement = screen.getByRole("textbox");

@@ -4,7 +4,13 @@ import { Button } from ".";
 describe("<Button />", () => {
   test("[role=button]である", () => {
     render(
-      <Button type={undefined} ariaLabel="" onClick={() => {}} children="" />
+      <Button
+        type={undefined}
+        ariaLabel=""
+        onClick={() => {}}
+        children=""
+        className=""
+      />
     );
 
     const buttonElement = screen.getByRole("button");
