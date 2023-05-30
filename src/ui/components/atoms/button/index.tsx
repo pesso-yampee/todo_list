@@ -6,12 +6,13 @@ type Props = {
   onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   ariaLabel: string;
   children: ReactNode;
+  className: string;
 };
 
-export function Button({ type, onClick, ariaLabel, children }: Props) {
+export function Button({ type, onClick, ariaLabel, children, className }: Props) {
   return (
     <button
-      className={styles.button}
+      className={styles[className]}
       type={type}
       aria-label={ariaLabel}
       onClick={onClick}

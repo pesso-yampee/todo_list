@@ -12,6 +12,7 @@ export function DeleteButton() {
       type="button"
       ariaLabel="delete the todo item"
       onClick={useDeleteTodo}
+      className="button-icon"
     >
       <FontAwesomeIcon icon={faTrash} size="1x" />
     </Button>
