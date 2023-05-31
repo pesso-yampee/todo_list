@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/router";
 import { TodoType } from "types/todo";
 import { v4 as uuidv4 } from "uuid";
 
@@ -22,7 +22,7 @@ export const useTodo = () => {
   const [todoTitle, setTodoTitle] = useState("");
   const [todoContent, setTodoContent] = useState("");
 
-  const navigate = useNavigate();
+  const router = useRouter();
 
   /**
    * 新規追加・編集系
@@ -45,7 +45,7 @@ export const useTodo = () => {
         { title: todoTitle, content: todoContent, id: uuidv4() },
       ];
     });
-    navigate("/");
+    router.push("/");
 
     // Todoを新規追加した際にタイトルフィールドとコンテンフィールドをそれぞれ初期化する処理
     const useInitializeCreateField = () => {
@@ -66,7 +66,7 @@ export const useTodo = () => {
     title && setTodoTitle(title);
     content && setTodoContent(content);
 
-    navigate("/edit");
+    router.push("/edit");
 
     // 編集したいTodoを取得する処理
     function getTodoWantToEdit(e: React.MouseEvent<HTMLButtonElement>) {
@@ -89,7 +89,7 @@ export const useTodo = () => {
   const useUpdateTodo = () => {
     editTodo.title = todoTitle;
     editTodo.content = todoContent;
-    navigate("/");
+    router.push("/");
   };
 
   /**
