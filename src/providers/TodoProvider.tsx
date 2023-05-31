@@ -1,33 +1,28 @@
 import { useTodo } from "hooks/useTodo";
 import { createContext } from "react";
+import { TodoType } from "types/todo";
 
 type Props = {
   children: JSX.Element;
 };
 
-type TodoProps = {
-  title: string | null | undefined;
-  content: string | null | undefined;
-  id: string;
-};
-
 type TodoStateProps = {
-  list: TodoProps[];
+  list: TodoType[];
   searchTodoTitle: string;
-  todo: TodoProps;
+  todo: TodoType;
   todoTitle: string;
   todoContent: string;
 };
 
 type TodoDispatchProps = {
-  setTodo: React.Dispatch<React.SetStateAction<TodoProps>>;
+  setTodo: React.Dispatch<React.SetStateAction<TodoType>>;
   useInputTodoTitle: (e: React.ChangeEvent<HTMLInputElement>) => void;
   useInputTodoContent: (e: React.ChangeEvent<HTMLInputElement>) => void;
   useAddToList: (e: React.MouseEvent<HTMLButtonElement>) => void;
   useSetSearchTodo: (e: React.ChangeEvent<HTMLInputElement>) => void;
   useDeleteTodo: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  useFilterList: () => TodoProps[];
-  useInitializeList: () => TodoProps[];
+  useFilterList: () => TodoType[];
+  useInitializeList: () => TodoType[];
   useFindTodoDetail: (e: React.MouseEvent<HTMLButtonElement>) => void;
   useSetTodoTitleAndContentIntoField: (
     e: React.MouseEvent<HTMLButtonElement>

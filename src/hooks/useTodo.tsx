@@ -1,12 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { TodoType } from "types/todo";
 import { v4 as uuidv4 } from "uuid";
-
-type TodoProps = {
-  title: string | null | undefined;
-  content: string | null | undefined;
-  id: string;
-};
 
 export const useTodo = () => {
   // 初期表示で表示させておくダミーデータ
@@ -19,8 +14,8 @@ export const useTodo = () => {
   const [list, setList] = useState(initialTodoData);
 
   // Todoデータの取得に関わるstate
-  const [todo, setTodo] = useState({} as TodoProps);
-  const [editTodo, setEditTodo] = useState({} as TodoProps);
+  const [todo, setTodo] = useState({} as TodoType);
+  const [editTodo, setEditTodo] = useState({} as TodoType);
 
   // Todoのタイトルもしくはコンテンツの内容を取得するstate
   const [searchTodoTitle, setSearchTodoTitle] = useState("");
@@ -81,7 +76,7 @@ export const useTodo = () => {
       if (todoItem === null) return;
 
       const todoItemId: string = todoItem.id;
-      const result: TodoProps | undefined = list.find((item) => {
+      const result: TodoType | undefined = list.find((item) => {
         return item.id === todoItemId;
       });
 
