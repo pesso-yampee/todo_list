@@ -103,7 +103,7 @@ export const useTodo = () => {
   // Todoをフィルタリングする処理
   const useFilterList = () => {
     const result = list.filter((item) => {
-      return item.title?.includes(searchTodoTitle);
+      return item.title?.startsWith(searchTodoTitle);
     });
     return result;
   };
