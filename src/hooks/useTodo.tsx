@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { TodoType } from "types/todo";
 import { v4 as uuidv4 } from "uuid";
 
-export const useTodo = () => {
+export const useTodoList = () => {
   // 初期表示で表示させておくダミーデータ
   const initialTodoData = [
     { title: "todo1", content: "todo1", id: "awrsgdhfjghk" },
@@ -47,14 +47,15 @@ export const useTodo = () => {
     });
     router.push("/");
 
-    // Todoを新規追加した際にタイトルフィールドとコンテンフィールドをそれぞれ初期化する処理
-    const useInitializeCreateField = () => {
-      setTodoTitle("");
-      setTodoContent("");
-    };
     useInitializeCreateField();
   };
-
+  
+  // Todoを新規追加した際にタイトルフィールドとコンテンフィールドをそれぞれ初期化する処理
+  const useInitializeCreateField = () => {
+    setTodoTitle("");
+    setTodoContent("");
+  };
+  
   // 編集したいTodoのタイトルとコンテンツをinputタグのvalue属性に予め設定する処理
   const useSetTodoTitleAndContentIntoField = (
     e: React.MouseEvent<HTMLButtonElement>
