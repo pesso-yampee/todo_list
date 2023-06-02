@@ -1,4 +1,4 @@
-import { useTodo } from "hooks/useTodo";
+import { useTodoList } from "hooks/useTodoList";
 import { createContext } from "react";
 import { TodoType } from "types/todo";
 
@@ -51,7 +51,7 @@ export function TodoProvider({ children }: Props) {
     useFindTodoDetail,
     useSetTodoTitleAndContentIntoField,
     useUpdateTodo,
-  } = useTodo();
+  } = useTodoList();
 
   return (
     <TodoStateContext.Provider
