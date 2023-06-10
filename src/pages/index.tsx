@@ -1,10 +1,6 @@
-import { TodoProvider } from "providers/TodoProvider";
+import type { NextPage } from "next";
 import { ListTemplate } from "components/templates/listTemplate";
 
-export default function List() {
-  return (
-    <TodoProvider>
-      <ListTemplate text="TodoList" />
-    </TodoProvider>
-  );
-}
+const TodoListPage: NextPage = () => <ListTemplate text="TodoList" />;
+
+export default TodoListPage;
