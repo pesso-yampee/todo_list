@@ -2,10 +2,6 @@ import { useTodoList } from "hooks/useTodoList";
 import { createContext } from "react";
 import { TodoType } from "types/todo";
 
-type Props = {
-  children: JSX.Element;
-};
-
 type TodoStateProps = {
   list: TodoType[];
   searchTodoTitle: string;
@@ -18,7 +14,7 @@ type TodoDispatchProps = {
   setTodo: React.Dispatch<React.SetStateAction<TodoType>>;
   useInputTodoTitle: (e: React.ChangeEvent<HTMLInputElement>) => void;
   useInputTodoContent: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  useAddToList: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  addTodo: (e: React.MouseEvent<HTMLButtonElement>) => void;
   useSetSearchTodo: (e: React.ChangeEvent<HTMLInputElement>) => void;
   useDeleteTodo: (e: React.MouseEvent<HTMLButtonElement>) => void;
   useFilterList: () => TodoType[];
@@ -33,7 +29,7 @@ type TodoDispatchProps = {
 export const TodoStateContext = createContext({} as TodoStateProps);
 export const TodoDispatchContext = createContext({} as TodoDispatchProps);
 
-export function TodoProvider({ children }: Props) {
+export function TodoProvider({ children }) {
   const {
     list,
     searchTodoTitle,
@@ -43,7 +39,7 @@ export function TodoProvider({ children }: Props) {
     setTodo,
     useInputTodoTitle,
     useInputTodoContent,
-    useAddToList,
+    addTodo,
     useSetSearchTodo,
     useDeleteTodo,
     useFilterList,
@@ -62,7 +58,7 @@ export function TodoProvider({ children }: Props) {
           setTodo,
           useInputTodoTitle,
           useInputTodoContent,
-          useAddToList,
+          addTodo,
           useSetSearchTodo,
           useDeleteTodo,
           useFilterList,

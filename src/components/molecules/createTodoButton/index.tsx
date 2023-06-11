@@ -3,13 +3,13 @@ import { useContext } from "react";
 import { Button } from "components/atoms/button";
 
 export function CreateTodoButton() {
-  const { useAddToList } = useContext(TodoDispatchContext);
+  const { addTodo } = useContext(TodoDispatchContext);
 
   return (
     <Button
       type="button"
       ariaLabel=""
-      onClick={useAddToList}
+      onClick={addTodo}
       className="button-primary"
     >
       <span>Create Todo</span>

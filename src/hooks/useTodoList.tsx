@@ -38,7 +38,7 @@ export const useTodoList = () => {
   };
 
   // Todoを追加する処理
-  const useAddToList = () => {
+  const addTodo = () => {
     setList((prevTodos) => {
       return [
         ...prevTodos,
@@ -47,11 +47,11 @@ export const useTodoList = () => {
     });
     router.push("/");
 
-    useInitializeCreateField();
+    initializeCreateField();
   };
   
   // Todoを新規追加した際にタイトルフィールドとコンテンフィールドをそれぞれ初期化する処理
-  const useInitializeCreateField = () => {
+  const initializeCreateField = () => {
     setTodoTitle("");
     setTodoContent("");
   };
@@ -153,7 +153,7 @@ export const useTodoList = () => {
     setTodo,
     useInputTodoTitle,
     useInputTodoContent,
-    useAddToList,
+    addTodo,
     useSetSearchTodo,
     useDeleteTodo,
     useFilterList,

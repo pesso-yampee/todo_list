@@ -1,10 +1,7 @@
-import { TodoProvider } from "providers/TodoProvider";
+import type { NextPage } from "next";
 import { DetailTodoTemplate } from "components/templates/detailTodoTemplate";
 
-export default function Detail() {
-  return (
-    <TodoProvider>
-      <DetailTodoTemplate text="TodoDetail" />
-    </TodoProvider>
-  );
-}
+const DetailTodoPage: NextPage = () => {
+  return <DetailTodoTemplate text="TodoDetail" />;
+};
+export default DetailTodoPage;
