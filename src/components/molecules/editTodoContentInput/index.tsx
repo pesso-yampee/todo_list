@@ -4,11 +4,11 @@ import { Input } from "components/atoms/Input";
 
 export function EditTodoContentInput() {
   const { todoContent } = useContext(TodoStateContext);
-  const { useInputTodoContent } = useContext(TodoDispatchContext);
+  const { inputTodoContent } = useContext(TodoDispatchContext);
   return (
     <Input
       placeholder=""
-      onChange={useInputTodoContent}
+      onChange={inputTodoContent}
       name="content"
       value={todoContent}
     />

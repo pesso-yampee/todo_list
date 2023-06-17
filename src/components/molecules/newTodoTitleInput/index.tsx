@@ -4,12 +4,12 @@ import { Input } from "components/atoms/Input";
 
 export function NewTodoTitleInput() {
   const { todoTitle } = useContext(TodoStateContext);
-  const { useInputTodoTitle } = useContext(TodoDispatchContext);
+  const { inputTodoTitle } = useContext(TodoDispatchContext);
 
   return (
     <Input
       placeholder="Title"
-      onChange={useInputTodoTitle}
+      onChange={inputTodoTitle}
       name="title"
       value={todoTitle}
     />

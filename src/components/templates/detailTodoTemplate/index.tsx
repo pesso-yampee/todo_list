@@ -9,7 +9,7 @@ type Props = {
 };
 
 export function DetailTodoTemplate({ text }: Props) {
-  const { todo } = useContext(TodoStateContext);
+  const { todoData } = useContext(TodoStateContext);
 
   return (
     <div className={styles.container}>
@@ -17,10 +17,10 @@ export function DetailTodoTemplate({ text }: Props) {
       <PageTitle text={text} />
       <div className={styles.contents}>
         <div className={styles.title}>
-          <span>{todo.title}</span>
+          <span>{todoData.title}</span>
         </div>
         <div className={styles.content}>
-          <p>{todo.content}</p>
+          <p>{todoData.content}</p>
         </div>
       </div>
     </div>

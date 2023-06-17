@@ -1,9 +1,28 @@
-import { TodoDispatchContext } from "providers/TodoProvider";
+import { TodoDispatchContext, TodoStateContext } from "providers/TodoProvider";
 import { useContext } from "react";
 import { Button } from "components/atoms/button";
+import { v4 as uuidv4 } from "uuid";
+import { useRouter } from "next/router";
 
 export function CreateTodoButton() {
-  const { addTodo } = useContext(TodoDispatchContext);
+  const { todoTitle, todoContent } = useContext(TodoStateContext);
+  const { setList, setTodoTitle, setTodoContent } =
+    useContext(TodoDispatchContext);
+  const router = useRouter();
+
+  const addTodo = () => {
+    setList((prevTodos) => {
+      return [
+        ...prevTodos,
+        { title: todoTitle, content: todoContent, id: uuidv4() },
+      ];
+    });
+    router.push("/");
+
+    // フィールドを初期化
+    setTodoTitle("");
+    setTodoContent("");
+  };
 
   return (
     <Button
