@@ -1,7 +1,6 @@
 /**
  * リンク先一覧
  * 遷移先定義の際に使用
- * @type {{TOP: string, CREATE: string, DETAIL: string, EDIT: string}}
  */
 export const PAGE_LIST = {
   TOP: "/",
@@ -13,9 +12,7 @@ export const PAGE_LIST = {
 /**
  * パス一覧
  * 画面遷移時に使用
- * @type {{TOP: string, CREATE: string, DETAIL: string, EDIT: string}}
  */
-
 export const PAGE_PATH = {
   TOP: "/",
   CREATE: "/create",
