@@ -4,6 +4,7 @@ import { Button } from "components/atoms/button";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import { TodoDispatchContext } from "providers/TodoProvider";
+import { PAGE_PATH } from "constants/pagePath";
 
 export function EditButton() {
   const router = useRouter();
@@ -11,6 +12,7 @@ export function EditButton() {
     useContext(TodoDispatchContext);
 
   function onClickHander(e: React.MouseEvent<HTMLButtonElement>) {
+    const id = e.currentTarget.closest('li')?.id;
     const item = findTodoById(e);
     const title = item?.title;
     const content = item?.content;
@@ -18,7 +20,7 @@ export function EditButton() {
     title && setTodoTitle(title);
     content && setTodoContent(content);
 
-    router.push("/edit");
+    id && router.push(`${PAGE_PATH.EDIT}${id}`);
   }
 
   return (

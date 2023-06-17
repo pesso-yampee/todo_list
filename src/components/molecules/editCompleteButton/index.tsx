@@ -1,4 +1,5 @@
 import { Button } from "components/atoms/button";
+import { PAGE_PATH } from "constants/pagePath";
 import { useRouter } from "next/router";
 import { TodoDispatchContext, TodoStateContext } from "providers/TodoProvider";
 import { useContext } from "react";
@@ -12,7 +13,7 @@ export function EditCompleteButton() {
     todoData.title = todoTitle;
     todoData.content = todoContent;
 
-    router.push("/");
+    router.push(PAGE_PATH.TOP);
 
     setTodoTitle("");
     setTodoContent("");

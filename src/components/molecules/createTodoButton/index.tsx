@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Button } from "components/atoms/button";
 import { v4 as uuidv4 } from "uuid";
 import { useRouter } from "next/router";
+import { PAGE_PATH } from "constants/pagePath";
 
 export function CreateTodoButton() {
   const { todoTitle, todoContent } = useContext(TodoStateContext);
@@ -17,7 +18,8 @@ export function CreateTodoButton() {
         { title: todoTitle, content: todoContent, id: uuidv4() },
       ];
     });
-    router.push("/");
+    
+    router.push(PAGE_PATH.TOP);
 
     // フィールドを初期化
     setTodoTitle("");
