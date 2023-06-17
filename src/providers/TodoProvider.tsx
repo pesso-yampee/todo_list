@@ -1,3 +1,4 @@
+import { INITIAL_DATA } from "constants/data";
 import React, {
   ReactNode,
   createContext,
@@ -46,14 +47,8 @@ export const TodoStateContext = createContext({} as TodoStateProps);
 export const TodoDispatchContext = createContext({} as TodoDispatchProps);
 
 export function TodoProvider({ children }: ComponentProps) {
-  // 初期表示で表示させておくダミーデータ
-  const initialTodoData = [
-    { title: "todo1", content: "todo1", id: "awrsgdhfjghk" },
-    { title: "todo2", content: "todo2", id: "oqilukyjfthdgdf" },
-  ];
-
   // Todoリストの設定に関わるstate
-  const [list, setList] = useState(initialTodoData);
+  const [list, setList] = useState(INITIAL_DATA);
 
   // Todoデータの取得に関わるstate
   const [todoData, setTodoData] = useState({} as TodoType);
