@@ -7,5 +7,5 @@
 * TypeScript
 * PHP
 
-## フレームワーク
+## 状態管理ツール
 * Recoil
