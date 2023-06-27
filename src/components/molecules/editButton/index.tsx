@@ -2,32 +2,47 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "components/atoms/button";
 import { useRouter } from "next/router";
-import { useContext } from "react";
-import { TodoDispatchContext } from "providers/TodoProvider";
 import { PAGE_PATH } from "constants/pagePath";
+import { TodoType } from "types/todo";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import {
+  TodoContentAtom,
+  TodoIdAtom,
+  TodoListAtom,
+  TodoTitleAtom,
+} from "states/TodoState";
 
 export function EditButton() {
   const router = useRouter();
-  const { findTodoById, setTodoTitle, setTodoContent } =
-    useContext(TodoDispatchContext);
+  const setTodoTitle = useSetRecoilState<string>(TodoTitleAtom);
+  const setTodoContent = useSetRecoilState<string>(TodoContentAtom);
+  const setTodoId = useSetRecoilState<string>(TodoIdAtom);
+  const todoList = useRecoilValue<TodoType[]>(TodoListAtom);
 
-  function onClickHander(e: React.MouseEvent<HTMLButtonElement>) {
-    const id = e.currentTarget.closest('li')?.id;
-    const item = findTodoById(e);
-    const title = item?.title;
-    const content = item?.content;
+  const transitionEditTodoPage = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const id = e.currentTarget.closest("li")?.id;
+    
+    // idが存在しない場合：後続処理を実行しない
+    if (!id) {
+      window.alert("idが存在しませんでした。");
+      return false;
+    }
+    
+    const item = todoList.find((item) => item.id === id);
+    
+    if (item) {
+      setTodoId(item.id);
+      setTodoTitle(item.title);
+      setTodoContent(item.content);
+    }
 
-    title && setTodoTitle(title);
-    content && setTodoContent(content);
-
-    id && router.push(`${PAGE_PATH.EDIT}${id}`);
-  }
+    router.push(`${PAGE_PATH.EDIT}${id}`);
+  };
 
   return (
     <Button
-      type="button"
-      ariaLabel="編集する"
-      onClick={onClickHander}
+      ariaLabel="TODOを編集する"
+      onClick={transitionEditTodoPage}
       className="button-icon"
     >
       <FontAwesomeIcon icon={faEdit} size="1x" />

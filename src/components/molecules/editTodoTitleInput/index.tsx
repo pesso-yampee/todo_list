@@ -1,17 +1,17 @@
-import { TodoDispatchContext, TodoStateContext } from "providers/TodoProvider";
-import { useContext } from "react";
 import { Input } from "components/atoms/Input";
-
+import { useRecoilState } from "recoil";
+import { TodoTitleAtom } from "states/TodoState";
 
 export function EditTodoTitleInput() {
-  const { todoTitle } = useContext(TodoStateContext);
-  const { inputTodoTitle } = useContext(TodoDispatchContext);
-  return (
-    <Input
-      placeholder=""
-      onChange={inputTodoTitle}
-      name="content"
-      value={todoTitle}
-    />
-  );
+  const [todoTitle, setTodoTitle] = useRecoilState(TodoTitleAtom);
+
+  /**
+   * Todoのタイトルを設定
+   * @param e
+   */
+  const inputTodoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodoTitle(e.currentTarget.value);
+  };
+
+  return <Input onChange={inputTodoTitle} name="content" value={todoTitle} />;
 }

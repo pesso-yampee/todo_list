@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "components/atoms/button";
-import { useContext } from "react";
-import { TodoDispatchContext } from "providers/TodoProvider";
+import { useSetRecoilState } from "recoil";
+import { TodoListAtom } from "states/TodoState";
+import { TodoType } from "types/todo";
 
 export function DeleteButton() {
-  const { setList } = useContext(TodoDispatchContext);
+  const setTodoList = useSetRecoilState<TodoType[]>(TodoListAtom);
 
-  const deleteTodo = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const deleteTodoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     const currentTarget = e.currentTarget;
     const todoItem = currentTarget.closest("li");
     const todoItemId = todoItem?.id;
@@ -16,7 +17,7 @@ export function DeleteButton() {
     );
 
     if (res) {
-      setList((prevTodos) =>
+      setTodoList((prevTodos) =>
         prevTodos.filter((item) => {
           return item.id !== todoItemId;
         })
@@ -26,9 +27,8 @@ export function DeleteButton() {
 
   return (
     <Button
-      type="button"
-      ariaLabel="delete the todo item"
-      onClick={deleteTodo}
+      ariaLabel="TODOを削除する"
+      onClick={deleteTodoHandler}
       className="button-icon"
     >
       <FontAwesomeIcon icon={faTrash} size="1x" />

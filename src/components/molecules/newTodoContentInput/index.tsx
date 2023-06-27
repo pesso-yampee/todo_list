@@ -1,10 +1,19 @@
-import { TodoDispatchContext, TodoStateContext } from "providers/TodoProvider";
-import { useContext } from "react";
 import { Input } from "components/atoms/Input";
+import { Dispatch, SetStateAction } from "react";
 
-export function NewTodoContentInput() {
-  const { todoContent } = useContext(TodoStateContext);
-  const { inputTodoContent } = useContext(TodoDispatchContext);
+type Props = {
+  setTodoContent: Dispatch<SetStateAction<string>>;
+  todoContent: string;
+};
+
+export function NewTodoContentInput({ setTodoContent, todoContent }: Props) {
+  /**
+   * Todoのコンテンツを設定
+   * @param e
+   */
+  const inputTodoContent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodoContent(e.currentTarget.value);
+  };
 
   return (
     <Input

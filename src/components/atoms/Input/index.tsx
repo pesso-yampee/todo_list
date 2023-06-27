@@ -2,7 +2,7 @@ import { ChangeEvent } from "react";
 import styles from "components/atoms/Input/style.module.css";
 
 type Props = {
-  placeholder: string | undefined;
+  placeholder?: string | undefined;
   onChange: ((e: ChangeEvent<HTMLInputElement>) => void) | undefined;
   name: string;
   value: string | undefined;
