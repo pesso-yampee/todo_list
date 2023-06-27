@@ -1,5 +1,5 @@
 export type TodoType = {
-  title: string | null | undefined;
-  content: string | null | undefined;
+  title: string;
+  content: string;
   id: string;
 };

@@ -1,22 +1,23 @@
-import { useContext } from "react";
-import { TodoDispatchContext } from "providers/TodoProvider";
 import { Input } from "components/atoms/Input";
+import { Dispatch, SetStateAction } from "react";
 
-export function SearchTodoInput() {
-  const { setSearchTodoTitle } = useContext(TodoDispatchContext);
-  
+type Props = {
+  setTodoTitle: Dispatch<SetStateAction<string>>;
+};
+
+export function SearchTodoInput({ setTodoTitle }: Props) {
   /**
    * 検索するTodoを設定
    * @param e
    */
-  const initializeSearchTodo = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTodoTitle(e.currentTarget.value);
+  const searchTodoHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodoTitle(e.currentTarget.value);
   };
 
   return (
     <Input
-      placeholder="Search Keyword"
-      onChange={initializeSearchTodo}
+      placeholder="Search Todo"
+      onChange={searchTodoHandler}
       name="search"
       value={undefined}
     />

@@ -1,15 +1,16 @@
-import { useContext } from "react";
-import { TodoStateContext } from "providers/TodoProvider";
 import { PageTitle } from "components/atoms/pageTitle";
 import { Navigation } from "components/organisms/navigation";
+import { useRecoilValue } from "recoil";
 import styles from "./style.module.css";
+import { TodoContentAtom, TodoTitleAtom } from "states/TodoState";
 
 type Props = {
   text: string;
 };
 
 export function DetailTodoTemplate({ text }: Props) {
-  const { todoData } = useContext(TodoStateContext);
+  const todoContent = useRecoilValue(TodoContentAtom);
+  const todoTitle = useRecoilValue(TodoTitleAtom);
 
   return (
     <div className={styles.container}>
@@ -17,10 +18,10 @@ export function DetailTodoTemplate({ text }: Props) {
       <PageTitle text={text} />
       <div className={styles.contents}>
         <div className={styles.title}>
-          <span>{todoData.title}</span>
+          <span>{todoTitle}</span>
         </div>
         <div className={styles.content}>
-          <p>{todoData.content}</p>
+          <p>{todoContent}</p>
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 import type { AppProps } from "next/app";
-import { TodoProvider } from "providers/TodoProvider";
+import { RecoilRoot } from "recoil";
 import "styles/global.css";
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <TodoProvider>
+    <RecoilRoot>
       <Component {...pageProps} />
-    </TodoProvider>
+    </RecoilRoot>
   );
 }

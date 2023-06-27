@@ -1,10 +1,19 @@
-import { TodoDispatchContext, TodoStateContext } from "providers/TodoProvider";
-import { useContext } from "react";
 import { Input } from "components/atoms/Input";
+import { Dispatch, SetStateAction } from "react";
 
-export function NewTodoTitleInput() {
-  const { todoTitle } = useContext(TodoStateContext);
-  const { inputTodoTitle } = useContext(TodoDispatchContext);
+type Props = {
+  todoTitle: string;
+  setTodoTitle: Dispatch<SetStateAction<string>>;
+};
+
+export function NewTodoTitleInput({ setTodoTitle, todoTitle }: Props) {
+  /**
+   * Todoのタイトルを設定
+   * @param e
+   */
+  const inputTodoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTodoTitle(e.currentTarget.value);
+  };
 
   return (
     <Input
