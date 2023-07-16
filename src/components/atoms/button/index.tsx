@@ -3,7 +3,7 @@ import styles from "./style.module.css";
 
 type Props = {
   type?: "button" | "submit" | "reset";
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   ariaLabel?: string;
   children: ReactNode;
   className: string;
