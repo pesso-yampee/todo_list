@@ -2,18 +2,19 @@ import { PageTitle } from "components/atoms/pageTitle";
 import { TodoItem } from "components/organisms/todoItem";
 import { Navigation } from "components/organisms/navigation";
 import styles from "./style.module.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useRecoilValue } from "recoil";
 import { TodoListAtom } from "states/TodoState";
 import { TodoType } from "types/todo";
 import { Input } from "components/atoms/Input";
 import axios from "axios";
+import useSWR from "swr";
+
 type Props = {
   text: string;
 };
 
 export function ListTemplate({ text }: Props) {
-  const [list, setList] = useState<TodoType[]>();
   const [todoTitle, setTodoTitle] = useState("");
   const todoList = useRecoilValue(TodoListAtom);
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -27,16 +28,16 @@ export function ListTemplate({ text }: Props) {
     },
   });
 
-  useEffect(() => {
-    apiInstance
-      .get("/task")
-      .then((res) => {
-        setList(() => res.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+  const fetcher = async (url: string) => {
+    try {
+      const res = await apiInstance.get(url);
+      return res.data;
+    } catch (error) {
+      window.alert(error);
+    }
+  };
+
+  const { data } = useSWR("/task", fetcher);
 
   /**
    * 前方一致検索でヒットしたTodoを新しいリストとして返す処理
@@ -49,18 +50,20 @@ export function ListTemplate({ text }: Props) {
     return result;
   };
 
-  if (list) {
+  if (data) {
     return (
       <div className={styles.container}>
         <Navigation />
         <PageTitle text={text} />
         <div className={styles.contents}>
           <Input placeholder="Title" onChangeHandler={onChangeHandler} />
-          <TodoItem list={list} />
+          <TodoItem list={data} />
         </div>
       </div>
     );
   } else {
-    <div><p>データがありません。</p></div>
+    <div>
+      <p>データがありません。</p>
+    </div>;
   }
 }
