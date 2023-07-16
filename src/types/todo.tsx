@@ -1,5 +1,10 @@
 export type TodoType = {
   title: string;
-  content: string;
+  contents: string;
   id: string;
+};
+
+export type FormInputType = {
+  title: string;
+  contents: string;
 };
