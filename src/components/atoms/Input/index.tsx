@@ -1,22 +1,18 @@
-import { ChangeEvent } from "react";
 import styles from "components/atoms/Input/style.module.css";
+import React from "react";
 
 type Props = {
-  placeholder?: string | undefined;
-  onChange: ((e: ChangeEvent<HTMLInputElement>) => void) | undefined;
-  name: string;
-  value: string | undefined;
+  placeholder: string;
+  onChangeHandler: React.ChangeEventHandler<HTMLInputElement>;
 };
 
-export function Input({ placeholder, onChange, name, value }: Props) {
+export function Input({ placeholder, onChangeHandler }: Props) {
   return (
     <input
       type="text"
       className={styles.input}
       placeholder={placeholder}
-      onChange={onChange}
-      name={name}
-      value={value}
+      onChange={onChangeHandler}
     />
   );
 }
