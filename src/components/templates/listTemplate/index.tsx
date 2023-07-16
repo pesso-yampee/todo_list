@@ -49,16 +49,18 @@ export function ListTemplate({ text }: Props) {
     return result;
   };
 
-  if (!list) return null;
-
-  return (
-    <div className={styles.container}>
-      <Navigation />
-      <PageTitle text={text} />
-      <div className={styles.contents}>
-        <Input placeholder="Title" onChangeHandler={onChangeHandler} />
-        <TodoItem list={list} />
+  if (list) {
+    return (
+      <div className={styles.container}>
+        <Navigation />
+        <PageTitle text={text} />
+        <div className={styles.contents}>
+          <Input placeholder="Title" onChangeHandler={onChangeHandler} />
+          <TodoItem list={list} />
+        </div>
       </div>
-    </div>
-  );
+    );
+  } else {
+    <div><p>データがありません。</p></div>
+  }
 }
