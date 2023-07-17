@@ -13,7 +13,7 @@ module.exports = {
   create: async (req, res, next) => {
     try {
       const result = await db.Task.create({
-        name: req.body.name,
+        title: req.body.title,
         contents: req.body.contents,
         id: randomUUID,
       });
