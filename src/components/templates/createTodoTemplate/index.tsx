@@ -7,6 +7,7 @@ import { Button } from "components/atoms/button";
 import { useRouter } from "next/router";
 import { PAGE_PATH } from "constants/pagePath";
 import { FormInput } from "components/atoms/FormInput";
+import { apiInstance } from "constants/apiInstance";
 
 type Props = {
   text: string;
@@ -19,7 +20,19 @@ export function CreateTodoTemplate({ text }: Props) {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputType>();
-  const onSubmit: SubmitHandler<FormInputType> = (data) => {
+
+  const onSubmit: SubmitHandler<FormInputType> = async (data) => {
+    try {
+      const res = await apiInstance.post("/task", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      return res.data;
+    } catch (error) {
+      window.alert(error);
+    }
+
     router.push(PAGE_PATH.TOP);
   };
 
