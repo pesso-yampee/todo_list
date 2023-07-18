@@ -1,5 +1,6 @@
 const { randomUUID } = require("crypto");
 const db = require("../models/index");
+require("date-utils");
 
 module.exports = {
   read: async (req, res, next) => {
@@ -15,7 +16,12 @@ module.exports = {
       const result = await db.Task.create({
         title: req.body.title,
         contents: req.body.contents,
-        id: randomUUID,
+        id: randomUUID(),
+        createdAt: new Date().toFormat("YYYY-MM-DD HH24:MI:SS"),
+        /**
+         * TODO: 何故かDB側では日付がセットされている
+         */
+        updatedAt: null,
       });
       res.send(result);
     } catch (err) {
