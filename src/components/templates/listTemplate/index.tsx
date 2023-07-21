@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { TodoType } from "types/todo";
 import { Input } from "components/atoms/Input";
 import useSWR from "swr";
-import { apiInstance } from "constants/apiInstance";
+import { apiClient } from "constants/apiClient";
 
 type Props = {
   text: string;
@@ -20,7 +20,7 @@ export function ListTemplate({ text }: Props) {
 
   const fetcher = async (url: string) => {
     try {
-      const res = await apiInstance.get(url);
+      const res = await apiClient.get(url);
       return res.data;
     } catch (error) {
       window.alert(error);
