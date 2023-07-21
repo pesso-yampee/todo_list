@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const taskController = require("../controllers/taskController");
-const cors = require("cors");
 const multer = require("multer");
 
 const upload = multer();
