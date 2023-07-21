@@ -4,7 +4,7 @@ import { Button } from "components/atoms/button";
 import { apiClient } from "constants/apiClient";
 
 export function DeleteButton() {
-  const deleteTodoHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleOnClickdeleteTodo = (e: React.MouseEvent<HTMLButtonElement>) => {
     const currentTarget = e.currentTarget;
     const todoItem = currentTarget.closest("li");
     const todoItemId = todoItem?.id;
@@ -24,7 +24,7 @@ export function DeleteButton() {
   return (
     <Button
       ariaLabel="TODOを削除する"
-      onClick={deleteTodoHandler}
+      onClick={handleOnClickdeleteTodo}
       className="button-icon"
     >
       <FontAwesomeIcon icon={faTrash} size="1x" />
