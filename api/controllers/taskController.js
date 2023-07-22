@@ -32,7 +32,7 @@ module.exports = {
     try {
       const result = await db.Task.update(
         {
-          name: req.body.name,
+          title: req.body.title,
           contents: req.body.contents,
         },
         {

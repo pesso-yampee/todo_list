@@ -2,14 +2,14 @@ import { PageTitle } from "components/atoms/pageTitle";
 import { Navigation } from "components/organisms/navigation";
 import { useRecoilValue } from "recoil";
 import styles from "./style.module.css";
-import { TodoContentAtom, TodoTitleAtom } from "states/TodoState";
+import { TodoContentsAtom, TodoTitleAtom } from "states/TodoState";
 
 type Props = {
   text: string;
 };
 
 export function DetailTodoTemplate({ text }: Props) {
-  const todoContent = useRecoilValue(TodoContentAtom);
+  const todoContent = useRecoilValue(TodoContentsAtom);
   const todoTitle = useRecoilValue(TodoTitleAtom);
 
   return (

@@ -4,36 +4,34 @@ import { Button } from "components/atoms/button";
 import { useRouter } from "next/router";
 import { PAGE_PATH } from "constants/pagePath";
 import { TodoType } from "types/todo";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import {
-  TodoContentAtom,
-  TodoIdAtom,
-  TodoListAtom,
-  TodoTitleAtom,
-} from "states/TodoState";
+import { useSetRecoilState } from "recoil";
+import { TodoContentsAtom, TodoIdAtom, TodoTitleAtom } from "states/TodoState";
 
-export function EditButton() {
+type Props = {
+  list: TodoType[];
+};
+
+export function EditButton({ list }: Props) {
   const router = useRouter();
   const setTodoTitle = useSetRecoilState<string>(TodoTitleAtom);
-  const setTodoContent = useSetRecoilState<string>(TodoContentAtom);
+  const setTodoContent = useSetRecoilState<string>(TodoContentsAtom);
   const setTodoId = useSetRecoilState<string>(TodoIdAtom);
-  const todoList = useRecoilValue<TodoType[]>(TodoListAtom);
 
-  const transitionEditTodoPage = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleOnClickSetTodoInfo = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.closest("li")?.id;
-    
+
     // idが存在しない場合：後続処理を実行しない
     if (!id) {
       window.alert("idが存在しませんでした。");
       return false;
     }
-    
-    const item = todoList.find((item) => item.id === id);
-    
+
+    const item = list.find((item) => item.id === id);
+
     if (item) {
       setTodoId(item.id);
       setTodoTitle(item.title);
-      setTodoContent(item.content);
+      setTodoContent(item.contents);
     }
 
     router.push(`${PAGE_PATH.EDIT}${id}`);
@@ -42,7 +40,7 @@ export function EditButton() {
   return (
     <Button
       ariaLabel="TODOを編集する"
-      onClick={transitionEditTodoPage}
+      onClick={handleOnClickSetTodoInfo}
       className="button-icon"
     >
       <FontAwesomeIcon icon={faEdit} size="1x" />

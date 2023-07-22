@@ -5,28 +5,32 @@ import { useRouter } from "next/router";
 import { PAGE_PATH } from "constants/pagePath";
 import { TodoType } from "types/todo";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { TodoContentAtom, TodoListAtom, TodoTitleAtom } from "states/TodoState";
+import {
+  TodoContentsAtom,
+  TodoListAtom,
+  TodoTitleAtom,
+} from "states/TodoState";
 
 export function DetailButton() {
   const router = useRouter();
   const setTodoTitle = useSetRecoilState<string>(TodoTitleAtom);
-  const setTodoContent = useSetRecoilState<string>(TodoContentAtom);
+  const setTodoContent = useSetRecoilState<string>(TodoContentsAtom);
   const todoList = useRecoilValue<TodoType[]>(TodoListAtom);
 
   const transitionDetailTodoPage = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.closest("li")?.id;
-    
+
     // idが存在しない場合：後続処理を実行しない
     if (!id) {
       console.error("idが存在しませんでした。");
       return false;
     }
-    
+
     const item = todoList.find((item) => item.id === id);
-    
+
     if (item) {
       setTodoTitle(item.title);
-      setTodoContent(item.content);
+      setTodoContent(item.contents);
     }
 
     router.push(`${PAGE_PATH.DETAIL}${id}`);
