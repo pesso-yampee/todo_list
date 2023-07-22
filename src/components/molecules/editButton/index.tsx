@@ -4,7 +4,7 @@ import { Button } from "components/atoms/button";
 import { useRouter } from "next/router";
 import { PAGE_PATH } from "constants/pagePath";
 import { TodoType } from "types/todo";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState } from "recoil";
 import { TodoContentsAtom, TodoIdAtom, TodoTitleAtom } from "states/TodoState";
 
 type Props = {
@@ -13,9 +13,10 @@ type Props = {
 
 export function EditButton({ list }: Props) {
   const router = useRouter();
-  const setTodoTitle = useSetRecoilState<string>(TodoTitleAtom);
-  const setTodoContent = useSetRecoilState<string>(TodoContentsAtom);
-  const setTodoId = useSetRecoilState<string>(TodoIdAtom);
+  const [todoTitle, setTodoTitle] = useRecoilState<string>(TodoTitleAtom);
+  const [todoContent, setTodoContent] =
+    useRecoilState<string>(TodoContentsAtom);
+  const [todoId, setTodoId] = useRecoilState<string>(TodoIdAtom);
 
   const handleOnClickSetTodoInfo = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.closest("li")?.id;
