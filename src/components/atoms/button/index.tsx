@@ -18,7 +18,7 @@ export function Button({
 }: Props) {
   return (
     <button
-      className={styles[className]}
+      className={`button-form ${styles[className]}`}
       type={type}
       aria-label={ariaLabel}
       onClick={onClick}
