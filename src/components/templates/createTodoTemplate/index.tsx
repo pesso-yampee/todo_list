@@ -48,9 +48,14 @@ export function CreateTodoTemplate({ text }: Props) {
             name="contents"
             register={register}
           />
-          <Button type="submit" className="button-primary">
-            <span>Create Todo</span>
-          </Button>
+          <div className={styles.flexContainer}>
+            <Button type="reset" className="button-cancel">
+              <span>Cancel</span>
+            </Button>
+            <Button type="submit" className="button-primary">
+              <span>Create todo</span>
+            </Button>
+          </div>
         </form>
       </div>
     </div>
