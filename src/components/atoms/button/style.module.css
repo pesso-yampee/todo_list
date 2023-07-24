@@ -1,3 +1,4 @@
+/* button-icon */
 .button-icon {
   padding: 8px;
 }
@@ -11,16 +12,28 @@
     fill: red;
   }
 }
+
 .button-icon:focus-visible svg path {
   fill: red;
 }
 
+/* button-form */
+.button-form {
+  width: 100%;
+  padding: 12px 36px;
+  border-radius: 5px;
+  font-weight: 700;
+  font-size: 16px;
+  transition: background-color .4s, color .4s;
+}
+
+/* button-primary */
 .button-primary {
   width: 100%;
   padding: 12px 36px;
-  background-color: #ffa500;
+  background-color: var(--button-primary-color);
   border-radius: 5px;
-  border: 2px solid #ffa500;
+  border: 2px solid var(--button-primary-color);
   color: #fff;
   font-weight: 700;
   font-size: 16px;
@@ -30,10 +43,22 @@
 @media (hover: hover) {
   .button-primary:hover {
     background-color: #fff;
-    color: #ffa500;
+    color: var(--button-primary-color);
   }
 }
+
 .button-primary:focus-visible {
   background-color: #fff;
-  color: #ffa500;
+  color: var(--button-primary-color);
+}
+
+.button-cancel {
+  width: 100%;
+  padding: 12px 36px;
+  background-color: var(--button-cancel-bg-color);
+  border-radius: 5px;
+  border: 2px solid var(--button-cancel-bg-color);
+  font-weight: 700;
+  font-size: 16px;
+  transition: background-color .4s, color .4s;
 }
