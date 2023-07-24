@@ -1,3 +1,8 @@
+:root {
+  --button-primary-color: #ffa500;
+  --button-cancel-bg-color: #d3d3d3;
+}
+
 * {
   margin: 0;
   padding: 0;
