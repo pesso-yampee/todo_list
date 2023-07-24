@@ -16,23 +16,26 @@ type Props = {
 export function CreateTodoTemplate({ text }: Props) {
   const router = useRouter();
   const {
+    reset,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputType>();
 
-  const onSubmit: SubmitHandler<FormInputType> = async (data) => {
+  const doPost = async (data: FormInputType) => {
     try {
-      const res = await apiClient.post("/task", data, {
+      await apiClient.post("/task", data, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
-      return res.data;
     } catch (error) {
-      window.alert(error);
+      console.log(error);
     }
+  };
 
+  const onSubmit: SubmitHandler<FormInputType> = async (data) => {
+    await doPost(data);
     router.push(PAGE_PATH.TOP);
   };
 
@@ -49,8 +52,12 @@ export function CreateTodoTemplate({ text }: Props) {
             register={register}
           />
           <div className={styles.flexContainer}>
-            <Button type="reset" className="button-cancel">
-              <span>Cancel</span>
+            <Button
+              type="reset"
+              className="button-cancel"
+              onClick={() => reset()}
+            >
+              <span>Reset</span>
             </Button>
             <Button type="submit" className="button-primary">
               <span>Create todo</span>
