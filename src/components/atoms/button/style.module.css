@@ -29,15 +29,9 @@
 
 /* button-primary */
 .button-primary {
-  width: 100%;
-  padding: 12px 36px;
   background-color: var(--button-primary-color);
-  border-radius: 5px;
   border: 2px solid var(--button-primary-color);
   color: #fff;
-  font-weight: 700;
-  font-size: 16px;
-  transition: background-color .4s, color .4s;
 }
 
 @media (hover: hover) {
@@ -52,13 +46,19 @@
   color: var(--button-primary-color);
 }
 
+/* button-cancel */
 .button-cancel {
-  width: 100%;
-  padding: 12px 36px;
-  background-color: var(--button-cancel-bg-color);
-  border-radius: 5px;
-  border: 2px solid var(--button-cancel-bg-color);
-  font-weight: 700;
-  font-size: 16px;
-  transition: background-color .4s, color .4s;
+  background-color: var(--button-cancel-color);
+}
+
+@media (hover: hover) {
+  .button-cancel:hover {
+    background-color: #333;
+    color: var(--button-cancel-color);
+  }
+}
+
+.button-cancel:focus-visible {
+  background-color: #333;
+  color: var(--button-cancel-color);
 }
