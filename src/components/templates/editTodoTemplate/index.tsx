@@ -50,7 +50,7 @@ export function EditTodoTemplate({ text }: Props) {
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormInput register={register} name="title" />
           <FormInput register={register} name="contents" />
-          <Button type="submit" className="button-primary">
+          <Button type="submit" className="button-form button-primary">
             <span>Edit Todo</span>
           </Button>
         </form>
