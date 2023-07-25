@@ -2,8 +2,7 @@ import { PageTitle } from "components/atoms/pageTitle";
 import { TodoItem } from "components/organisms/todoItem";
 import { Navigation } from "components/organisms/navigation";
 import styles from "./style.module.css";
-import React, { useState } from "react";
-import { Input } from "components/atoms/Input";
+import React from "react";
 import useSWR from "swr";
 import { apiClient } from "constants/apiClient";
 
