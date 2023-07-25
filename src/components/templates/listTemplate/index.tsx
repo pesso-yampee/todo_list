@@ -34,8 +34,10 @@ export function ListTemplate({ text }: Props) {
       </div>
     );
   } else {
-    <div>
-      <p>データがありません。</p>
-    </div>;
+    return (
+      <div>
+        <p>データがありません。</p>
+      </div>
+    );
   }
 }
