@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "components/atoms/button";
 import { apiClient } from "constants/apiClient";
+import { IconButton } from "components/atoms/IconButton";
 
 export function DeleteButton() {
   const handleOnClickdeleteTodo = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -10,10 +10,10 @@ export function DeleteButton() {
     const todoItemId = todoItem?.id;
     const res = window.confirm(
       `タスク「${todoItem?.textContent}」を本当に削除しますか？`
-      );
-      
-      if (res) {
-        try {
+    );
+
+    if (res) {
+      try {
         apiClient.delete(`/task/${todoItemId}`);
       } catch (error) {
         console.log(error);
@@ -22,12 +22,12 @@ export function DeleteButton() {
   };
 
   return (
-    <Button
+    <IconButton
       ariaLabel="TODOを削除する"
       onClick={handleOnClickdeleteTodo}
       className="button-icon"
     >
       <FontAwesomeIcon icon={faTrash} size="1x" />
-    </Button>
+    </IconButton>
   );
 }

@@ -1,11 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "components/atoms/button";
 import { useRouter } from "next/router";
 import { PAGE_PATH } from "constants/pagePath";
 import { TodoType } from "types/todo";
 import { useRecoilState } from "recoil";
 import { TodoContentsAtom, TodoIdAtom, TodoTitleAtom } from "states/TodoState";
+import { IconButton } from "components/atoms/IconButton";
 
 type Props = {
   list: TodoType[];
@@ -39,12 +39,12 @@ export function EditButton({ list }: Props) {
   };
 
   return (
-    <Button
+    <IconButton
       ariaLabel="TODOを編集する"
       onClick={handleOnClickSetTodoInfo}
       className="button-icon"
     >
       <FontAwesomeIcon icon={faEdit} size="1x" />
-    </Button>
+    </IconButton>
   );
 }

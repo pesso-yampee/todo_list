@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faNoteSticky } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "components/atoms/button";
 import { useRouter } from "next/router";
 import { PAGE_PATH } from "constants/pagePath";
 import { TodoType } from "types/todo";
@@ -10,6 +9,7 @@ import {
   TodoListAtom,
   TodoTitleAtom,
 } from "states/TodoState";
+import { IconButton } from "components/atoms/IconButton";
 
 export function DetailButton() {
   const router = useRouter();
@@ -37,12 +37,12 @@ export function DetailButton() {
   };
 
   return (
-    <Button
+    <IconButton
       ariaLabel="TODOの詳細情報を確認する"
       onClick={transitionDetailTodoPage}
       className="button-icon"
     >
       <FontAwesomeIcon icon={faNoteSticky} size="1x" />
-    </Button>
+    </IconButton>
   );
 }
