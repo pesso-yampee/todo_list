@@ -12,11 +12,6 @@ type Props = {
 };
 
 export function ListTemplate({ text }: Props) {
-  const [todoTitle, setTodoTitle] = useState("");
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodoTitle(e.currentTarget.value);
-  };
-
   const fetcher = async (url: string) => {
     try {
       const res = await apiClient.get(url);
