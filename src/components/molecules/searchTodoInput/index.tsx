@@ -10,14 +10,14 @@ export function SearchTodoInput({ setTodoTitle }: Props) {
    * 検索するTodoを設定
    * @param e
    */
-  const searchTodoHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChangeSearchTodo = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoTitle(e.currentTarget.value);
   };
 
   return (
     <Input
       placeholder="Search Todo"
-      onChange={searchTodoHandler}
+      onChange={handleOnChangeSearchTodo}
       name="search"
     />
   );

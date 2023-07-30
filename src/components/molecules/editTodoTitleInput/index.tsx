@@ -9,9 +9,9 @@ export function EditTodoTitleInput() {
    * Todoのタイトルを設定
    * @param e
    */
-  const inputTodoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleOnChangeTodoTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTodoTitle(e.currentTarget.value);
   };
 
-  return <Input onChange={inputTodoTitle} name="content" value={todoTitle} />;
+  return <Input onChange={handleOnChangeTodoTitle} name="content" value={todoTitle} />;
 }
