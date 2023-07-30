@@ -9,7 +9,7 @@ type Props = {
 };
 
 export function DetailTodoTemplate({ text }: Props) {
-  const todoContent = useRecoilValue(TodoContentsAtom);
+  const todoContents = useRecoilValue(TodoContentsAtom);
   const todoTitle = useRecoilValue(TodoTitleAtom);
 
   return (
@@ -21,7 +21,7 @@ export function DetailTodoTemplate({ text }: Props) {
           <span>{todoTitle}</span>
         </div>
         <div className={styles.content}>
-          <p>{todoContent}</p>
+          <p>{todoContents}</p>
         </div>
       </div>
     </div>
