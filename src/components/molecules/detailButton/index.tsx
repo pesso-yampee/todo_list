@@ -11,26 +11,26 @@ import {
 } from "states/TodoState";
 import { IconButton } from "components/atoms/IconButton";
 
-export function DetailButton() {
+type Props = {
+  list: TodoType[];
+};
+
+export const DetailButton = ({ list }: Props) => {
   const router = useRouter();
   const setTodoTitle = useSetRecoilState<string>(TodoTitleAtom);
-  const setTodoContent = useSetRecoilState<string>(TodoContentsAtom);
-  const todoList = useRecoilValue<TodoType[]>(TodoListAtom);
+  const setTodoContents = useSetRecoilState<string>(TodoContentsAtom);
 
   const transitionDetailTodoPage = (e: React.MouseEvent<HTMLButtonElement>) => {
     const id = e.currentTarget.closest("li")?.id;
 
     // idが存在しない場合：後続処理を実行しない
-    if (!id) {
-      console.error("idが存在しませんでした。");
-      return false;
-    }
+    if (!id) return false;
 
-    const item = todoList.find((item) => item.id === id);
+    const item = list.find((item) => item.id === id);
 
     if (item) {
       setTodoTitle(item.title);
-      setTodoContent(item.contents);
+      setTodoContents(item.contents);
     }
 
     router.push(`${PAGE_PATH.DETAIL}${id}`);
@@ -45,4 +45,4 @@ export function DetailButton() {
       <FontAwesomeIcon icon={faNoteSticky} size="1x" />
     </IconButton>
   );
-}
+};
