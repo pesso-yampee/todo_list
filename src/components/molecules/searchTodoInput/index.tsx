@@ -19,7 +19,6 @@ export function SearchTodoInput({ setTodoTitle }: Props) {
       placeholder="Search Todo"
       onChange={searchTodoHandler}
       name="search"
-      value={undefined}
     />
   );
 }
