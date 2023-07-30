@@ -31,7 +31,9 @@
     "start": "next start",
     "build": "next build",
     "test": "next test --verbose",
-    "eject": "next eject"
+    "eject": "next eject",
+    "typecheck": "tsc",
+    "lint": "eslint . --ext .ts,.tsx"
   },
   "eslintConfig": {
     "extends": [
