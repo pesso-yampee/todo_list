@@ -11,7 +11,7 @@ type Props = {
   list: TodoType[];
 };
 
-export function EditButton({ list }: Props) {
+export const EditButton = ({ list }: Props) => {
   const router = useRouter();
   const [todoTitle, setTodoTitle] = useRecoilState<string>(TodoTitleAtom);
   const [todoContent, setTodoContent] =
