@@ -1,4 +1,4 @@
-import { PageTitle } from "components/atoms/pageTitle";
+import { PageTitle } from "components/atoms/PageTitle";
 import { Navigation } from "components/organisms/navigation";
 import { useRecoilValue } from "recoil";
 import styles from "./style.module.css";

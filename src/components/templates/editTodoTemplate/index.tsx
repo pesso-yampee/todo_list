@@ -1,10 +1,10 @@
-import { PageTitle } from "components/atoms/pageTitle";
+import { PageTitle } from "components/atoms/PageTitle";
 import { Navigation } from "components/organisms/navigation";
 import styles from "./style.module.css";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FormInput } from "components/atoms/FormInput";
 import { FormInputType } from "types/todo";
-import { Button } from "components/atoms/button";
+import { Button } from "components/atoms/Button";
 import { apiClient } from "constants/apiClient";
 import { PAGE_PATH } from "constants/pagePath";
 import { useRouter } from "next/router";
