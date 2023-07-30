@@ -1,9 +1,10 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
-import { apiClient } from "constants/apiClient";
 import { IconButton } from "components/atoms/IconButton";
+import { useDeleteTodo } from "hooks/useDeleteTodo";
 
 export function DeleteButton() {
+  const { doDelete } = useDeleteTodo();
   const handleOnClickdeleteTodo = (e: React.MouseEvent<HTMLButtonElement>) => {
     const currentTarget = e.currentTarget;
     const todoItem = currentTarget.closest("li");
@@ -13,11 +14,7 @@ export function DeleteButton() {
     );
 
     if (res) {
-      try {
-        apiClient.delete(`/task/${todoItemId}`);
-      } catch (error) {
-        console.log(error);
-      }
+      todoItemId && doDelete(todoItemId);
     }
   };
 
