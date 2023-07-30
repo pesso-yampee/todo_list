@@ -1,6 +1,6 @@
-import { DeleteButton } from "components/molecules/deleteButton";
-import { DetailButton } from "components/molecules/detailButton";
-import { EditButton } from "components/molecules/editButton";
+import { DeleteButton } from "components/molecules/DeleteButton";
+import { DetailButton } from "components/molecules/DetailButton";
+import { EditButton } from "components/molecules/EditButton";
 import styles from "./style.module.css";
 import { TodoType } from "types/todo";
 
