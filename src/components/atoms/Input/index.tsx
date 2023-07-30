@@ -1,12 +1,12 @@
-import styles from "components/atoms/Input/style.module.css";
-import React from "react";
+import styles from 'components/atoms/Input/style.module.css'
+import React from 'react'
 
 type Props = {
-  placeholder?: string;
-  name?: string;
-  value?: string;
-  onChange: React.ChangeEventHandler<HTMLInputElement>;
-};
+  placeholder?: string
+  name?: string
+  value?: string
+  onChange: React.ChangeEventHandler<HTMLInputElement>
+}
 
 export function Input({ placeholder, onChange, name, value }: Props) {
   return (
@@ -18,5 +18,5 @@ export function Input({ placeholder, onChange, name, value }: Props) {
       onChange={onChange}
       value={value}
     />
-  );
+  )
 }

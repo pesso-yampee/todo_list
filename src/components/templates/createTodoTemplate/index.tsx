@@ -1,32 +1,32 @@
-import { PageTitle } from "components/atoms/PageTitle";
-import { Navigation } from "components/organisms/navigation";
-import styles from "./style.module.css";
-import { useForm, SubmitHandler } from "react-hook-form";
-import { FormInputType } from "types/todo";
-import { Button } from "components/atoms/Button";
-import { useRouter } from "next/router";
-import { PAGE_PATH } from "constants/pagePath";
-import { FormInput } from "components/atoms/FormInput";
-import { usePostCraeteTodo } from "hooks/usePostCraeteTodo";
+import { PageTitle } from 'components/atoms/PageTitle'
+import { Navigation } from 'components/organisms/navigation'
+import styles from './style.module.css'
+import { useForm, SubmitHandler } from 'react-hook-form'
+import { FormInputType } from 'types/todo'
+import { Button } from 'components/atoms/Button'
+import { useRouter } from 'next/router'
+import { PAGE_PATH } from 'constants/pagePath'
+import { FormInput } from 'components/atoms/FormInput'
+import { usePostCraeteTodo } from 'hooks/usePostCraeteTodo'
 
 type Props = {
-  text: string;
-};
+  text: string
+}
 
 export function CreateTodoTemplate({ text }: Props) {
-  const router = useRouter();
+  const router = useRouter()
   const {
     reset,
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormInputType>();
-  const {doPost} = usePostCraeteTodo();
+  } = useForm<FormInputType>()
+  const { doPost } = usePostCraeteTodo()
 
   const onSubmit: SubmitHandler<FormInputType> = async (data) => {
-    await doPost(data);
-    router.push(PAGE_PATH.TOP);
-  };
+    await doPost(data)
+    router.push(PAGE_PATH.TOP)
+  }
 
   return (
     <div className={styles.container}>
@@ -55,5 +55,5 @@ export function CreateTodoTemplate({ text }: Props) {
         </form>
       </div>
     </div>
-  );
+  )
 }

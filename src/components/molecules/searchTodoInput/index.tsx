@@ -1,9 +1,9 @@
-import { Input } from "components/atoms/Input";
-import { Dispatch, SetStateAction } from "react";
+import { Input } from 'components/atoms/Input'
+import { Dispatch, SetStateAction } from 'react'
 
 type Props = {
-  setTodoTitle: Dispatch<SetStateAction<string>>;
-};
+  setTodoTitle: Dispatch<SetStateAction<string>>
+}
 
 export function SearchTodoInput({ setTodoTitle }: Props) {
   /**
@@ -11,8 +11,8 @@ export function SearchTodoInput({ setTodoTitle }: Props) {
    * @param e
    */
   const handleOnChangeSearchTodo = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTodoTitle(e.currentTarget.value);
-  };
+    setTodoTitle(e.currentTarget.value)
+  }
 
   return (
     <Input
@@ -20,5 +20,5 @@ export function SearchTodoInput({ setTodoTitle }: Props) {
       onChange={handleOnChangeSearchTodo}
       name="search"
     />
-  );
+  )
 }

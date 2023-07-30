@@ -1,16 +1,16 @@
-import { ReactNode } from "react";
-import styles from "./style.module.css";
+import { ReactNode } from 'react'
+import styles from './style.module.css'
 
 type Props = {
-  type?: "button" | "submit" | "reset";
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  ariaLabel?: string;
-  children: ReactNode;
-  className: string;
-};
+  type?: 'button' | 'submit' | 'reset'
+  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void
+  ariaLabel?: string
+  children: ReactNode
+  className: string
+}
 
 export function Button({
-  type = "button",
+  type = 'button',
   onClick,
   ariaLabel,
   children,
@@ -18,12 +18,12 @@ export function Button({
 }: Props) {
   return (
     <button
-      className={`${styles[className]} ${styles["button-form"]}`}
+      className={`${styles[className]} ${styles['button-form']}`}
       type={type}
       aria-label={ariaLabel}
       onClick={onClick}
     >
       {children}
     </button>
-  );
+  )
 }

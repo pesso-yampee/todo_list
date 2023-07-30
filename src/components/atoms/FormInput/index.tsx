@@ -1,12 +1,12 @@
-import styles from "components/atoms/Input/style.module.css";
-import { UseFormRegister } from "react-hook-form";
-import { FormInputType } from "types/todo";
+import styles from 'components/atoms/Input/style.module.css'
+import { UseFormRegister } from 'react-hook-form'
+import { FormInputType } from 'types/todo'
 
 type Props = {
-  name: "title" | "contents";
-  placeholder?: string;
-  register: UseFormRegister<FormInputType>;
-};
+  name: 'title' | 'contents'
+  placeholder?: string
+  register: UseFormRegister<FormInputType>
+}
 
 export const FormInput = ({ placeholder, name, register }: Props) => {
   return (
@@ -16,5 +16,5 @@ export const FormInput = ({ placeholder, name, register }: Props) => {
       placeholder={placeholder}
       {...register(name)}
     />
-  );
+  )
 }

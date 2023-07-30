@@ -1,16 +1,16 @@
-import { PageTitle } from "components/atoms/PageTitle";
-import { Navigation } from "components/organisms/navigation";
-import { useRecoilValue } from "recoil";
-import styles from "./style.module.css";
-import { TodoContentsAtom, TodoTitleAtom } from "states/TodoState";
+import { PageTitle } from 'components/atoms/PageTitle'
+import { Navigation } from 'components/organisms/navigation'
+import { useRecoilValue } from 'recoil'
+import styles from './style.module.css'
+import { TodoContentsAtom, TodoTitleAtom } from 'states/TodoState'
 
 type Props = {
-  text: string;
-};
+  text: string
+}
 
 export function DetailTodoTemplate({ text }: Props) {
-  const todoContents = useRecoilValue(TodoContentsAtom);
-  const todoTitle = useRecoilValue(TodoTitleAtom);
+  const todoContents = useRecoilValue(TodoContentsAtom)
+  const todoTitle = useRecoilValue(TodoTitleAtom)
 
   return (
     <div className={styles.container}>
@@ -25,5 +25,5 @@ export function DetailTodoTemplate({ text }: Props) {
         </div>
       </div>
     </div>
-  );
+  )
 }

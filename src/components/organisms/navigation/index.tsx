@@ -1,6 +1,6 @@
-import Link from "next/link";
-import styles from "./style.module.css";
-import { PAGE_PATH } from "constants/pagePath";
+import Link from 'next/link'
+import styles from './style.module.css'
+import { PAGE_PATH } from 'constants/pagePath'
 
 export function Navigation() {
   return (
@@ -12,5 +12,5 @@ export function Navigation() {
         Create
       </Link>
     </div>
-  );
+  )
 }

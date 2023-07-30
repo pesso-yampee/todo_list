@@ -1,15 +1,15 @@
-import { apiClient } from "constants/apiClient";
+import { apiClient } from 'constants/apiClient'
 
 export const useDeleteTodo = () => {
   const doDelete = (todoItemId: string) => {
     try {
-      apiClient.delete(`/task/${todoItemId}`);
+      apiClient.delete(`/task/${todoItemId}`)
     } catch (error) {
-      console.log(error);
+      console.log(error)
     }
-  };
+  }
 
   return {
     doDelete,
-  };
-};
+  }
+}

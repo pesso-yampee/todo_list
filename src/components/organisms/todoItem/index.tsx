@@ -1,12 +1,12 @@
-import { DeleteButton } from "components/molecules/DeleteButton";
-import { DetailButton } from "components/molecules/DetailButton";
-import { EditButton } from "components/molecules/EditButton";
-import styles from "./style.module.css";
-import { TodoType } from "types/todo";
+import { DeleteButton } from 'components/molecules/DeleteButton'
+import { DetailButton } from 'components/molecules/DetailButton'
+import { EditButton } from 'components/molecules/EditButton'
+import styles from './style.module.css'
+import { TodoType } from 'types/todo'
 
 type Props = {
-  list: TodoType[];
-};
+  list: TodoType[]
+}
 
 export const TodoItem = ({ list }: Props) => {
   return (
@@ -24,5 +24,5 @@ export const TodoItem = ({ list }: Props) => {
         </li>
       ))}
     </ul>
-  );
-};
+  )
+}
