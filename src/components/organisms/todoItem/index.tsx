@@ -16,7 +16,7 @@ export const TodoItem = ({ list }: Props) => {
           <div className={styles.itemContainer}>
             <span className={styles.text}>{item.title}</span>
             <div className={styles.btnContainer}>
-              <DetailButton />
+              <DetailButton list={list} />
               <EditButton list={list} />
               <DeleteButton />
             </div>
