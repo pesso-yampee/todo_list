@@ -7,7 +7,7 @@ import { Button } from "components/atoms/Button";
 import { useRouter } from "next/router";
 import { PAGE_PATH } from "constants/pagePath";
 import { FormInput } from "components/atoms/FormInput";
-import { apiClient } from "constants/apiClient";
+import { usePostCraeteTodo } from "hooks/usePostCraeteTodo";
 
 type Props = {
   text: string;
@@ -21,18 +21,7 @@ export function CreateTodoTemplate({ text }: Props) {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputType>();
-
-  const doPost = async (data: FormInputType) => {
-    try {
-      await apiClient.post("/task", data, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const {doPost} = usePostCraeteTodo();
 
   const onSubmit: SubmitHandler<FormInputType> = async (data) => {
     await doPost(data);

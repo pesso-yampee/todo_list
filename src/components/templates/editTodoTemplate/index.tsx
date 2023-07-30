@@ -10,6 +10,8 @@ import { PAGE_PATH } from "constants/pagePath";
 import { useRouter } from "next/router";
 import { useRecoilValue } from "recoil";
 import { TodoContentsAtom, TodoIdAtom, TodoTitleAtom } from "states/TodoState";
+import { usePutEditTodo } from "hooks/usePutEditTodo";
+import { AxiosError } from "axios";
 
 type Props = {
   text: string;
@@ -30,16 +32,18 @@ export function EditTodoTemplate({ text }: Props) {
       contents: todoContents,
     },
   });
-  const onSubmit: SubmitHandler<FormInputType> = async (data) => {
-    try {
-      await apiClient.put(`/task/${todoItemId}`, {
-        title: data.title,
-        contents: data.contents,
-      });
-      router.push(PAGE_PATH.TOP);
-    } catch (error) {
-      console.log(error);
-    }
+  const { doPut } = usePutEditTodo();
+  const onSubmit: SubmitHandler<FormInputType> = (data) => {
+    doPut({
+      data,
+      todoItemId,
+      onSuccess: () => {
+        router.push(`${PAGE_PATH.EDIT}${todoItemId}`);
+      },
+      onError: (error) => {
+        console.error(error);
+      },
+    });
   };
 
   return (
