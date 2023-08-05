@@ -7,7 +7,7 @@ import { Button } from 'components/atoms/Button'
 import { useRouter } from 'next/router'
 import { PAGE_PATH } from 'constants/pagePath'
 import { FormInput } from 'components/atoms/FormInput'
-import { usePostCraeteTodo } from 'hooks/usePostCraeteTodo'
+import { usePostCreateTodo } from 'hooks/usePostCreateTodo'
 
 type Props = {
   text: string
@@ -21,7 +21,7 @@ export function CreateTodoTemplate({ text }: Props) {
     handleSubmit,
     formState: { errors },
   } = useForm<FormInputType>()
-  const { doPost } = usePostCraeteTodo()
+  const { doPost } = usePostCreateTodo()
 
   const onSubmit: SubmitHandler<FormInputType> = async (data) => {
     await doPost(data)
