@@ -1,5 +1,5 @@
-import type { NextPage } from 'next'
 import { EditTodoTemplate } from 'components/templates/editTodoTemplate'
+import type { NextPage } from 'next'
 
 const EditTodoPage: NextPage = () => {
   return <EditTodoTemplate text="TodoEdit" />

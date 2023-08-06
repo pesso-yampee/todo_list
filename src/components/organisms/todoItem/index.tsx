@@ -1,8 +1,8 @@
 import { DeleteButton } from 'components/molecules/DeleteButton'
 import { DetailButton } from 'components/molecules/DetailButton'
 import { EditButton } from 'components/molecules/EditButton'
-import styles from './style.module.css'
 import { TodoType } from 'types/todo'
+import styles from './style.module.css'
 
 type Props = {
   list: TodoType[]

@@ -1,10 +1,9 @@
 import { PageTitle } from 'components/atoms/PageTitle'
-import { TodoItem } from 'components/organisms/todoItem'
 import { Navigation } from 'components/organisms/navigation'
-import styles from './style.module.css'
-import React from 'react'
-import useSWR from 'swr'
+import { TodoItem } from 'components/organisms/todoItem'
 import { apiClient } from 'constants/apiClient'
+import useSWR from 'swr'
+import styles from './style.module.css'
 
 type Props = {
   text: string

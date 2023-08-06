@@ -1,11 +1,11 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
-import { useRouter } from 'next/router'
-import { PAGE_PATH } from 'constants/pagePath'
-import { TodoType } from 'types/todo'
-import { useRecoilValue, useSetRecoilState } from 'recoil'
-import { TodoContentsAtom, TodoListAtom, TodoTitleAtom } from 'states/TodoState'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconButton } from 'components/atoms/IconButton'
+import { PAGE_PATH } from 'constants/pagePath'
+import { useRouter } from 'next/router'
+import { useSetRecoilState } from 'recoil'
+import { TodoContentsAtom, TodoTitleAtom } from 'states/TodoState'
+import { TodoType } from 'types/todo'
 
 type Props = {
   list: TodoType[]

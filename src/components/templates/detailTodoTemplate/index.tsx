@@ -1,8 +1,8 @@
 import { PageTitle } from 'components/atoms/PageTitle'
 import { Navigation } from 'components/organisms/navigation'
 import { useRecoilValue } from 'recoil'
-import styles from './style.module.css'
 import { TodoContentsAtom, TodoTitleAtom } from 'states/TodoState'
+import styles from './style.module.css'
 
 type Props = {
   text: string

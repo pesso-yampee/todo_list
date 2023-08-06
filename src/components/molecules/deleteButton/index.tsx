@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { IconButton } from 'components/atoms/IconButton'
 import { useDeleteTodo } from 'hooks/useDeleteTodo'
 

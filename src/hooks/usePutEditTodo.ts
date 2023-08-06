@@ -1,4 +1,3 @@
-import { AxiosError } from 'axios'
 import { apiClient } from 'constants/apiClient'
 import { FormInputType } from 'types/todo'
 

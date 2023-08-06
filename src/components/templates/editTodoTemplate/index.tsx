@@ -1,15 +1,15 @@
+import { Button } from 'components/atoms/Button'
+import { FormInput } from 'components/atoms/FormInput'
 import { PageTitle } from 'components/atoms/PageTitle'
 import { Navigation } from 'components/organisms/navigation'
-import styles from './style.module.css'
-import { useForm, SubmitHandler } from 'react-hook-form'
-import { FormInput } from 'components/atoms/FormInput'
-import { FormInputType } from 'types/todo'
-import { Button } from 'components/atoms/Button'
 import { PAGE_PATH } from 'constants/pagePath'
+import { usePutEditTodo } from 'hooks/usePutEditTodo'
 import { useRouter } from 'next/router'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { useRecoilValue } from 'recoil'
 import { TodoContentsAtom, TodoIdAtom, TodoTitleAtom } from 'states/TodoState'
-import { usePutEditTodo } from 'hooks/usePutEditTodo'
+import { FormInputType } from 'types/todo'
+import styles from './style.module.css'
 
 type Props = {
   text: string
