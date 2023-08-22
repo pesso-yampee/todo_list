@@ -26,3 +26,6 @@ yarn-error.log*
 
 # mysql
 db/logs/*.log
+
+# TypeScript
+/.ts-cache/
