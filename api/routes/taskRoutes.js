@@ -1,12 +1,12 @@
-const router = require("express").Router();
-const taskController = require("../controllers/taskController");
-const multer = require("multer");
+const router = require('express').Router()
+const taskController = require('../controllers/taskController')
+const multer = require('multer')
 
-const upload = multer();
+const upload = multer()
 
-router.get("/", taskController.read);
-router.post("/", upload.none(), taskController.create);
-router.put("/:id", taskController.update);
-router.delete("/:id", taskController.delete);
+router.get('/', taskController.read)
+router.post('/', upload.none(), taskController.create)
+router.put('/:id', taskController.update)
+router.delete('/:id', taskController.delete)
 
-module.exports = router;
+module.exports = router

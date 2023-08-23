@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const taskRoutes = require('./taskRoutes')
-const usersRoutes = require('./usersRoutes')
+const authRoutes = require('./authRoutes')
 const cors = require('cors')
 
 const corsOption = {
@@ -9,6 +9,6 @@ const corsOption = {
   credentials: true, // レスポンスヘッダーにAccess-Control-Allow-Credentialsを追加。ユーザー認証等を行う場合は、これがないとブラウザがレスポンスを捨ててしまうそう。
 }
 router.use('/task', cors(corsOption), taskRoutes)
-router.use('/users', cors(corsOption), usersRoutes)
+router.use('/login', cors(corsOption), authRoutes)
 
 module.exports = router

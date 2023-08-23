@@ -1,10 +1,9 @@
+import { TextFieldProps } from '@mui/material'
 import { apiClient } from 'constants/apiClient'
 
-type dataProps = { email: string; password: string }
-
 export const usePostLoginUser = () => {
-  doPost: async (data: dataProps) => {
-    return await apiClient.post('/users', data, {
+  const doPost = async (data: TextFieldProps) => {
+    return await apiClient.post('/login', data, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
@@ -12,5 +11,6 @@ export const usePostLoginUser = () => {
   }
 
   return {
+    doPost,
   }
 }
