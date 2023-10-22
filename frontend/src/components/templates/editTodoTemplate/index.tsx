@@ -32,7 +32,7 @@ export function EditTodoTemplate({ text }: Props) {
       id,
       data,
       onSuccess: () => {
-        router.push(`${PAGE_PATH.EDIT}${id}`)
+        router.push(PAGE_PATH.TOP)
       },
       onError: (error) => {
         console.error(error)
