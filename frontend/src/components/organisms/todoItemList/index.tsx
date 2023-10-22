@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemText } from '@mui/material'
+import { Box, ButtonGroup, List, ListItem, ListItemText } from '@mui/material'
 import { DeleteButton } from 'components/molecules/DeleteButton'
 import { DetailButton } from 'components/molecules/DetailButton'
 import { EditButton } from 'components/molecules/EditButton'
@@ -15,9 +15,11 @@ export const TodoItemList = ({ list, refetch }: Props) => {
       {list.map((item) => (
         <ListItem key={item.id} id={item.id}>
           <ListItemText>{item.title}</ListItemText>
-          <DetailButton id={item.id} />
-          <EditButton id={item.id} />
-          <DeleteButton id={item.id} refetch={refetch} />
+          <Box display={'flex'} gap={'8px'}>
+            <DetailButton id={item.id} />
+            <EditButton id={item.id} />
+            <DeleteButton id={item.id} refetch={refetch} />
+          </Box>
         </ListItem>
       ))}
     </List>
