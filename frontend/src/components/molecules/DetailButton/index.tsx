@@ -1,44 +1,25 @@
-import { faNoteSticky } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconButton } from 'components/atoms/IconButton'
+import { Button } from '@mui/material'
 import { PAGE_PATH } from 'constants/pagePath'
 import { useRouter } from 'next/router'
-import { useSetRecoilState } from 'recoil'
-import { TodoContentsAtom, TodoTitleAtom } from 'states/TodoState'
-import { TodoType } from 'types/todo'
 
 type Props = {
-  list: TodoType[]
+  id: string
 }
 
-export const DetailButton = ({ list }: Props) => {
+export const DetailButton = ({ id }: Props) => {
   const router = useRouter()
-  const setTodoTitle = useSetRecoilState<string>(TodoTitleAtom)
-  const setTodoContents = useSetRecoilState<string>(TodoContentsAtom)
-
-  const transitionDetailTodoPage = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const id = e.currentTarget.closest('li')?.id
-
-    // idが存在しない場合：後続処理を実行しない
-    if (!id) return false
-
-    const item = list.find((item) => item.id === id)
-
-    if (item) {
-      setTodoTitle(item.title)
-      setTodoContents(item.contents)
-    }
-
+  const handleOnClickConfirmTodo = () => {
     router.push(`${PAGE_PATH.DETAIL}${id}`)
   }
 
   return (
-    <IconButton
-      ariaLabel="TODOの詳細情報を確認する"
-      onClick={transitionDetailTodoPage}
-      className="button-icon"
+    <Button
+      title="詳細"
+      color="info"
+      variant="contained"
+      onClick={handleOnClickConfirmTodo}
     >
-      <FontAwesomeIcon icon={faNoteSticky} size="1x" />
-    </IconButton>
+      詳細
+    </Button>
   )
 }

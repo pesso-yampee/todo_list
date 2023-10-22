@@ -3,12 +3,8 @@ import { RECOIL_ATOM_KEYS, RECOIL_SELECTOR_KEYS } from 'constants/recoilKeys'
 import { atom, selector } from 'recoil'
 import { TodoType } from 'types/todo'
 
-const {
-  TODO_LIST_STATE,
-  TODO_TITLE_STATE,
-  TODO_CONTENTS_STATE,
-  TODO_ID_STATE,
-} = RECOIL_ATOM_KEYS
+const { TODO_LIST_STATE, TODO_TITLE_STATE, TODO_DETAIL_STATE, TODO_ID_STATE } =
+  RECOIL_ATOM_KEYS
 
 export const TodoListAtom = atom({
   key: TODO_LIST_STATE,
@@ -20,8 +16,8 @@ export const TodoTitleAtom = atom({
   default: '',
 })
 
-export const TodoContentsAtom = atom({
-  key: TODO_CONTENTS_STATE,
+export const TodoDetailAtom = atom({
+  key: TODO_DETAIL_STATE,
   default: '',
 })
 
@@ -39,14 +35,14 @@ export const UpdateEditedTodoSelector = selector({
   set: ({ get, set }, targetId: any) => {
     const todoList: TodoType[] = get(TodoListAtom)
     const todoTitle: string = get(TodoTitleAtom)
-    const todoContent: string = get(TodoContentsAtom)
+    const todoDetail: string = get(TodoDetailAtom)
     const foundTodoIndex = todoList.findIndex((item) => item.id === targetId)
 
     if (foundTodoIndex !== -1) {
       const updateTodo = {
         ...todoList[foundTodoIndex],
         title: todoTitle,
-        content: todoContent,
+        content: todoDetail,
       }
 
       const newTodoList = todoList.map((item) => {

@@ -1,17 +1,21 @@
 import { apiClient } from 'constants/apiClient'
-import { FormInputType } from 'types/todo'
+import { TodoCreateRequest } from 'types/todo'
 
+type Props = {
+  data: TodoCreateRequest
+  onSuccess: () => void
+  onError: () => void
+}
 export const usePostCreateTodo = () => {
-  const doPost = async (data: FormInputType) => {
-    try {
-      await apiClient.post('/task', data, {
+  const doPost = ({ data, onSuccess, onError }: Props) => {
+    apiClient
+      .post('api/todos/create', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
-    } catch (error) {
-      console.log(error)
-    }
+      .then(() => onSuccess())
+      .catch(() => onError())
   }
 
   return {

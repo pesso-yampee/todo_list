@@ -1,15 +1,12 @@
-import { Button } from 'components/atoms/Button'
-import { FormInput } from 'components/atoms/FormInput'
+import { Box, Button, Stack, TextField } from '@mui/material'
 import { PageTitle } from 'components/atoms/PageTitle'
 import { Navigation } from 'components/organisms/navigation'
 import { PAGE_PATH } from 'constants/pagePath'
-import { usePutEditTodo } from 'hooks/usePutEditTodo'
+import { useFetchEditTodo } from 'hooks/useFetchEditTodo'
+import { usePostUpdateTodo } from 'hooks/usePostUpdateTodo'
 import { useRouter } from 'next/router'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { useRecoilValue } from 'recoil'
-import { TodoContentsAtom, TodoIdAtom, TodoTitleAtom } from 'states/TodoState'
-import { FormInputType } from 'types/todo'
-import styles from './style.module.css'
+import { Controller, SubmitHandler, useForm } from 'react-hook-form'
+import { TodoCreateRequest, TodoUpdateRequest } from 'types/todo'
 
 type Props = {
   text: string
@@ -17,26 +14,25 @@ type Props = {
 
 export function EditTodoTemplate({ text }: Props) {
   const router = useRouter()
-  const todoTitle = useRecoilValue<string>(TodoTitleAtom)
-  const todoContents = useRecoilValue<string>(TodoContentsAtom)
-  const todoItemId = useRecoilValue<string>(TodoIdAtom)
+  const id = Number(router.query.id) as number
+  const { data } = useFetchEditTodo(id)
   const {
-    register,
     handleSubmit,
+    control,
     formState: { errors },
-  } = useForm<FormInputType>({
+  } = useForm<TodoUpdateRequest>({
     defaultValues: {
-      title: todoTitle,
-      contents: todoContents,
+      title: data?.title,
+      detail: data?.detail,
     },
   })
-  const { doPut } = usePutEditTodo()
-  const onSubmit: SubmitHandler<FormInputType> = (data) => {
-    doPut({
+  const { doPost } = usePostUpdateTodo()
+  const handleOnSubmit: SubmitHandler<TodoCreateRequest> = (data) => {
+    doPost({
+      id,
       data,
-      todoItemId,
       onSuccess: () => {
-        router.push(`${PAGE_PATH.EDIT}${todoItemId}`)
+        router.push(`${PAGE_PATH.EDIT}${id}`)
       },
       onError: (error) => {
         console.error(error)
@@ -45,18 +41,48 @@ export function EditTodoTemplate({ text }: Props) {
   }
 
   return (
-    <div className={styles.container}>
+    <Box>
       <Navigation />
       <PageTitle text={text} />
-      <div className={styles.contents}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <FormInput register={register} name="title" />
-          <FormInput register={register} name="contents" />
-          <Button type="submit" className="button-primary">
-            <span>Edit Todo</span>
+      <Box>
+        <Stack
+          component={'form'}
+          noValidate
+          onSubmit={handleSubmit(handleOnSubmit)}
+        >
+          <Controller
+            name="title"
+            control={control}
+            render={({ field, fieldState }) => (
+              <TextField
+                {...field}
+                type="text"
+                label="名前"
+                required
+                error={fieldState.invalid}
+                helperText={fieldState.error?.message}
+              />
+            )}
+          />
+          <Controller
+            name="detail"
+            control={control}
+            render={({ field, fieldState }) => (
+              <TextField
+                {...field}
+                type="text"
+                label="詳細"
+                required
+                error={fieldState.invalid}
+                helperText={fieldState.error?.message}
+              />
+            )}
+          />
+          <Button type="submit" color="success">
+            更新する
           </Button>
-        </form>
-      </div>
-    </div>
+        </Stack>
+      </Box>
+    </Box>
   )
 }

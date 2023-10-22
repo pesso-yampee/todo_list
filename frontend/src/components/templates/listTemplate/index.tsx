@@ -1,34 +1,24 @@
-import { Box, CircularProgress, Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { PageTitle } from 'components/atoms/PageTitle'
 import { Navigation } from 'components/organisms/navigation'
-import { TodoItem } from 'components/organisms/todoItem'
-import { useFetchTodo } from 'hooks/useFetchTodo'
+import { TodoItemList } from 'components/organisms/todoItemList'
+import { useFetchTodoList } from 'hooks/useFetchTodoList'
 
 type Props = {
   text: string
 }
 
 export const ListTemplate = ({ text }: Props) => {
-  const { data, error, mutate, isLoading } = useFetchTodo()
-  
-  if (isLoading) {
-    return <CircularProgress />
+  const { data, error, refetch, isLoading } = useFetchTodoList()
+  if (!data && error) {
+    return <Typography>表示するデータがありません。</Typography>
   }
   return (
-    <Box>
+    <Box maxWidth={'450px'}>
       <Navigation />
       <PageTitle text={text} />
       <Box>
-      {
-        data && !isLoading && (
-        <TodoItem list={data} />
-        )  
-      }
-        {
-          !data && (
-          <Typography>データが存在しません。</Typography>
-          )  
-        }
+        {data && !isLoading && <TodoItemList list={data} refetch={refetch} />}
       </Box>
     </Box>
   )

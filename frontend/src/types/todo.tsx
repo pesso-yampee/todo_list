@@ -1,10 +1,12 @@
 export type TodoType = {
   title: string
-  contents: string
+  detail: string
   id: string
 }
 
-export type FormInputType = {
-  title: string
-  contents: string
+export type TodoCreateRequest = {
+  title: string | null
+  detail: string | null
 }
+
+export type TodoUpdateRequest = TodoCreateRequest

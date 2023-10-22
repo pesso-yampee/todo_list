@@ -1,7 +1,7 @@
 export const RECOIL_ATOM_KEYS = {
   TODO_LIST_STATE: 'todoListState',
   TODO_TITLE_STATE: 'todoTitleState',
-  TODO_CONTENTS_STATE: 'todoContentsState',
+  TODO_DETAIL_STATE: 'todoDetailState',
   TODO_ID_STATE: 'todoIdState',
 } as const
 

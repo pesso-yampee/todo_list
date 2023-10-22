@@ -1,30 +1,41 @@
-import { faTrash } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { IconButton } from 'components/atoms/IconButton'
-import { useDeleteTodo } from 'hooks/useDeleteTodo'
+import { Alert, Button, Snackbar } from '@mui/material'
+import { usePostDeleteTodo } from 'hooks/usePostDeleteTodo'
 
-export function DeleteButton() {
-  const { doDelete } = useDeleteTodo()
-  const handleOnClickdeleteTodo = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const currentTarget = e.currentTarget
-    const todoItem = currentTarget.closest('li')
-    const todoItemId = todoItem?.id
-    const res = window.confirm(
-      `タスク「${todoItem?.textContent}」を本当に削除しますか？`
-    )
-
-    if (res) {
-      todoItemId && doDelete(todoItemId)
-    }
+type Props = {
+  id: string
+  refetch: () => void
+}
+export function DeleteButton({ id, refetch }: Props) {
+  const { doPost } = usePostDeleteTodo()
+  const handleOnClickDeleteTodo = () => {
+    doPost({
+      id,
+      onSuccess: () => {
+        refetch()
+        return (
+          <Snackbar open={true} autoHideDuration={5000}>
+            <Alert severity="success">削除しました</Alert>
+          </Snackbar>
+        )
+      },
+      onError: () => {
+        return (
+          <Snackbar open={true} autoHideDuration={5000}>
+            <Alert severity="error">削除に失敗しました</Alert>
+          </Snackbar>
+        )
+      },
+    })
   }
 
   return (
-    <IconButton
-      ariaLabel="TODOを削除する"
-      onClick={handleOnClickdeleteTodo}
-      className="button-icon"
+    <Button
+      title="削除"
+      color="error"
+      variant="contained"
+      onClick={handleOnClickDeleteTodo}
     >
-      <FontAwesomeIcon icon={faTrash} size="1x" />
-    </IconButton>
+      削除
+    </Button>
   )
 }
