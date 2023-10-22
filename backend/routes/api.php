@@ -19,6 +19,7 @@ Route::group(['middleware' => 'api'], function() {
     Route::post('todos/create', 'App\Http\Controllers\TodosController@create');
     Route::post('todos/show', 'App\Http\Controllers\TodosController@show');
     Route::get('todos/edit/{id}', 'App\Http\Controllers\TodosController@edit');
+    Route::post('todos/update/{id}', 'App\Http\Controllers\TodosController@update');
     Route::get('todos/detail/{id}', 'App\Http\Controllers\TodosController@show');
     Route::post('todos/delete', 'App\Http\Controllers\TodosController@delete');
 });

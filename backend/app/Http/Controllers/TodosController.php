@@ -50,7 +50,7 @@ class TodosController extends Controller
     public function update(Request $request)
     {
         $todo = Todo::find($request->id);
-        $todo->name = $request->name;
+        $todo->title = $request->title;
         $todo->detail = $request->detail;
         $todo->save();
         $todos = Todo::all();
