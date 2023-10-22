@@ -13,7 +13,7 @@ export const TodoItemList = ({ list, refetch }: Props) => {
   return (
     <List>
       {list.map((item) => (
-        <ListItem key={item.id} id={item.id}>
+        <ListItem key={item.id} id={item.id} disableGutters>
           <ListItemText>{item.title}</ListItemText>
           <Box display={'flex'} gap={'8px'}>
             <DetailButton id={item.id} />
