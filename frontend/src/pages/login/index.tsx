@@ -32,7 +32,6 @@ const LoginPage: NextPage = () => {
 
   const onSubmit: SubmitHandler<TextFieldProps> = async (data) => {
     const result = await doPost(data)
-    console.log(result)
   }
 
   return (
