@@ -11,7 +11,7 @@ export const useFetchEditTodo = (id: number) => {
       .catch((error) => error)
   }, [id])
 
-  const { data, error, isLoading }: SWRResponse<{data: TodoType}> = useSWR(
+  const { data, error, isLoading }: SWRResponse<{ data: TodoType }> = useSWR(
     id ? ['api/todos/edit', id] : null,
     fetcher
   )

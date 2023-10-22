@@ -1,10 +1,7 @@
 import { PageTitle } from 'components/atoms/PageTitle'
-import { Navigation } from 'components/organisms/navigation'
-import { useRouter } from 'next/router'
-import { useRecoilValue } from 'recoil'
-import { TodoContentsAtom, TodoTitleAtom } from 'states/TodoState'
-import styles from './style.module.css'
 import { useFetchDetailTodo } from 'hooks/useFetchDetailTodo'
+import { useRouter } from 'next/router'
+import styles from './style.module.css'
 
 type Props = {
   text: string
@@ -17,7 +14,6 @@ export function DetailTodoTemplate({ text }: Props) {
 
   return (
     <div className={styles.container}>
-      <Navigation />
       <PageTitle text={text} />
       <div className={styles.contents}>
         <div className={styles.title}>

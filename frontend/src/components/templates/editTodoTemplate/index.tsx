@@ -1,6 +1,5 @@
 import { Box, Button, Stack, TextField } from '@mui/material'
 import { PageTitle } from 'components/atoms/PageTitle'
-import { Navigation } from 'components/organisms/navigation'
 import { PAGE_PATH } from 'constants/pagePath'
 import { useFetchEditTodo } from 'hooks/useFetchEditTodo'
 import { usePostUpdateTodo } from 'hooks/usePostUpdateTodo'
@@ -42,7 +41,6 @@ export function EditTodoTemplate({ text }: Props) {
 
   return (
     <Box>
-      <Navigation />
       <PageTitle text={text} />
       <Box>
         <Stack
