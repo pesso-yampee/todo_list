@@ -8,10 +8,10 @@ type Props = {
   onError: (error: unknown) => void
 }
 
-export const usePostUpdateTodo = () => {
+export const usePutUpdateTodo = () => {
   const doPost = ({ id, data, onSuccess, onError }: Props) => {
     apiClient
-      .post(`api/todos/update/${id}`, {
+      .put(`api/todos/update/${id}`, {
         id: id,
         title: data.title,
         detail: data.detail,

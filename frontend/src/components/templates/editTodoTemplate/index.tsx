@@ -2,7 +2,7 @@ import { Box, Button, Stack, TextField } from '@mui/material'
 import { PageTitle } from 'components/atoms/PageTitle'
 import { PAGE_PATH } from 'constants/pagePath'
 import { useFetchEditTodo } from 'hooks/useFetchEditTodo'
-import { usePostUpdateTodo } from 'hooks/usePostUpdateTodo'
+import { usePutUpdateTodo } from 'hooks/usePutUpdateTodo'
 import { useRouter } from 'next/router'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { TodoCreateRequest, TodoUpdateRequest } from 'types/todo'
@@ -25,7 +25,7 @@ export function EditTodoTemplate({ text }: Props) {
       detail: data?.detail,
     },
   })
-  const { doPost } = usePostUpdateTodo()
+  const { doPost } = usePutUpdateTodo()
   const handleOnSubmit: SubmitHandler<TodoCreateRequest> = (data) => {
     doPost({
       id,
@@ -47,6 +47,7 @@ export function EditTodoTemplate({ text }: Props) {
           component={'form'}
           noValidate
           onSubmit={handleSubmit(handleOnSubmit)}
+          gap={'24px'}
         >
           <Controller
             name="title"
@@ -70,13 +71,12 @@ export function EditTodoTemplate({ text }: Props) {
                 {...field}
                 type="text"
                 label="詳細"
-                required
                 error={fieldState.invalid}
                 helperText={fieldState.error?.message}
               />
             )}
           />
-          <Button type="submit" color="success">
+          <Button type="submit" color="success" variant='contained'>
             更新する
           </Button>
         </Stack>

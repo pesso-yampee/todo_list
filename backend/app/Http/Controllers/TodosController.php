@@ -54,15 +54,13 @@ class TodosController extends Controller
         $todo->detail = $request->detail;
         $todo->save();
         $todos = Todo::all();
-        return $todos;
     }
-
+    
     // TODOを削除する
     public function delete(Request $request)
     {
         $todo = Todo::find($request->id);
         $todo->delete();
         $todos = Todo::all();
-        return $todos;
     }
 }
