@@ -1,7 +1,7 @@
-import { DetailTodoTemplate } from 'components/templates/detailTodoTemplate'
+import { DetailTodoCotents } from 'pages/detail/contents'
 import type { NextPage } from 'next'
 
 const DetailTodoPage: NextPage = () => {
-  return <DetailTodoTemplate text="TodoDetail" />
+  return <DetailTodoCotents text="TodoDetail" />
 }
 export default DetailTodoPage

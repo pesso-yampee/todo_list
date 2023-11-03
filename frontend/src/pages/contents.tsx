@@ -1,10 +1,10 @@
-import { Alert, Box, Button, Stack, TextField, Typography } from '@mui/material'
+import { LoadingButton } from '@mui/lab'
+import { Alert, Box, Stack, TextField, Typography } from '@mui/material'
 import { PageTitle } from 'components/atoms/PageTitle'
 import { TodoItemList } from 'components/organisms/todoItemList'
-import { PAGE_PATH } from 'constants/pagePath'
 import { useFetchTodoList } from 'hooks/useFetchTodoList'
 import { usePostCreateTodo } from 'hooks/usePostCreateTodo'
-import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { TodoCreateRequest } from 'types/todo'
 
@@ -12,27 +12,28 @@ type Props = {
   text: string
 }
 
-export const ListTemplate = ({ text }: Props) => {
-  const router = useRouter()
-  const {
-    control,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<TodoCreateRequest>({
-    defaultValues: {
-      title: null,
-      detail: null,
-    },
-  })
+export const TodoListContents = ({ text }: Props) => {
+  const [isCreateLoading, setIsCreateLoading] = useState(false)
+  const [isActiveCreateButton, setIsActiveCreateButton] = useState(false)
   const { doPost } = usePostCreateTodo()
   const { data, error, refetch, isLoading } = useFetchTodoList()
+  const {
+    control,
+    handleSubmit,
+    formState: { errors },
+    getValues,
+  } = useForm<TodoCreateRequest>({
+    defaultValues: {
+      title: '',
+      detail: '',
+    },
+  })
 
-  const handleSubmitCreateTodo: SubmitHandler<TodoCreateRequest> = (data) => {
+  const handleOnSubmitCreateTodo: SubmitHandler<TodoCreateRequest> = (data) => {
     doPost({
       data,
+      setIsCreateLoading,
       onSuccess: () => {
-        router.push(PAGE_PATH.TOP)
         return <Alert severity="success">作成に成功しました</Alert>
       },
       onError: () => {
@@ -43,6 +44,13 @@ export const ListTemplate = ({ text }: Props) => {
   if (!data && error) {
     return <Typography>表示するデータがありません。</Typography>
   }
+
+  useEffect(() => {
+    if (getValues('title')?.length > 0) {
+      setIsActiveCreateButton(true)
+    }
+  }, [])
+  
   return (
     <Box maxWidth={'450px'}>
       <PageTitle text={text} />
@@ -50,7 +58,7 @@ export const ListTemplate = ({ text }: Props) => {
         component={'form'}
         gap={'16px'}
         noValidate
-        onSubmit={handleSubmit(handleSubmitCreateTodo)}
+        onSubmit={handleSubmit(handleOnSubmitCreateTodo)}
       >
         <Controller
           name="title"
@@ -79,13 +87,17 @@ export const ListTemplate = ({ text }: Props) => {
             />
           )}
         />
-        <Button type="submit" color="success" variant="contained">
+        <LoadingButton
+          loading={isCreateLoading}
+          type="submit"
+          color="success"
+          variant="contained"
+          disabled={isActiveCreateButton}
+        >
           作成する
-        </Button>
+        </LoadingButton>
       </Stack>
-      <Box>
-        {data && !isLoading && <TodoItemList list={data} refetch={refetch} />}
-      </Box>
+      <Box>{!isLoading && <TodoItemList data={data} refetch={refetch} />}</Box>
     </Box>
   )
 }

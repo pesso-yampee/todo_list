@@ -11,7 +11,7 @@ type Props = {
   text: string
 }
 
-export function EditTodoTemplate({ text }: Props) {
+export function EditTodoContents({ text }: Props) {
   const router = useRouter()
   const id = Number(router.query.id) as number
   const { data } = useFetchEditTodo(id)
@@ -76,7 +76,7 @@ export function EditTodoTemplate({ text }: Props) {
               />
             )}
           />
-          <Button type="submit" color="success" variant='contained'>
+          <Button type="submit" color="success" variant="contained">
             更新する
           </Button>
         </Stack>
