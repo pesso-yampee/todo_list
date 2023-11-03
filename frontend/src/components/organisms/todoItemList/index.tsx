@@ -5,14 +5,14 @@ import { EditButton } from 'components/molecules/EditButton'
 import { TodoType } from 'types/todo'
 
 type Props = {
-  list: TodoType[]
+  data: TodoType[]
   refetch: () => void
 }
 
-export const TodoItemList = ({ list, refetch }: Props) => {
+export const TodoItemList = ({ data, refetch }: Props) => {
   return (
     <List>
-      {list.map((item) => (
+      {data.map((item) => (
         <ListItem key={item.id} id={item.id} disableGutters>
           <ListItemText>{item.title}</ListItemText>
           <Box display={'flex'} gap={'8px'}>
