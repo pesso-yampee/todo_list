@@ -1,13 +1,15 @@
 import { apiClient } from 'constants/apiClient'
+import { Dispatch, SetStateAction } from 'react'
 import { TodoCreateRequest } from 'types/todo'
 
 type Props = {
   data: TodoCreateRequest
+  setIsCreateLoading: Dispatch<SetStateAction<boolean>>
   onSuccess: () => void
   onError: () => void
 }
 export const usePostCreateTodo = () => {
-  const doPost = ({ data, onSuccess, onError }: Props) => {
+  const doPost = ({ data, setIsCreateLoading, onSuccess, onError }: Props) => {
     apiClient
       .post('api/todos/create', data, {
         headers: {
@@ -16,6 +18,7 @@ export const usePostCreateTodo = () => {
       })
       .then(() => onSuccess())
       .catch(() => onError())
+      .finally(() => setIsCreateLoading(false))
   }
 
   return {
