@@ -1,10 +1,17 @@
 import { LoadingButton } from '@mui/lab'
-import { Alert, Box, Stack, TextField, Typography } from '@mui/material'
-import { PageTitle } from 'components/atoms/PageTitle'
-import { TodoItemList } from 'components/organisms/todoItemList'
+import {
+  Alert,
+  Box,
+  CircularProgress,
+  Stack,
+  TextField,
+  Typography,
+} from '@mui/material'
+import { EditTodoModal } from 'components/features/EditTodoModal'
+import { TodoItemList } from 'components/features/todoItemList'
 import { useFetchTodoList } from 'hooks/useFetchTodoList'
 import { usePostCreateTodo } from 'hooks/usePostCreateTodo'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
 import { TodoCreateRequest } from 'types/todo'
 
@@ -14,14 +21,16 @@ type Props = {
 
 export const TodoListContents = ({ text }: Props) => {
   const [isCreateLoading, setIsCreateLoading] = useState(false)
-  const [isActiveCreateButton, setIsActiveCreateButton] = useState(false)
+  const [modalInfo, setModalInfo] = useState<{
+    isOpen: boolean
+    todoItemId: number | null
+  }>({ isOpen: false, todoItemId: null })
   const { doPost } = usePostCreateTodo()
   const { data, error, refetch, isLoading } = useFetchTodoList()
   const {
     control,
     handleSubmit,
     formState: { errors },
-    getValues,
   } = useForm<TodoCreateRequest>({
     defaultValues: {
       title: '',
@@ -41,19 +50,10 @@ export const TodoListContents = ({ text }: Props) => {
       },
     })
   }
-  if (!data && error) {
-    return <Typography>表示するデータがありません。</Typography>
-  }
 
-  useEffect(() => {
-    if (getValues('title')?.length > 0) {
-      setIsActiveCreateButton(true)
-    }
-  }, [])
-  
   return (
     <Box maxWidth={'450px'}>
-      <PageTitle text={text} />
+      <Typography component={'h1'}>{text}</Typography>
       <Stack
         component={'form'}
         gap={'16px'}
@@ -63,6 +63,7 @@ export const TodoListContents = ({ text }: Props) => {
         <Controller
           name="title"
           control={control}
+          rules={{ required: '名前は必ず入力してください' }}
           render={({ field, fieldState }) => (
             <TextField
               {...field}
@@ -92,12 +93,32 @@ export const TodoListContents = ({ text }: Props) => {
           type="submit"
           color="success"
           variant="contained"
-          disabled={isActiveCreateButton}
         >
           作成する
         </LoadingButton>
       </Stack>
-      <Box>{!isLoading && <TodoItemList data={data} refetch={refetch} />}</Box>
+      {isLoading && (
+        <Box
+          display={'grid'}
+          minHeight={'300px'}
+          sx={{ placeContent: 'center' }}
+        >
+          <CircularProgress color="inherit" />
+        </Box>
+      )}
+      {!data && error && <Typography>表示するデータがありません。</Typography>}
+      <Box>
+        {!isLoading && (
+          <TodoItemList
+            data={data}
+            refetch={refetch}
+            setModalInfo={setModalInfo}
+          />
+        )}
+      </Box>
+      {modalInfo.isOpen && (
+        <EditTodoModal modalInfo={modalInfo} setModalInfo={setModalInfo} />
+      )}
     </Box>
   )
 }
