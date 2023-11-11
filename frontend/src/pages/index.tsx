@@ -1,5 +1,5 @@
-import { TodoListContents } from 'pages/contents'
 import type { NextPage } from 'next'
+import { TodoListContents } from 'pages/contents'
 
 const TodoListPage: NextPage = () => <TodoListContents text="TodoList" />
 
