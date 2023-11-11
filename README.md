@@ -8,7 +8,7 @@
 * TypeScript
 
 ### バックエンド
-* Express
+* Laravel
 
 ### データベース
 * MySQL
