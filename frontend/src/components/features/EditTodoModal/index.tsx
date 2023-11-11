@@ -33,6 +33,7 @@ export function EditTodoModal({ modalInfo, setModalInfo }: Props) {
   const handleOnSubmit: SubmitHandler<TodoCreateRequest> = (data) => {
     doPost({
       data,
+      id: modalInfo.todoItemId as number,
       onSuccess: () => {
         console.log('成功しました')
       },

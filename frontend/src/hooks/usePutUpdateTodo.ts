@@ -3,15 +3,15 @@ import { TodoUpdateRequest } from 'types/todo'
 
 type Props = {
   data: TodoUpdateRequest
+  id: number
   onSuccess: () => void
   onError: (error: unknown) => void
 }
 
 export const usePutUpdateTodo = () => {
-  const doPost = ({ data, onSuccess, onError }: Props) => {
+  const doPost = ({ data, id, onSuccess, onError }: Props) => {
     apiClient
-      .put(`api/todos/update/${data.id}`, {
-        id: data.id,
+      .put(`api/todos/update/${id}`, {
         title: data.title,
         detail: data.detail,
       })
