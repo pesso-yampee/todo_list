@@ -21,5 +21,5 @@ Route::group(['middleware' => 'api'], function() {
     Route::get('todos/edit/{id}', 'App\Http\Controllers\TodosController@edit');
     Route::put('todos/update/{id}', 'App\Http\Controllers\TodosController@update');
     Route::get('todos/detail/{id}', 'App\Http\Controllers\TodosController@show');
-    Route::post('todos/delete', 'App\Http\Controllers\TodosController@delete');
+    Route::post('todos/delete/{id}', 'App\Http\Controllers\TodosController@delete');
 });
