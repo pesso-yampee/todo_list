@@ -22,15 +22,14 @@ type Props = {
 
 export const TodoItemList = ({ data, refetch, setModalInfo }: Props) => {
   const router = useRouter()
-  const todoId = router.query.id as string
   const { doPost } = usePostDeleteTodo()
   const handleOnClick = {
     editTodo: (todoItemId: number) => {
       setModalInfo({ isOpen: true, todoItemId: todoItemId })
     },
-    deleteTodo: () => {
+    deleteTodo: (todoItemId: number) => {
       doPost({
-        id: todoId,
+        id: todoItemId,
         onSuccess: () => {
           refetch()
           return (
@@ -67,7 +66,7 @@ export const TodoItemList = ({ data, refetch, setModalInfo }: Props) => {
               title="削除"
               color="error"
               variant="contained"
-              onClick={() => handleOnClick.deleteTodo()}
+              onClick={() => handleOnClick.deleteTodo(item.id)}
             >
               削除
             </Button>
