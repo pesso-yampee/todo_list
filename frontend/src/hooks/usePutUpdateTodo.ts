@@ -3,7 +3,7 @@ import { TodoUpdateRequest } from 'types/todo'
 
 type Props = {
   data: TodoUpdateRequest
-  id: number
+  id: string
   onSuccess: () => void
   onError: (error: unknown) => void
 }

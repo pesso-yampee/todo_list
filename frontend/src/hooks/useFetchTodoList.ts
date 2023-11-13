@@ -1,16 +1,18 @@
 import { apiClient } from 'constants/apiClient'
-import useSWR, { SWRResponse } from 'swr'
+import useSWR from 'swr'
+import { TodoType } from 'types/todo'
 
 export const useFetchTodoList = () => {
-  const fetcher = (url: string) => {
-    return apiClient
+  const fetcher = async (url: string) => {
+    return await apiClient
       .get(url)
-      .then((response) => response.data)
+      .then((response) => response)
       .catch((error) => error)
   }
-  const { data, error, mutate, isLoading }: SWRResponse = useSWR<SWRResponse>(
-    'api/todos',
-    fetcher
+  const { data, error, mutate } = useSWR<{data: TodoType[]}, Error>(
+    '/api/todos',
+    fetcher,
+    { suspense: true }
   )
 
   const refetch = () => {
@@ -18,9 +20,8 @@ export const useFetchTodoList = () => {
   }
 
   return {
-    data,
+    data: data?.data,
     error,
     refetch,
-    isLoading,
   }
 }

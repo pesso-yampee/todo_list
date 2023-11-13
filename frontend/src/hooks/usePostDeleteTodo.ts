@@ -1,7 +1,7 @@
 import { apiClient } from 'constants/apiClient'
 
 type Props = {
-  id: number
+  id: string
   onSuccess: () => void
   onError: () => void
 }

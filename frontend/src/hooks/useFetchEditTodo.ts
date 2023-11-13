@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import useSWR, { SWRResponse } from 'swr'
 import { TodoType } from 'types/todo'
 
-export const useFetchEditTodo = (id: number) => {
+export const useFetchEditTodo = (id: string) => {
   const fetcher = useCallback(async () => {
     return await apiClient
       .get(`api/todos/edit/${id}`)
@@ -11,9 +11,9 @@ export const useFetchEditTodo = (id: number) => {
       .catch((error) => error)
   }, [id])
 
-  const { data, error, isLoading }: SWRResponse<{ data: TodoType }> = useSWR(
+  const { data, error }: SWRResponse<{ data: TodoType }> = useSWR(
     id ? ['api/todos/edit', id] : null,
     fetcher
   )
-  return { data: data?.data, error, isLoading }
+  return { data: data?.data, error }
 }
