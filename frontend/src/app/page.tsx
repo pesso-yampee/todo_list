@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Typography } from '@mui/material'
+import { Box,CircularProgress,Stack,Typography } from '@mui/material'
 import { AddTodo } from 'components/features/AddTodo'
 import { TodoList } from 'components/features/todoList'
 import { Metadata } from 'next'
@@ -11,8 +11,10 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <Box maxWidth={'450px'}>
-      <Typography component={'h1'}>TODOリスト</Typography>
+    <Box maxWidth={'450px'} margin={'0 auto'} width={'100%'}>
+      <Typography variant={'h5'} gutterBottom textAlign={'center'}>
+        TODOリスト
+      </Typography>
       <AddTodo />
       <ErrorBoundary fallback={<h2>Error!!</h2>}>
         <Suspense

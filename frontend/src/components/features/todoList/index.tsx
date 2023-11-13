@@ -4,7 +4,7 @@ import { List } from '@mui/material'
 import { useFetchTodoList } from 'hooks/useFetchTodoList'
 import { useState } from 'react'
 import { TodoType } from 'types/todo'
-import { EditTodoModal } from '../EditTodo'
+import { EditTodoModal } from '../EditTodo/Modal'
 import { TodoItem } from '../todoItem'
 
 export const TodoList = () => {
@@ -17,6 +17,7 @@ export const TodoList = () => {
       <List>
         {data?.map((item: TodoType) => (
           <TodoItem
+            key={item.id}
             item={item}
             refetch={refetch}
             setTodoId={setTodoId}

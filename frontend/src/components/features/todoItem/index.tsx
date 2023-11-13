@@ -51,7 +51,7 @@ export const TodoItem = ({
     },
   }
   return (
-    <ListItem key={item.id} disableGutters>
+    <ListItem disableGutters>
       <ListItemText>{item.title}</ListItemText>
       <Box display={'flex'} gap={'8px'}>
         <Button
