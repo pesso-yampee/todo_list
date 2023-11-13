@@ -1,4 +1,4 @@
-import { Box,CircularProgress,Stack,Typography } from '@mui/material'
+import { Box, Typography } from '@mui/material'
 import { Loading } from 'components/common/Loading'
 import { AddTodo } from 'components/features/AddTodo'
 import { TodoList } from 'components/features/todoList'
@@ -18,8 +18,7 @@ export default function Page() {
       </Typography>
       <AddTodo />
       <ErrorBoundary fallback={<h2>Error!!</h2>}>
-        <Suspense fallback={<Loading />}
-        >
+        <Suspense fallback={<Loading />}>
           <TodoList />
         </Suspense>
       </ErrorBoundary>
