@@ -1,4 +1,4 @@
-import { Box,CircularProgress,Typography } from '@mui/material'
+import { Box, CircularProgress, Typography } from '@mui/material'
 import { AddTodo } from 'components/features/AddTodo'
 import { TodoList } from 'components/features/todoList'
 import { Metadata } from 'next'

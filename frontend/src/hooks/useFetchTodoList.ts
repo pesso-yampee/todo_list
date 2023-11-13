@@ -9,7 +9,7 @@ export const useFetchTodoList = () => {
       .then((response) => response)
       .catch((error) => error)
   }
-  const { data, error, mutate } = useSWR<{data: TodoType[]}, Error>(
+  const { data, error, mutate } = useSWR<{ data: TodoType[] }, Error>(
     '/api/todos',
     fetcher,
     { suspense: true }
