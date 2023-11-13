@@ -103,6 +103,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'goldspecdigital/laravel-eloquent-uuid' => array(
+            'pretty_version' => 'v10.0.0',
+            'version' => '10.0.0.0',
+            'reference' => '981a144428dbe948b0e8f8cb31eb4571e0ab4400',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../goldspecdigital/laravel-eloquent-uuid',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'graham-campbell/result-type' => array(
             'pretty_version' => 'v1.1.1',
             'version' => '1.1.1.0',
