@@ -1,7 +1,8 @@
-import { Box, Typography } from '@mui/material'
+import { Box,Typography } from '@mui/material'
 import { Loading } from 'components/common/Loading'
-import { AddTodo } from 'components/features/AddTodo'
-import { TodoList } from 'components/features/todoList'
+import { AddTodo } from 'components/features/todo/Add'
+import { TodoList } from 'components/features/todo/List'
+
 import { Metadata } from 'next'
 import { Suspense } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
