@@ -59,11 +59,13 @@ export const AddTodo = () => {
       <Controller
         name="detail"
         control={control}
+        rules={{ required: '詳細は必ず入力してください' }}
         render={({ field, fieldState }) => (
           <TextField
             {...field}
             type="text"
             label="詳細"
+            required
             error={fieldState.invalid}
             helperText={fieldState.error?.message}
           />
