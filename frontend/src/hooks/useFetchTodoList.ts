@@ -9,10 +9,13 @@ export const useFetchTodoList = () => {
       .then((response) => response)
       .catch((error) => error)
   }
-  const { data, error, mutate } = useSWR<{ data: TodoType[] }, Error>(
+  const { data, mutate } = useSWR<{ data: TodoType[] }, Error>(
     '/api/todos',
     fetcher,
-    { suspense: true }
+    {
+      suspense: true,
+      revalidateOnFocus: false,
+    }
   )
 
   const refetch = () => {
@@ -21,7 +24,6 @@ export const useFetchTodoList = () => {
 
   return {
     data: data?.data,
-    error,
     refetch,
   }
 }
