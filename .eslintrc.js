@@ -9,9 +9,13 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ['@typescript-eslint'],
+  "ignorePatterns": [
+    "*.config.js"
+  ],
   extends: [
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
+    "plugin:tailwindcss/recommended",
     'prettier',
     'prettier/@typescript-eslint',
   ],
