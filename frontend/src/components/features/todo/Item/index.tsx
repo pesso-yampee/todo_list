@@ -1,9 +1,5 @@
 import {
   Alert,
-  Box,
-  Button,
-  ListItem,
-  ListItemText,
   Snackbar,
 } from '@mui/material'
 import { usePostDeleteTodo } from 'hooks/usePostDeleteTodo'
@@ -51,26 +47,21 @@ export const TodoItem = ({
     },
   }
   return (
-    <ListItem disableGutters>
-      <ListItemText>{item.title}</ListItemText>
-      <Box display={'flex'} gap={'8px'}>
-        <Button
-          title="編集"
-          color="primary"
-          variant="contained"
+    <li>
+      <h1 className='color-red'>{item.title}</h1>
+      <div className=''>
+        <button
+          className='bg-teal-50 font-bold text-lg'
           onClick={() => handleOnClick.editTodo(item.id)}
         >
           編集
-        </Button>
-        <Button
-          title="削除"
-          color="error"
-          variant="contained"
+        </button>
+        <button
           onClick={() => handleOnClick.deleteTodo(item.id)}
         >
           削除
-        </Button>
-      </Box>
-    </ListItem>
+        </button>
+      </div>
+    </li>
   )
 }

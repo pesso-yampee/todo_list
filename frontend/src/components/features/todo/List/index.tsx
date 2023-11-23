@@ -14,7 +14,7 @@ export const TodoList = () => {
 
   return (
     <>
-      <List>
+      <ul className=''>
         {data?.map((item: TodoType) => (
           <TodoItem
             key={item.id}
@@ -24,7 +24,7 @@ export const TodoList = () => {
             setIsModalOpen={setIsModalOpen}
           />
         ))}
-      </List>
+      </ul>
       {isModalOpen && (
         <EditTodoModal
           todoId={todoId}
