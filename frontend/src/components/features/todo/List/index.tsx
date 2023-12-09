@@ -1,16 +1,11 @@
 'use client'
 
-import { List } from '@mui/material'
 import { useFetchTodoList } from 'hooks/useFetchTodoList'
-import { useState } from 'react'
 import { TodoType } from 'types/todo'
-import { EditTodoModal } from '../Edit/Modal'
 import { TodoItem } from '../Item'
 
 export const TodoList = () => {
   const { data, refetch } = useFetchTodoList()
-  const [isModalOpen, setIsModalOpen] = useState(false)
-  const [todoId, setTodoId] = useState<string>('')
 
   return (
     <>
@@ -19,13 +14,6 @@ export const TodoList = () => {
           <TodoItem key={item.id} item={item} refetch={refetch} />
         ))}
       </ul>
-      {isModalOpen && (
-        <EditTodoModal
-          todoId={todoId}
-          isModalOpen={isModalOpen}
-          setIsModalOpen={setIsModalOpen}
-        />
-      )}
     </>
   )
 }
