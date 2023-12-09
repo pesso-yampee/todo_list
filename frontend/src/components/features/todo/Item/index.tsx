@@ -13,12 +13,7 @@ type todoItemProps = {
   setIsModalOpen: Dispatch<SetStateAction<boolean>>
 }
 
-export const TodoItem = ({
-  item,
-  refetch,
-  setTodoId,
-  setIsModalOpen,
-}: todoItemProps) => {
+export const TodoItem = ({ item, refetch }: TodoItemProps) => {
   const { doPost } = usePostDeleteTodo()
   const handleOnClick = {
     editTodo: (todoId: string) => {
