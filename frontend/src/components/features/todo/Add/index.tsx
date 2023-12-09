@@ -10,26 +10,38 @@ import { TodoCreateRequest } from 'types/todo'
 export const AddTodo = () => {
   const { doPost } = usePostCreateTodo()
   const [isCreateLoading, setIsCreateLoading] = useState(false)
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<TodoCreateRequest>({
+  const submitProcessing = useRef(false)
+  const { control, handleSubmit } = useForm<TodoCreateRequest>({
     defaultValues: {
       title: '',
       detail: '',
     },
+    mode: 'onBlur',
   })
 
-  const handleOnSubmitCreateTodo: SubmitHandler<TodoCreateRequest> = (data) => {
+  const handleOnSubmitCreateTodo: SubmitHandler<TodoCreateRequest> = (
+    data,
+    event
+  ) => {
+    event?.preventDefault()
+    event?.stopPropagation()
+
+    if (submitProcessing.current) return false
+
+    submitProcessing.current = true
+    setIsCreateLoading(true)
+
     doPost({
       data,
-      setIsCreateLoading,
       onSuccess: () => {
-        return <Alert severity="success">作成に成功しました</Alert>
+        return <Alert severity={'success'} text={'作成に成功しました'} />
       },
       onError: () => {
-        return <Alert severity="error">作成に失敗しました</Alert>
+        return <Alert severity={'error'} text={'作成に失敗しました'} />
+      },
+      onFinally: () => {
+        submitProcessing.current = false
+        setIsCreateLoading(false)
       },
     })
   }
