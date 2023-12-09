@@ -14,7 +14,7 @@ export const TodoList = () => {
 
   return (
     <>
-      <ul className=''>
+      <ul className="mt-6 grid gap-2">
         {data?.map((item: TodoType) => (
           <TodoItem
             key={item.id}
