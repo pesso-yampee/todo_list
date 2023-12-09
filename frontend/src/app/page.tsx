@@ -31,14 +31,22 @@ export default function Page() {
   const todoItemEditModalState = useTodoItemEditModalState()
   const { setStateEditModal } = useTodoItemEditModalStateMutators()
   return (
-    <Box maxWidth={'450px'} margin={'0 auto'} width={'100%'}>
-      <Typography variant={'h5'} gutterBottom textAlign={'center'}>
-        TODOリスト
-      </Typography>
-      <AddTodo />
-      <DynamicAppSuspense>
-        <TodoList />
-      </DynamicAppSuspense>
-    </Box>
+    <>
+      <div className="mx-6 grid h-screen place-items-center">
+        <div className="min-w-[450px]">
+          <h1 className="text-center text-lg font-bold">TODOリスト</h1>
+          <AddTodo />
+          <DynamicAppSuspense>
+            <TodoList />
+          </DynamicAppSuspense>
+        </div>
+      </div>
+      {todoItemEditModalState.isOpen && (
+        <EditTodoModal
+          setStateEditModal={setStateEditModal}
+          isOpen={todoItemEditModalState.isOpen}
+        />
+      )}
+    </>
   )
 }
