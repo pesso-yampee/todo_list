@@ -47,50 +47,30 @@ export const AddTodo = () => {
   }
 
   return (
-    <Stack
-      component={'form'}
-      gap={'16px'}
-      noValidate
+    <form
+      className="mt-4 grid gap-4"
       onSubmit={handleSubmit(handleOnSubmitCreateTodo)}
     >
-      <Controller
-        name="title"
-        control={control}
-        rules={{ required: '名前は必ず入力してください' }}
-        render={({ field, fieldState }) => (
-          <TextField
-            {...field}
-            type="text"
-            label="名前"
-            required
-            error={fieldState.invalid}
-            helperText={fieldState.error?.message}
-          />
-        )}
-      />
-      <Controller
-        name="detail"
-        control={control}
-        rules={{ required: '詳細は必ず入力してください' }}
-        render={({ field, fieldState }) => (
-          <TextField
-            {...field}
-            type="text"
-            label="詳細"
-            required
-            error={fieldState.invalid}
-            helperText={fieldState.error?.message}
-          />
-        )}
-      />
-      <LoadingButton
-        loading={isCreateLoading}
-        type="submit"
-        color="success"
-        variant="contained"
-      >
-        作成する
-      </LoadingButton>
-    </Stack>
+      <div className="grid gap-4">
+        <InputField
+          name={'title'}
+          control={control}
+          label={'名前'}
+          rules={{ required: true }}
+        />
+        <InputField
+          name={'detail'}
+          control={control}
+          label={'詳細'}
+          rules={{ required: true }}
+        />
+        <button
+          type="submit"
+          className="rounded border-2 border-solid border-green-600 bg-green-600 py-2 text-white duration-300 hover:bg-white hover:text-green-600"
+        >
+          {isCreateLoading ? '作成中' : '作成する'}
+        </button>
+      </div>
+    </form>
   )
 }
