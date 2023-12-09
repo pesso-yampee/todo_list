@@ -15,31 +15,37 @@ type todoItemProps = {
 
 export const TodoItem = ({ item, refetch }: TodoItemProps) => {
   const { doPost } = usePostDeleteTodo()
+  const { setState: setStateTodoItem } = useTodoItemMutators()
+  const { setStateEditModal } = useTodoItemEditModalStateMutators()
+
   const handleOnClick = {
     editTodo: (todoId: string) => {
-      setTodoId(todoId)
-      setIsModalOpen(true)
+      setStateTodoItem({ id: todoId })
+      setStateEditModal({ isOpen: true })
     },
-    deleteTodo: (todoId: string) => {
-      doPost({
-        id: todoId,
-        onSuccess: () => {
-          refetch()
-          return (
-            <Snackbar open={true} autoHideDuration={5000}>
-              <Alert severity="success">削除しました</Alert>
-            </Snackbar>
-          )
-        },
-        onError: () => {
-          return (
-            <Snackbar open={true} autoHideDuration={5000}>
-              <Alert severity="error">削除に失敗しました</Alert>
-            </Snackbar>
-          )
-        },
-      })
-    },
+    deleteTodo: useCallback(
+      (todoId: string) => {
+        doPost({
+          id: todoId,
+          onSuccess: () => {
+            refetch()
+            return (
+              <Snackbar open={true} autoHideDuration={5000}>
+                <Alert severity="success">削除しました</Alert>
+              </Snackbar>
+            )
+          },
+          onError: () => {
+            return (
+              <Snackbar open={true} autoHideDuration={5000}>
+                <Alert severity="error">削除に失敗しました</Alert>
+              </Snackbar>
+            )
+          },
+        })
+      },
+      [doPost, refetch]
+    ),
   }
   return (
     <li>
