@@ -6,11 +6,9 @@ import { usePostDeleteTodo } from 'hooks/usePostDeleteTodo'
 import { Dispatch, SetStateAction } from 'react'
 import { TodoType } from 'types/todo'
 
-type todoItemProps = {
+type TodoItemProps = {
   item: TodoType
   refetch: () => void
-  setTodoId: Dispatch<SetStateAction<string>>
-  setIsModalOpen: Dispatch<SetStateAction<boolean>>
 }
 
 export const TodoItem = ({ item, refetch }: TodoItemProps) => {
