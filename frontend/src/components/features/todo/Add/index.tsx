@@ -53,15 +53,15 @@ export const AddTodo = () => {
     >
       <div className="grid gap-4">
         <InputField
-          name={'title'}
           control={control}
-          label={'名前'}
+          name={'title'}
+          placeholder={'名前'}
           rules={{ required: true }}
         />
         <InputField
-          name={'detail'}
           control={control}
-          label={'詳細'}
+          name={'detail'}
+          placeholder={'詳細'}
           rules={{ required: true }}
         />
         <button
