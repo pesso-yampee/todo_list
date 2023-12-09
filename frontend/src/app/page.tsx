@@ -30,6 +30,7 @@ const DynamicAppSuspense = dynamic(
 export default function Page() {
   const todoItemEditModalState = useTodoItemEditModalState()
   const { setStateEditModal } = useTodoItemEditModalStateMutators()
+
   return (
     <>
       <div className="mx-6 grid h-screen place-items-center">
