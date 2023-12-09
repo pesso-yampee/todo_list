@@ -1,4 +1,5 @@
-import { Box,Typography } from '@mui/material'
+'use client'
+
 import { AddTodo } from 'components/features/todo/Add'
 import { EditTodoModal } from 'components/features/todo/Edit'
 
