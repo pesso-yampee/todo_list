@@ -24,7 +24,7 @@ export const metadata: Metadata = {
  */
 const DynamicAppSuspense = dynamic(
   () => import('../components/common/AppSuspense'),
-  {ssr: false}
+  { ssr: false }
 )
 
 export default function Page() {
