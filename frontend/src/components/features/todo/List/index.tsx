@@ -16,13 +16,7 @@ export const TodoList = () => {
     <>
       <ul className="mt-6 grid gap-2">
         {data?.map((item: TodoType) => (
-          <TodoItem
-            key={item.id}
-            item={item}
-            refetch={refetch}
-            setTodoId={setTodoId}
-            setIsModalOpen={setIsModalOpen}
-          />
+          <TodoItem key={item.id} item={item} refetch={refetch} />
         ))}
       </ul>
       {isModalOpen && (
