@@ -9,12 +9,7 @@ import {
   useTodoItemEditModalStateMutators,
 } from 'globalStates/todoItemEditModalState'
 
-import { Metadata } from 'next'
 import dynamic from 'next/dynamic'
-
-export const metadata: Metadata = {
-  title: 'Todo List',
-}
 
 /**
  * NOTE:
