@@ -5,7 +5,7 @@ type Props = {
   onSuccess: () => void
 }
 
-export const usePostMemberRegisteration = () => {
+export const usePostRegisterMemberInfo = () => {
   const doPost = ({ onError, onSuccess }: Props) => {
     apiClient
       .post('/api/member-registeration')

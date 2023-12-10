@@ -2,11 +2,11 @@
 
 import { PrimaryButton } from 'components/common/Button/Primary'
 import { InputField } from 'components/common/InputField'
-import { usePostMemberRegisteration } from 'hooks/usePostRegisterMemberInfo'
+import { usePostRegisterMemberInfo } from 'hooks/usePostRegisterMemberInfo'
 import { useForm } from 'react-hook-form'
 
 export const RegisterBody = () => {
-  const { doPost } = usePostMemberRegisteration()
+  const { doPost } = usePostRegisterMemberInfo()
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: '',
