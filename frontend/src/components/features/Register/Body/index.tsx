@@ -3,7 +3,7 @@
 import { PrimaryButton } from 'components/common/Button/Primary'
 import { InputField } from 'components/common/InputField'
 import { usePostRegisterMemberInfo } from 'hooks/usePostRegisterMemberInfo'
-import { useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 
 export const RegisterBody = () => {
   const { doPost } = usePostRegisterMemberInfo()
@@ -17,15 +17,19 @@ export const RegisterBody = () => {
     mode: 'onBlur',
   })
 
-  const submitRegisterMemberInfo = () => {
+  const onSubmitRegisterMemberInfo: SubmitHandler<FieldValues> = (data) => {
     doPost({
+      data,
       onSuccess: () => console.log('会員登録しました。'),
       onError: () => console.log('会員登録できませんでした。'),
     })
   }
 
   return (
-    <form onSubmit={handleSubmit(submitRegisterMemberInfo)} className="w-full">
+    <form
+      onSubmit={handleSubmit(onSubmitRegisterMemberInfo)}
+      className="w-full"
+    >
       <div className="grid gap-2 p-4">
         <div className="">
           <label className="text-sm font-bold">メールアドレス</label>
