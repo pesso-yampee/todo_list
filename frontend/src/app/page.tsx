@@ -1,9 +1,9 @@
 'use client'
 
-import { AddTodo } from 'components/features/todo/Add'
-import { EditTodoModal } from 'components/features/todo/Edit'
+import { AddTodo } from 'components/features/Todo/Add'
+import { EditTodoModal } from 'components/features/Todo/Edit'
 
-import { TodoList } from 'components/features/todo/List'
+import { TodoList } from 'components/features/Todo/List'
 import {
   useTodoItemEditModalState,
   useTodoItemEditModalStateMutators,
