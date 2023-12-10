@@ -56,6 +56,7 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
           itemId={item.id}
           text={'編集'}
           onClickEvent={handleOnClick.editTodo}
+          style={{ width: '100%' }}
         />
         <DangerButton
           itemId={item.id}

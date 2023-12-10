@@ -108,7 +108,7 @@ export const EditTodoModal = ({ setStateEditModal, isOpen }: Props) => {
                 text={'キャンセル'}
                 onClickEvent={handleOnCloseModal}
               />
-              <PrimaryButton text={'更新する'} />
+              <PrimaryButton text={'更新する'} style={{ width: '100%' }} />
             </div>
           </div>
         </form>
