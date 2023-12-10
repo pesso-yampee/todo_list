@@ -6,7 +6,7 @@ type Props<T extends FieldValues> = {
   control: UseControllerProps<T>['control']
   name: UseControllerProps<T>['name']
   rules: UseControllerProps<T>['rules']
-  placeholder: string
+  placeholder?: string
 }
 
 export const InputField = <T extends FieldValues>({
@@ -15,16 +15,19 @@ export const InputField = <T extends FieldValues>({
   rules,
   placeholder,
 }: Props<T>) => {
-  const { field, fieldState: {error} } = useController({ control, name, rules })
+  const {
+    field,
+    fieldState: { error },
+  } = useController({ control, name, rules })
 
   return (
     <div className="grid gap-2">
       <input
-          {...field}
-          type={'text'}
-          placeholder={placeholder}
-          className="border-solid border-gray-300 border-2 rounded py-2 px-1 w-full invalid:border-red-500 invalid:text-red-500"
-        />
+        {...field}
+        type={'text'}
+        placeholder={placeholder}
+        className="w-full rounded border-2 border-solid border-gray-300 px-1 py-2 invalid:border-red-500 invalid:text-red-500"
+      />
       <span className="text-sm text-red-500">
         {error?.message && error.message}
       </span>
