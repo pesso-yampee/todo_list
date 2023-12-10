@@ -29,7 +29,7 @@ export const InputField = <T extends FieldValues>({
         {...field}
         type={type}
         placeholder={placeholder}
-        className="w-full rounded border-2 border-solid border-gray-300 px-1 py-2 invalid:border-red-500 invalid:text-red-500"
+        className="w-full rounded border-2 border-solid border-gray-300 px-1 py-2 invalid:border-pink-500 invalid:text-pink-500 focus:invalid:border-pink-500 focus:invalid:text-pink-500"
       />
       <span className="text-sm text-red-500">
         {error?.message && error.message}
