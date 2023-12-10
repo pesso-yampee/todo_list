@@ -1,5 +1,6 @@
 'use client'
 
+import { HTMLInputTypeAttribute } from 'react'
 import { FieldValues, useController, UseControllerProps } from 'react-hook-form'
 
 type Props<T extends FieldValues> = {
@@ -7,6 +8,7 @@ type Props<T extends FieldValues> = {
   name: UseControllerProps<T>['name']
   rules: UseControllerProps<T>['rules']
   placeholder?: string
+  type?: HTMLInputTypeAttribute
 }
 
 export const InputField = <T extends FieldValues>({
@@ -14,6 +16,7 @@ export const InputField = <T extends FieldValues>({
   name,
   rules,
   placeholder,
+  type = 'text',
 }: Props<T>) => {
   const {
     field,
@@ -24,7 +27,7 @@ export const InputField = <T extends FieldValues>({
     <div className="grid gap-2">
       <input
         {...field}
-        type={'text'}
+        type={type}
         placeholder={placeholder}
         className="w-full rounded border-2 border-solid border-gray-300 px-1 py-2 invalid:border-red-500 invalid:text-red-500"
       />
