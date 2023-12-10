@@ -5,7 +5,7 @@ import { InputField } from 'components/common/InputField'
 import { usePostMemberRegisteration } from 'hooks/usePostRegisterMemberInfo'
 import { useForm } from 'react-hook-form'
 
-export const LoginBody = () => {
+export const RegisterBody = () => {
   const { doPost } = usePostMemberRegisteration()
   const { control, handleSubmit } = useForm({
     defaultValues: {
