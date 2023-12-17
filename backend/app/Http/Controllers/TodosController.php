@@ -15,7 +15,7 @@ class TodosController extends Controller
     }
 
     // TODOを作成する
-    public function create(Request $request)
+    public function store(Request $request)
     {
         $todo = new Todo;
         $todo->title = $request->title;
@@ -57,7 +57,7 @@ class TodosController extends Controller
     }
     
     // TODOを削除する
-    public function delete(Request $request)
+    public function destory(Request $request)
     {
         $todo = Todo::find($request->id);
         $todo->delete();
