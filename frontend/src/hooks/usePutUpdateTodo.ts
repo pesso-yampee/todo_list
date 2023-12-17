@@ -11,7 +11,7 @@ type Props = {
 export const usePutUpdateTodo = () => {
   const doPost = ({ data, id, onSuccess, onError }: Props) => {
     apiClient
-      .put(`api/todos/update/${id}`, {
+      .put(`api/todos/${id}`, {
         title: data.title,
         detail: data.detail,
       })

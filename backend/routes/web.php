@@ -16,4 +16,4 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::apiResource('todos', TodosController::class);
+Route::apiResource('api/todos', TodosController::class);

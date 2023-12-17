@@ -10,7 +10,7 @@ type Props = {
 export const usePostCreateTodo = () => {
   const doPost = ({ data, onSuccess, onError, onFinally }: Props) => {
     apiClient
-      .post('api/todos/create', data, {
+      .post('api/todos', data, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
