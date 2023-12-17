@@ -24,23 +24,8 @@ class TodosController extends Controller
         return response()->json($todo, 200);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     // 詳細を表示するためのアクション
     public function show(Request $request)
-    {
-        $todo = Todo::find($request->id);
-        return $todo;
-    }
-
-    // 編集画面に画面遷移するためのアクション
-    public function edit(Request $request)
     {
         $todo = Todo::find($request->id);
         return $todo;
