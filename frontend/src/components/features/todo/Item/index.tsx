@@ -57,11 +57,12 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
           text={'編集'}
           onClickEvent={handleOnClick.editTodo}
           style={{ width: '100%' }}
+          onClick={() => handleOnClick.editTodo(item)}
         />
         <DangerButton
           itemId={item.id}
           text={'削除'}
-          onClickEvent={handleOnClick.deleteTodo}
+          onClick={() => handleOnClick.deleteTodo(item.id)}
         />
       </div>
     </li>
