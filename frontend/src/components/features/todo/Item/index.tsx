@@ -4,7 +4,7 @@ import { Alert, Snackbar } from '@mui/material'
 import { DangerButton } from 'components/common/Button/Danger'
 import { PrimaryButton } from 'components/common/Button/Primary'
 import { useTodoItemEditModalStateMutators } from 'globalStates/todoItemEditModalState'
-import { useTodoItemMutators } from 'globalStates/todoItemState'
+import { useTodoStateMutators } from 'globalStates/todoState'
 import { usePostDeleteTodo } from 'hooks/usePostDeleteTodo'
 import { useCallback } from 'react'
 import { TodoType } from 'types/todo'
@@ -16,7 +16,7 @@ type TodoItemProps = {
 
 export const TodoItem = ({ item, refetch }: TodoItemProps) => {
   const { doPost } = usePostDeleteTodo()
-  const { setState: setStateTodoItem } = useTodoItemMutators()
+  const { setTodoState } = useTodoStateMutators()
   const { setStateEditModal } = useTodoItemEditModalStateMutators()
 
   const handleOnClick = {
