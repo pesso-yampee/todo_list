@@ -20,8 +20,8 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
   const { setStateEditModal } = useTodoItemEditModalStateMutators()
 
   const handleOnClick = {
-    editTodo: (todoId: string) => {
-      setStateTodoItem({ id: todoId })
+    editTodo: (todo: TodoType) => {
+      setTodoState({ id: todo.id, detail: todo.detail, title: todo.title })
       setStateEditModal({ isOpen: true })
     },
     deleteTodo: useCallback(
