@@ -3,8 +3,7 @@
 import { PrimaryButton } from 'components/common/Button/Primary'
 import { SecondaryButton } from 'components/common/Button/Secondary'
 import { TodoItemEditModalStateProps } from 'globalStates/todoItemEditModalState'
-import { useTodoItemState } from 'globalStates/todoItemState'
-import { useFetchEditTodo } from 'hooks/useFetchEditTodo'
+import { useTodoState } from 'globalStates/todoState'
 import { usePutUpdateTodo } from 'hooks/usePutUpdateTodo'
 import { useEffect, useRef } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
@@ -16,8 +15,7 @@ type Props = {
 }
 
 export const EditTodoModal = ({ setStateEditModal, isOpen }: Props) => {
-  const todoItemState = useTodoItemState()
-  const { data } = useFetchEditTodo(todoItemState.id)
+  const todoState = useTodoState()
   const { doPost } = usePutUpdateTodo()
   const dialogRef = useRef<HTMLDivElement>(null)
   const {
@@ -27,8 +25,8 @@ export const EditTodoModal = ({ setStateEditModal, isOpen }: Props) => {
     formState: { errors },
   } = useForm<TodoUpdateResponse>({
     defaultValues: {
-      title: '',
-      detail: '',
+      title: todoState.title,
+      detail: todoState.detail,
     },
   })
   const handleOnCloseModal = () => {
