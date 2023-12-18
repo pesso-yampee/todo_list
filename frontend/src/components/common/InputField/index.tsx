@@ -6,7 +6,7 @@ import { FieldValues, useController, UseControllerProps } from 'react-hook-form'
 type Props<T extends FieldValues> = {
   control: UseControllerProps<T>['control']
   name: UseControllerProps<T>['name']
-  rules: UseControllerProps<T>['rules']
+  rules?: UseControllerProps<T>['rules']
   placeholder?: string
   type?: HTMLInputTypeAttribute
 }
