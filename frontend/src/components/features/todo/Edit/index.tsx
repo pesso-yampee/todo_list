@@ -35,7 +35,7 @@ export const EditTodoModal = ({ setStateEditModal, isOpen }: Props) => {
   const handleOnSubmit: SubmitHandler<TodoUpdateRequest> = (data) => {
     doPost({
       data,
-      id: todoItemState.id,
+      id: todoState.id,
       onSuccess: () => {
         console.log('成功しました')
       },
