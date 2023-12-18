@@ -56,13 +56,12 @@ export const AddTodo = () => {
           control={control}
           name={'title'}
           placeholder={'名前'}
-          rules={{ required: true }}
+          rules={{ required: '名前を入力してください' }}
         />
         <InputField
           control={control}
           name={'detail'}
           placeholder={'詳細'}
-          rules={{ required: true }}
         />
         <button
           type="submit"
