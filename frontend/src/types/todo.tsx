@@ -1,12 +1,12 @@
 export type TodoType = {
-  title: string
-  detail: string
   id: string
+  detail: string
+  title: string
 }
 
 export type TodoCreateRequest = {
-  title: string | null
   detail: string | null
+  title: string | null
 }
 
 export type TodoUpdateRequest = TodoCreateRequest & {
