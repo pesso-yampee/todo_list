@@ -53,14 +53,11 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
       <span className="text-lg">{item.title}</span>
       <div className="flex gap-2">
         <PrimaryButton
-          itemId={item.id}
           text={'編集'}
-          onClickEvent={handleOnClick.editTodo}
           style={{ width: '100%' }}
           onClick={() => handleOnClick.editTodo(item)}
         />
         <DangerButton
-          itemId={item.id}
           text={'削除'}
           onClick={() => handleOnClick.deleteTodo(item.id)}
         />
