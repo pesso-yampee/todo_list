@@ -21,7 +21,6 @@ export const EditTodoModal = ({ setStateEditModal, isOpen }: Props) => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<TodoUpdateResponse>({
     defaultValues: {
@@ -44,10 +43,6 @@ export const EditTodoModal = ({ setStateEditModal, isOpen }: Props) => {
       },
     })
   }
-
-  useEffect(() => {
-    reset({ title: data?.title ?? '', detail: data?.detail ?? '' })
-  }, [reset, data])
 
   useEffect(() => {
     if (isOpen) {
