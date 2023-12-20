@@ -4,9 +4,6 @@
  */
 export const PAGE_LIST = {
   TOP: '/',
-  CREATE: '/create',
-  DETAIL: `/detail/:id`,
-  EDIT: `/edit/:id`,
 }
 
 /**
@@ -15,7 +12,4 @@ export const PAGE_LIST = {
  */
 export const PAGE_PATH = {
   TOP: '/',
-  CREATE: '/create',
-  DETAIL: `/detail/`,
-  EDIT: `/edit/`,
 }
