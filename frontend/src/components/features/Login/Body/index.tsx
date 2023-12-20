@@ -2,13 +2,15 @@
 
 import { PrimaryButton } from 'components/common/Button/Primary'
 import { InputField } from 'components/common/InputField'
+import { PAGE_PATH } from 'constants/pagePath'
+import { EMAIL_REGEX } from 'constants/regexes'
 import { usePostLoginUser } from 'hooks/usePostLoginUser'
+import { useRouter } from 'next/navigation'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import {toast} from 'react-toastify'
 
-const EMAIL_REGEX = /^[-a-z0-9~!$%^&*_=+}{'?]+(\.[-a-z0-9~!$%^&*_=+}{'?]+)*@([a-z0-9_][-a-z0-9_]*(\.[-a-z0-9_]+)*\.(aero|arpa|biz|com|coop|edu|gov|info|int|mil|museum|name|net|org|pro|travel|mobi|[a-z][a-z])|([0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}))(:[0-9]{1,5})?$/i
-
 export const LoginBody = () => {
+  const router = useRouter()
   const { doPost } = usePostLoginUser()
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -21,7 +23,10 @@ export const LoginBody = () => {
   const onSubmitLogin: SubmitHandler<FieldValues> = (data) => {
     doPost({
       data,
-      onSuccess: () => toast.success('ログインに成功しました。'),
+      onSuccess: () => {
+        toast.success('ログインに成功しました。')
+        router.push(PAGE_PATH.TOP)
+      },
       onError: () => toast.error('ログインに失敗しました。'),
     })
   }
