@@ -1,4 +1,6 @@
 <?php
+use App\Http\Controllers\Api\MeController;
+use App\Http\Controllers\TodosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -13,5 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => ['api', 'auth:sanctum']], function() {
+Route::group(['middleware' => ['auth:sanctum']], function() {
+  Route::get('/me', MeController::class);
+  Route::apiResource('/todos', TodosController::class);
 });

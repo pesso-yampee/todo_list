@@ -17,18 +17,13 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            $result = true;
-            $status = 200;
-            $message = 'OK';
-            $user = Auth::user();
-            // 古いトークン削除して、新しいトークンを生成する
-            $user->tokens()->where('name', 'token-name')->delete();
-            $token = $user->createToken('token-name')->plainTextToken;
- 
-            return response()->json(['result' => $result, 'status' => $status, 'message' => $message]);
+            $request->session()->regenerate();
+
+            return response()->json(Auth::user());
         }
+
+            return response()->json([], 401);
  
-        return response()->json(['result' => false, 'status' => 401, 'message' => 'ユーザーが見つかりません。'], 401);
     }
 
     /**

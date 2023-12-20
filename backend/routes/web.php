@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\Api\MeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,4 +16,5 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-Route::apiResource('api/todos', TodosController::class);
+Route::post('/api/login', 'App\Http\Controllers\AuthController@login');
+Route::post('/api/logout', 'App\Http\Controllers\AuthController@logout');
