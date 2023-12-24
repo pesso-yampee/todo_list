@@ -58,11 +58,7 @@ export const AddTodo = () => {
           placeholder={'名前'}
           rules={{ required: '名前を入力してください' }}
         />
-        <InputField
-          control={control}
-          name={'detail'}
-          placeholder={'詳細'}
-        />
+        <InputField control={control} name={'detail'} placeholder={'詳細'} />
         <button
           type="submit"
           className="rounded border-2 border-solid border-green-600 bg-green-600 py-2 text-white duration-300 hover:bg-white hover:text-green-600"

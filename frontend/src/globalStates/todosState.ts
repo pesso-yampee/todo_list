@@ -20,7 +20,10 @@ export const useTodosState = () => {
 export const useTodosMutators = () => {
   const setState = useSetRecoilState(todosState)
 
-  const setTodosState = useCallback((state: {todos: TodoType[]}) => setState(state), [setState])
+  const setTodosState = useCallback(
+    (state: { todos: TodoType[] }) => setState(state),
+    [setState]
+  )
 
   return { setTodosState }
 }

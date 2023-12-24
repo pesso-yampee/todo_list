@@ -1,5 +1,5 @@
-import { LoginBody } from "components/features/Login/Body";
-import { LoginHeader } from "components/features/Login/Header";
+import { LoginBody } from 'components/features/Login/Body'
+import { LoginHeader } from 'components/features/Login/Header'
 
 export default function Page() {
   return (

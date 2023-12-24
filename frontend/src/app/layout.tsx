@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
+import { AppProvider } from '../providers/AppProvider'
 import './globals.css'
-import { AppProvider } from './provider'
 
 export const metadata: Metadata = {
   title: 'Todo List',

@@ -7,7 +7,7 @@ const todoState = atom<TodoType>({
   default: {
     id: '',
     detail: '',
-    title: ''
+    title: '',
   },
 })
 
@@ -18,7 +18,10 @@ export const useTodoState = () => {
 export const useTodoStateMutators = () => {
   const setState = useSetRecoilState(todoState)
 
-  const setTodoState = useCallback((state: TodoType) => setState(state), [setState])
+  const setTodoState = useCallback(
+    (state: TodoType) => setState(state),
+    [setState]
+  )
 
   return { setTodoState }
 }

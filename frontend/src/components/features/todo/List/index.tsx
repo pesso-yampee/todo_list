@@ -1,18 +1,18 @@
 'use client'
 
+import { useTodosMutators } from 'globalStates/todosState'
 import { useFetchTodoList } from 'hooks/useFetchTodoList'
+import { useEffect } from 'react'
 import { TodoType } from 'types/todo'
 import { TodoItem } from '../Item'
-import { useTodosMutators } from 'globalStates/todosState'
-import { useEffect } from 'react'
 
 export const TodoList = () => {
   const { data, refetch } = useFetchTodoList()
-  const {setTodosState} = useTodosMutators()
+  const { setTodosState } = useTodosMutators()
 
   useEffect(() => {
     if (data) {
-      setTodosState({todos: data})
+      setTodosState({ todos: data })
     }
   }, [data, setTodosState])
 
