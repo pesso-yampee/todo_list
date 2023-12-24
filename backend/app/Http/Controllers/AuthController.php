@@ -25,7 +25,10 @@ class AuthController extends Controller
             return response()->json(Auth::user());
         }
 
-            return response()->json([], 401);
+            throw ValidationException::withMessages([
+                'email' => "ログインに失敗しました",
+            ]);
+            
  
     }
 
