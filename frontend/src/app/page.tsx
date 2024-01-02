@@ -1,5 +1,6 @@
 'use client'
 
+import { HeaderNavigation } from 'components/common/HeaderNavigation'
 import { AddTodo } from 'components/features/Todo/Add'
 import { EditTodoModal } from 'components/features/Todo/Edit'
 
@@ -28,7 +29,8 @@ export default function Page() {
 
   return (
     <>
-      <div className="mx-6 grid h-screen place-items-center">
+      <HeaderNavigation />
+      <div className="mx-6 grid h-screen place-items-center pt-20">
         <div className="min-w-[450px]">
           <h1 className="text-center text-lg font-bold">TODOリスト</h1>
           <AddTodo />
