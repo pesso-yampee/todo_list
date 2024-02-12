@@ -6,11 +6,12 @@ type Props = {
   onError: () => void
 }
 export const usePostDeleteTodo = () => {
-  const doPost = ({ id, onSuccess, onError }: Props) => {
+  
+  const doPost = ({ id, onError, onSuccess }: Props) => {
     apiClient
-      .delete(`api/todos/${id}`)
-      .then(() => onSuccess())
-      .catch(() => onError())
+        .delete(`/api/todos/${id}`)
+        .then(() => onSuccess())
+        .catch(() => onError())
   }
 
   return {
