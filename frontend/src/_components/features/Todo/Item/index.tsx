@@ -1,8 +1,8 @@
 'use client'
 
 import { Alert, Snackbar } from '@mui/material'
-import { DangerButton } from 'components/common/Button/Danger'
-import { PrimaryButton } from 'components/common/Button/Primary'
+import { DangerButton } from '_components/common/Button/Danger'
+import { PrimaryButton } from '_components/common/Button/Primary'
 import { useTodoItemEditModalStateMutators } from 'globalStates/todoItemEditModalState'
 import { useTodoStateMutators } from 'globalStates/todoState'
 import { usePostDeleteTodo } from 'hooks/usePostDeleteTodo'

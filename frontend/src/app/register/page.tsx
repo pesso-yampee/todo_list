@@ -1,5 +1,5 @@
-import { RegisterBody } from 'components/features/Register/Body'
-import { RegisterHeader } from 'components/features/Register/Header'
+import { RegisterBody } from '_components/features/Register/Body'
+import { RegisterHeader } from '_components/features/Register/Header'
 
 export default function Page() {
   return (

@@ -1,10 +1,9 @@
 'use client'
 
-import { HeaderNavigation } from 'components/common/HeaderNavigation'
-import { AddTodo } from 'components/features/Todo/Add'
-import { EditTodoModal } from 'components/features/Todo/Edit'
+import { AddTodo } from '_components/features/Todo/Add'
+import { EditTodoModal } from '_components/features/Todo/Edit'
 
-import { TodoList } from 'components/features/Todo/List'
+import { TodoList } from '_components/features/Todo/List'
 import {
   useTodoItemEditModalState,
   useTodoItemEditModalStateMutators,
@@ -19,7 +18,7 @@ import dynamic from 'next/dynamic'
  * ページ読み込み時に必要なJSファイルを削減できるため、ページ表示速度改善にもつながる。
  */
 const DynamicAppSuspense = dynamic(
-  () => import('../components/common/AppSuspense'),
+  () => import('../_components/common/AppSuspense'),
   { ssr: false }
 )
 
@@ -29,7 +28,6 @@ export default function Page() {
 
   return (
     <>
-      <HeaderNavigation />
       <div className="mx-6 grid h-screen place-items-center pt-20">
         <div className="min-w-[450px]">
           <h1 className="text-center text-lg font-bold">TODOリスト</h1>

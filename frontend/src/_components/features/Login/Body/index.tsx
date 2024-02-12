@@ -1,15 +1,17 @@
 'use client'
 
-import { PrimaryButton } from 'components/common/Button/Primary'
-import { InputField } from 'components/common/InputField'
+import { PrimaryButton } from '_components/common/Button/Primary'
+import { InputField } from '_components/common/InputField'
 import { PAGE_PATH } from 'constants/pagePath'
 import { EMAIL_REGEX } from 'constants/regexes'
 import { usePostLoginUser } from 'hooks/usePostLoginUser'
 import { useRouter } from 'next/navigation'
+import { useAuth } from 'providers/AuthProvider'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 
 export const LoginBody = () => {
+  const { setIsAuth } = useAuth()
   const router = useRouter()
   const { doPost } = usePostLoginUser()
   const { control, handleSubmit } = useForm({
@@ -25,6 +27,7 @@ export const LoginBody = () => {
       data,
       onSuccess: () => {
         toast.success('ログインに成功しました。')
+        setIsAuth(true)
         router.push(PAGE_PATH.TOP)
       },
       onError: () => toast.error('ログインに失敗しました。'),
@@ -39,7 +42,13 @@ export const LoginBody = () => {
           <InputField
             control={control}
             name={'email'}
-            rules={{ required: 'メールアドレスを入力してください', pattern: {value: EMAIL_REGEX, message: '正しい形式で入力してください'} }}
+            rules={{
+              required: 'メールアドレスを入力してください',
+              pattern: {
+                value: EMAIL_REGEX,
+                message: '正しい形式で入力してください',
+              },
+            }}
             type="email"
           />
         </div>

@@ -1,7 +1,7 @@
 'use client'
 
-import { PrimaryButton } from 'components/common/Button/Primary'
-import { InputField } from 'components/common/InputField'
+import { PrimaryButton } from '_components/common/Button/Primary'
+import { InputField } from '_components/common/InputField'
 import { usePostRegisterMemberInfo } from 'hooks/usePostRegisterMemberInfo'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 

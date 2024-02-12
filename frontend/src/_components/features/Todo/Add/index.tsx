@@ -1,7 +1,7 @@
 'use client'
 
-import { Alert } from 'components/common/Alert'
-import { InputField } from 'components/common/InputField'
+import { Alert } from '_components/common/Alert'
+import { InputField } from '_components/common/InputField'
 import { usePostCreateTodo } from 'hooks/usePostCreateTodo'
 import { useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'

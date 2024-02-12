@@ -1,3 +1,4 @@
+import { HeaderNavigation } from '_components/common/HeaderNavigation'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 import { AppProvider } from '../providers/AppProvider'
@@ -11,7 +12,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="ja">
       <body>
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <HeaderNavigation />
+          {children}
+        </AppProvider>
       </body>
     </html>
   )

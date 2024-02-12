@@ -1,7 +1,7 @@
 'use client'
 
-import { PrimaryButton } from 'components/common/Button/Primary'
-import { SecondaryButton } from 'components/common/Button/Secondary'
+import { PrimaryButton } from '_components/common/Button/Primary'
+import { SecondaryButton } from '_components/common/Button/Secondary'
 import { TodoItemEditModalStateProps } from 'globalStates/todoItemEditModalState'
 import { useTodoState } from 'globalStates/todoState'
 import { usePutUpdateTodo } from 'hooks/usePutUpdateTodo'
