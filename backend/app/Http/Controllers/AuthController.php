@@ -29,6 +29,7 @@ class AuthController extends Controller
                 'email' => "ログインに失敗しました",
             ]);
             
+            return response() -> json([], 401);
  
     }
 
