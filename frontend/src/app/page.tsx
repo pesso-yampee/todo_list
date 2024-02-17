@@ -1,14 +1,14 @@
 'use client'
 
 import { HeaderNavigation } from '_components/common/header-navigation'
-import { AddTodo } from '_components/features/Todo/Add'
 import { EditTodoModal } from '_components/features/Todo/Edit'
 
-import { TodoList } from '_components/features/Todo/List'
 import { useAtomValue } from 'jotai'
+import { TodoList } from '_components/features/Todo/List'
 
 import dynamic from 'next/dynamic'
 import { todoEditModalAtom } from 'store'
+import { AddTodoArea } from '_components/features/Todo/Add'
 
 /**
  * NOTE:
@@ -30,16 +30,14 @@ export default function Page() {
         <HeaderNavigation />
         <div className="min-w-[450px]">
           <h1 className="text-center text-lg font-bold">TODOリスト</h1>
-          <AddTodo />
+          <AddTodoArea />
           <DynamicAppSuspense>
             <TodoList />
           </DynamicAppSuspense>
         </div>
       </div>
       {todoEditModalState.isOpen && (
-        <EditTodoModal
-          isOpen={todoEditModalState.isOpen}
-        />
+        <EditTodoModal isOpen={todoEditModalState.isOpen} />
       )}
     </>
   )

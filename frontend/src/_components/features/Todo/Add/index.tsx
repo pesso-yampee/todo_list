@@ -7,7 +7,7 @@ import { useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TodoCreateRequest } from 'types/todo'
 
-export const AddTodo = () => {
+export const AddTodoArea = () => {
   const { doPost } = usePostCreateTodo()
   const [isCreateLoading, setIsCreateLoading] = useState(false)
   const submitProcessing = useRef(false)
