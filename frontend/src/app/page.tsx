@@ -26,7 +26,7 @@ export default function Page() {
   
   return (
     <>
-      <div className="mx-6 grid h-screen place-items-center pt-20">
+      <div className="mx-6 pb-6 pt-20">
         <HeaderNavigation />
         <div className="min-w-[450px]">
           <h1 className="text-center text-lg font-bold">TODOリスト</h1>
