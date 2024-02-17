@@ -1,15 +1,14 @@
 'use client'
 
+import { HeaderNavigation } from '_components/common/header-navigation'
 import { AddTodo } from '_components/features/Todo/Add'
 import { EditTodoModal } from '_components/features/Todo/Edit'
 
 import { TodoList } from '_components/features/Todo/List'
-import {
-  useTodoItemEditModalState,
-  useTodoItemEditModalStateMutators,
-} from 'globalStates/todoItemEditModalState'
+import { useAtomValue } from 'jotai'
 
 import dynamic from 'next/dynamic'
+import { todoEditModalAtom } from 'store'
 
 /**
  * NOTE:
@@ -23,12 +22,12 @@ const DynamicAppSuspense = dynamic(
 )
 
 export default function Page() {
-  const todoItemEditModalState = useTodoItemEditModalState()
-  const { setStateEditModal } = useTodoItemEditModalStateMutators()
-
+  const todoEditModalState = useAtomValue(todoEditModalAtom)
+  
   return (
     <>
       <div className="mx-6 grid h-screen place-items-center pt-20">
+        <HeaderNavigation />
         <div className="min-w-[450px]">
           <h1 className="text-center text-lg font-bold">TODOリスト</h1>
           <AddTodo />
@@ -37,10 +36,9 @@ export default function Page() {
           </DynamicAppSuspense>
         </div>
       </div>
-      {todoItemEditModalState.isOpen && (
+      {todoEditModalState.isOpen && (
         <EditTodoModal
-          setStateEditModal={setStateEditModal}
-          isOpen={todoItemEditModalState.isOpen}
+          isOpen={todoEditModalState.isOpen}
         />
       )}
     </>

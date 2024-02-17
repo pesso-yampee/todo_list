@@ -2,20 +2,20 @@
 
 import { PrimaryButton } from '_components/common/Button/Primary'
 import { SecondaryButton } from '_components/common/Button/Secondary'
-import { TodoItemEditModalStateProps } from 'globalStates/todoItemEditModalState'
-import { useTodoState } from 'globalStates/todoState'
 import { usePutUpdateTodo } from 'hooks/usePutUpdateTodo'
+import { useAtomValue, useSetAtom } from 'jotai'
 import { useEffect, useRef } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { todoAtom, todoEditModalAtom } from 'store'
 import { TodoUpdateRequest, TodoUpdateResponse } from 'types/todo'
 
 type Props = {
-  setStateEditModal: (state: TodoItemEditModalStateProps) => void
   isOpen: boolean
 }
 
-export const EditTodoModal = ({ setStateEditModal, isOpen }: Props) => {
-  const todoState = useTodoState()
+export const EditTodoModal = ({isOpen }: Props) => {
+  const todoState = useAtomValue(todoAtom)
+  const setTodoEditModalState = useSetAtom(todoEditModalAtom)
   const { doPost } = usePutUpdateTodo()
   const dialogRef = useRef<HTMLDivElement>(null)
   const {
@@ -29,7 +29,7 @@ export const EditTodoModal = ({ setStateEditModal, isOpen }: Props) => {
     },
   })
   const handleOnCloseModal = () => {
-    setStateEditModal({ isOpen: false })
+    setTodoEditModalState(() => ({ isOpen: false }))
   }
   const handleOnSubmit: SubmitHandler<TodoUpdateRequest> = (data) => {
     doPost({
