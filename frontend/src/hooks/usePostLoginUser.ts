@@ -1,6 +1,8 @@
 import { AxiosResponse } from 'axios'
 import { apiClient } from 'constants/apiClient'
+import { useSetAtom } from 'jotai'
 import { FieldValues } from 'react-hook-form'
+import { isAuthenticatedAtom } from 'store'
 
 type LoginResponse = {
   id: number
@@ -18,12 +20,29 @@ type Props = {
 }
 
 export const usePostLoginUser = () => {
+  const setIsAuthenticated = useSetAtom(isAuthenticatedAtom)
+
+  const fetchMe = async () => {
+    return apiClient
+      .get('api/me')
+      .then((response) => {
+        if (response.data) {
+          setIsAuthenticated(() => ({isAuthenticated: true}))
+        }
+      })
+      .catch((error) => {
+        setIsAuthenticated(() => ({isAuthenticated: false}))
+      })
+  }
+
   const doPost = ({ data, onError, onSuccess }: Props) => {
-    apiClient.get('/sanctum/csrf-cookie').then(() => {
-      apiClient
+    apiClient.get('/sanctum/csrf-cookie').then(async () => {
+      await apiClient
         .post('/api/login', data)
         .then((response: AxiosResponse<LoginResponse>) => onSuccess(response))
         .catch(() => onError())
+      
+      await fetchMe()
     })
   }
 
