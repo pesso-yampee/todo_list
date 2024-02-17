@@ -7,7 +7,7 @@ export const HeaderNavigation = () => {
   
   return (
     <header className="fixed left-0 top-0 w-full">
-      <nav className="h-12 bg-green-600 px-4">
+      <nav className="h-12 bg-green-600 px-6">
         <ul className="flex h-full items-center justify-end gap-x-2">
           {!isAuthenticated ? (
             <>
