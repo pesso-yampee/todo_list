@@ -1,45 +1,63 @@
 'use client'
 
+import { AppBar,Container,Link,List,ListItem } from '@mui/material'
 import { useHeaderNavigation } from './fetchers/use-header-navigation'
 
 export const HeaderNavigation = () => {
   const { isAuthenticated, onClickLogin, onClickLogout, onClickRegister } = useHeaderNavigation()
+  const navigationList = [
+    { name: 'ログイン', event: onClickLogin },
+    { name: '新規登録', event: onClickRegister },
+    { name: 'ログアウト', event: onClickLogout },
+  ]
   
   return (
-    <header className="fixed left-0 top-0 w-full">
-      <nav className="h-12 bg-green-600 px-6">
-        <ul className="flex h-full items-center justify-end gap-x-2">
-          {!isAuthenticated ? (
-            <>
-              <li className="flex h-full items-center">
-                <button
-                  className="h-full text-sm font-bold text-white w-20"
-                  onClick={onClickLogin}
+    <AppBar component="nav" sx={{ backgroundColor: 'green' }} >
+      <Container>
+        <List sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          {navigationList.map((item, index) => {
+            if (isAuthenticated && index < 2) {
+              return (
+                <ListItem key={index} sx={{ display: 'none', width: 'fit-content' }} disableGutters>
+                  <Link
+                    onClick={item.event}
+                    sx={{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      width: '5em',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    {item.name}
+                  </Link>
+                </ListItem>
+              )
+            } else {
+              return (
+                <ListItem
+                  key={index}
+                  sx={{ width: 'fit-content' }}
+                  disableGutters
                 >
-                  ログイン
-                </button>
-              </li>
-              <li className="flex h-full items-center">
-                <button
-                  className="h-full text-sm font-bold text-white w-20"
-                  onClick={onClickRegister}
-                >
-                  新規登録
-                </button>
-              </li>
-            </>
-          ) : (
-            <li className="flex h-full items-center">
-              <button
-                className="h-full text-sm font-bold text-white"
-                onClick={onClickLogout}
-              >
-                ログアウト
-              </button>
-            </li>
-          )}
-        </ul>
-      </nav>
-    </header>
+                  <Link
+                    onClick={item.event}
+                    sx={{
+                      color: 'white',
+                      fontWeight: 'bold',
+                      cursor: 'pointer',
+                      width: '5em',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    {item.name}
+                  </Link>
+                </ListItem>
+              )
+            }
+          })}
+        </List>
+      </Container>
+    </AppBar>
   )
 }
