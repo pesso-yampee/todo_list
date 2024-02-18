@@ -1,5 +1,6 @@
 'use client'
 
+import { List } from '@mui/material'
 import { useFetchTodoList } from 'hooks/useFetchTodoList'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
@@ -18,12 +19,13 @@ export const TodoList = () => {
   }, [data, setTodos])
 
   return (
-    <>
-      <ul className='mt-6 grid gap-2'>
-        {data?.map((item: TodoType) => (
-          <TodoItem key={item.id} item={item} refetch={refetch} />
-        ))}
-      </ul>
-    </>
+    <List
+      disablePadding
+      sx={{ marginTop: '24px', display: 'grid', gap: '8px' }}
+    >
+      {data?.map((item: TodoType) => (
+        <TodoItem key={item.id} item={item} refetch={refetch} />
+      ))}
+    </List>
   )
 }

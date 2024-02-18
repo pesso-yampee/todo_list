@@ -1,13 +1,12 @@
 'use client'
 
-import { Alert, Snackbar } from '@mui/material'
+import { Alert, ListItem, Snackbar, Stack, Typography } from '@mui/material'
 import { usePostDeleteTodo } from 'hooks/usePostDeleteTodo'
 import { useSetAtom } from 'jotai'
 import { useCallback } from 'react'
 import { todoAtom, todoEditModalAtom } from 'store'
 import { TodoType } from 'types/todo'
-import { DangerButton } from '_components/common/Button/Danger'
-import { PrimaryButton } from '_components/common/Button/Primary'
+import { Button } from '_components/common/Button'
 
 type TodoItemProps = {
   item: TodoType
@@ -49,19 +48,27 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
     ),
   }
   return (
-    <li className='flex items-center justify-between'>
-      <span className='text-lg'>{item.title}</span>
-      <div className='flex gap-2'>
-        <PrimaryButton
+    <ListItem
+      disableGutters
+      disablePadding
+      sx={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+      }}
+    >
+      <Typography fontSize={'20px'}>{item.title}</Typography>
+      <Stack gap={'8px'}>
+        <Button
           text={'編集'}
-          style={{ width: '100%' }}
+          fullWidth
           onClick={() => handleOnClick.editTodo(item)}
         />
-        <DangerButton
+        <Button
           text={'削除'}
           onClick={() => handleOnClick.deleteTodo(item.id)}
         />
-      </div>
-    </li>
+      </Stack>
+    </ListItem>
   )
 }

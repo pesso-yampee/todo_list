@@ -1,4 +1,5 @@
-import { Provider } from 'jotai'
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
+import { Provider as JotaiProvider } from 'jotai'
 import { Metadata } from 'next'
 import { ReactNode } from 'react'
 import './globals.css'
@@ -11,7 +12,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='ja'>
       <body>
-        <Provider>{children}</Provider>
+        <JotaiProvider>
+          <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+        </JotaiProvider>
       </body>
     </html>
   )

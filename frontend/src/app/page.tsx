@@ -33,7 +33,9 @@ export default function Page() {
           <Typography
             variant={'h1'}
             gutterBottom={false}
-            sx={{ textAlign: 'center', fontSize: '24px', fontWeight: 'bold' }}
+            textAlign={'center'}
+            fontSize={'24px'}
+            fontWeight={'bold'}
           >
             TODOリスト
           </Typography>

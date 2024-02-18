@@ -13,7 +13,7 @@ export const HeaderNavigation = () => {
   ]
 
   return (
-    <AppBar component='nav' sx={{ backgroundColor: 'green' }}>
+    <AppBar component={'nav'} sx={{ backgroundColor: 'green' }}>
       <Container>
         <List sx={{ display: 'flex', justifyContent: 'flex-end' }}>
           {navigationList.map((item, index) => {
@@ -26,13 +26,10 @@ export const HeaderNavigation = () => {
                 >
                   <Link
                     onClick={item.event}
-                    sx={{
-                      color: 'white',
-                      fontWeight: 'bold',
-                      cursor: 'pointer',
-                      width: '5em',
-                      textDecoration: 'none',
-                    }}
+                    color={'white'}
+                    fontWeight={'bold'}
+                    width={'5em'}
+                    sx={{ cursor: 'pointer', textDecoration: 'none' }}
                   >
                     {item.name}
                   </Link>
@@ -47,13 +44,10 @@ export const HeaderNavigation = () => {
                 >
                   <Link
                     onClick={item.event}
-                    sx={{
-                      color: 'white',
-                      fontWeight: 'bold',
-                      cursor: 'pointer',
-                      width: '5em',
-                      textDecoration: 'none',
-                    }}
+                    color={'white'}
+                    fontWeight={'bold'}
+                    width={'5em'}
+                    sx={{ cursor: 'pointer', textDecoration: 'none' }}
                   >
                     {item.name}
                   </Link>

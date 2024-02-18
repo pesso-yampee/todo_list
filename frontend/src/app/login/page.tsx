@@ -1,13 +1,32 @@
+import { Box, Typography } from '@mui/material'
 import { LoginBody } from '_components/features/Login/Body'
-import { LoginHeader } from '_components/features/Login/Header'
 
 export default function Page() {
   return (
-    <div className='grid h-screen place-items-center px-4'>
-      <div className='m-auto w-full max-w-[600px] border-2 border-solid border-gray-300'>
-        <LoginHeader />
+    <Box
+      paddingX={'4px'}
+      height={'100vh'}
+      sx={{ display: 'grid', placeItems: 'center' }}
+    >
+      <Box
+        border={'solid 2px #d0d0d0'}
+        maxWidth={'600px'}
+        width={'100%'}
+        height={'fit-content'}
+        marginInline={'auto'}
+      >
+        <Box bgcolor={'#d0d0d0'} paddingY={'4px'}>
+          <Typography
+            display={'block'}
+            textAlign={'center'}
+            fontWeight={'bold'}
+            fontSize={'16px'}
+          >
+            ログイン
+          </Typography>
+        </Box>
         <LoginBody />
-      </div>
-    </div>
+      </Box>
+    </Box>
   )
 }

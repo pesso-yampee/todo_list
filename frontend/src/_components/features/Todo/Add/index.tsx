@@ -1,10 +1,12 @@
 'use client'
 
+import { Box } from '@mui/material'
 import { usePostCreateTodo } from 'hooks/usePostCreateTodo'
 import { useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TodoCreateRequest } from 'types/todo'
 import { Alert } from '_components/common/Alert'
+import { Button } from '_components/common/Button'
 import { InputField } from '_components/common/InputField'
 
 export const AddTodoArea = () => {
@@ -47,11 +49,14 @@ export const AddTodoArea = () => {
   }
 
   return (
-    <form
-      className='mt-4 grid gap-4'
+    <Box
+      component={'form'}
+      marginTop={'16px'}
+      display={'grid'}
+      gap={'16px'}
       onSubmit={handleSubmit(handleOnSubmitCreateTodo)}
     >
-      <div className='grid gap-4'>
+      <Box display={'grid'} gap={'16px'}>
         <InputField
           control={control}
           name={'title'}
@@ -59,13 +64,12 @@ export const AddTodoArea = () => {
           rules={{ required: '名前を入力してください' }}
         />
         <InputField control={control} name={'detail'} placeholder={'詳細'} />
-        <button
-          type='submit'
-          className='rounded border-2 border-solid border-green-600 bg-green-600 py-2 text-white duration-300 hover:bg-white hover:text-green-600'
-        >
-          {isCreateLoading ? '作成中' : '作成する'}
-        </button>
-      </div>
-    </form>
+        <Button
+          type={'submit'}
+          color={'secondary'}
+          text={isCreateLoading ? '作成中' : '作成する'}
+        ></Button>
+      </Box>
+    </Box>
   )
 }

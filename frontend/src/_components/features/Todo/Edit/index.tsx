@@ -1,13 +1,14 @@
 'use client'
 
+import { Box, Stack } from '@mui/material'
 import { usePutUpdateTodo } from 'hooks/usePutUpdateTodo'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { useEffect, useRef } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { todoAtom, todoEditModalAtom } from 'store'
 import { TodoUpdateRequest, TodoUpdateResponse } from 'types/todo'
-import { PrimaryButton } from '_components/common/Button/Primary'
-import { SecondaryButton } from '_components/common/Button/Secondary'
+import { Button } from '_components/common/Button'
+import { InputField } from '_components/common/InputField'
 
 type Props = {
   isOpen: boolean
@@ -19,7 +20,7 @@ export const EditTodoModal = ({ isOpen }: Props) => {
   const { doPost } = usePutUpdateTodo()
   const dialogRef = useRef<HTMLDivElement>(null)
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
   } = useForm<TodoUpdateResponse>({
@@ -51,61 +52,59 @@ export const EditTodoModal = ({ isOpen }: Props) => {
   }, [isOpen])
 
   return (
-    <div
+    <Stack
       ref={dialogRef}
       role={'dialog'}
       aria-modal={'true'}
       tabIndex={-1}
       aria-hidden={'false'}
-      className='fixed inset-0 flex items-center justify-center backdrop-blur-sm'
+      position={'fixed'}
+      alignItems={'center'}
+      justifyContent={'center'}
+      sx={{ inset: 0, backdropFilter: 'filter(5px)' }}
     >
-      <div className='rounded-3 w-[450px] border-2 border-gray-200 bg-white p-6'>
-        <form
+      <Box
+        borderRadius={'3px'}
+        border={'solid 2px #d0d0d0'}
+        width={'450px'}
+        bgcolor={'white'}
+        padding={'24px'}
+      >
+        <Box
+          component={'form'}
           noValidate
           onSubmit={handleSubmit(handleOnSubmit)}
-          className='gap-6'
+          display={'grid'}
+          gap={'24px'}
         >
-          <div className='grid gap-2'>
-            <div className='grid gap-2'>
-              <div className='grid gap-2'>
-                <div className='group relative rounded border-2 border-gray-200'>
-                  <input
-                    id={'title'}
-                    type={'text'}
-                    placeholder={'名前'}
-                    className='group w-full p-2 duration-300 invalid:border-red-500 invalid:text-red-500 focus:pt-8'
-                    {...register('title', {
-                      required: true,
-                    })}
-                  />
-                </div>
-                {errors.title && <span>入力が必須な項目です</span>}
-              </div>
-              <div className='grid gap-2'>
-                <div className='group relative rounded border-2 border-gray-200'>
-                  <input
-                    id={'detail'}
-                    type={'text'}
-                    placeholder={'詳細'}
-                    className='group w-full p-2 duration-300 invalid:border-red-500 invalid:text-red-500 focus:pt-8'
-                    {...register('detail', {
-                      required: true,
-                    })}
-                  />
-                </div>
-                {errors.detail && <span>入力が必須な項目です</span>}
-              </div>
-            </div>
-            <div className='flex gap-2'>
-              <SecondaryButton
-                text={'キャンセル'}
-                onClickEvent={handleOnCloseModal}
+          <Stack direction={'column'} gap={'4px'}>
+            <Stack direction={'column'} gap={'4px'}>
+              <InputField
+                type={'text'}
+                control={control}
+                name={'title'}
+                placeholder={'名前'}
+                // rules={{
+                //   required: {message: '入力が必須な項目です'}
+                // }}
               />
-              <PrimaryButton text={'更新する'} style={{ width: '100%' }} />
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
+              <InputField
+                type={'text'}
+                control={control}
+                name={'detail'}
+                placeholder={'詳細'}
+                // rules={{
+                //   required: {message: '入力が必須な項目です'}
+                // }}
+              />
+            </Stack>
+            <Stack gap={'4px'}>
+              <Button text={'キャンセル'} onClick={handleOnCloseModal} />
+              <Button text={'更新する'} fullWidth />
+            </Stack>
+          </Stack>
+        </Box>
+      </Box>
+    </Stack>
   )
 }
