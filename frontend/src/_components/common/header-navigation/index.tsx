@@ -26,7 +26,7 @@ export const HeaderNavigation = () => {
                 >
                   <Link
                     onClick={item.event}
-                    color={'white'}
+                    color={'#ffffff'}
                     fontWeight={'bold'}
                     width={'5em'}
                     sx={{ cursor: 'pointer', textDecoration: 'none' }}
@@ -44,7 +44,7 @@ export const HeaderNavigation = () => {
                 >
                   <Link
                     onClick={item.event}
-                    color={'white'}
+                    color={'#ffffff'}
                     fontWeight={'bold'}
                     width={'5em'}
                     sx={{ cursor: 'pointer', textDecoration: 'none' }}

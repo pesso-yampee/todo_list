@@ -67,7 +67,7 @@ export const EditTodoModal = ({ isOpen }: Props) => {
         borderRadius={'3px'}
         border={'solid 2px #d0d0d0'}
         width={'450px'}
-        bgcolor={'white'}
+        bgcolor={'#ffffff'}
         padding={'24px'}
       >
         <Box

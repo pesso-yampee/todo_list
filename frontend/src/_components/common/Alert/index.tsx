@@ -15,7 +15,7 @@ export const Alert = ({ severity, text }: Props) => {
       justifyContent={'center'}
       bgcolor={`${severity === 'success' ? 'bg-blue-500' : 'bg-red-500'}`}
     >
-      <Typography color={'white'} fontWeight={'bold'}>
+      <Typography color={'#ffffff'} fontWeight={'bold'}>
         {text}
       </Typography>
     </Stack>
