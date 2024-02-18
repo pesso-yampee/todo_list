@@ -6,6 +6,7 @@ import { EditTodoModal } from '_components/features/Todo/Edit'
 import { useAtomValue } from 'jotai'
 import { TodoList } from '_components/features/Todo/List'
 
+import { Box, Container, Typography } from '@mui/material'
 import dynamic from 'next/dynamic'
 import { todoEditModalAtom } from 'store'
 import { AddTodoArea } from '_components/features/Todo/Add'
@@ -23,19 +24,25 @@ const DynamicAppSuspense = dynamic(
 
 export default function Page() {
   const todoEditModalState = useAtomValue(todoEditModalAtom)
-  
+
   return (
     <>
-      <div className="mx-6 pb-6 pt-20">
+      <Container sx={{ marginTop: '56px', paddingTop: '20px' }}>
         <HeaderNavigation />
-        <div className="min-w-[450px]">
-          <h1 className="text-center text-lg font-bold">TODOリスト</h1>
+        <Box>
+          <Typography
+            variant={'h1'}
+            gutterBottom={false}
+            sx={{ textAlign: 'center', fontSize: '24px', fontWeight: 'bold' }}
+          >
+            TODOリスト
+          </Typography>
           <AddTodoArea />
           <DynamicAppSuspense>
             <TodoList />
           </DynamicAppSuspense>
-        </div>
-      </div>
+        </Box>
+      </Container>
       {todoEditModalState.isOpen && (
         <EditTodoModal isOpen={todoEditModalState.isOpen} />
       )}
