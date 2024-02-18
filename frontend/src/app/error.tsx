@@ -1,5 +1,5 @@
 'use client'
-import { Box, Typography } from '@mui/material'
+import { Typography } from '@mui/material'
 import { useEffect } from 'react'
 import { Button } from '_components/common/Button'
 
@@ -14,9 +14,9 @@ export default function Error({ error, reset }: ErrorProps) {
   }, [error])
 
   return (
-    <Box>
+    <>
       <Typography variant={'h1'}>Something went wrong!</Typography>
       <Button text={'Try again'} onClick={() => reset()} />
-    </Box>
+    </>
   )
 }
