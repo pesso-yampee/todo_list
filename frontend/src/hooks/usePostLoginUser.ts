@@ -27,11 +27,11 @@ export const usePostLoginUser = () => {
       .get('api/me')
       .then((response) => {
         if (response.data) {
-          setIsAuthenticated(() => ({isAuthenticated: true}))
+          setIsAuthenticated(() => ({ isAuthenticated: true }))
         }
       })
       .catch((error) => {
-        setIsAuthenticated(() => ({isAuthenticated: false}))
+        setIsAuthenticated(() => ({ isAuthenticated: false }))
       })
   }
 
@@ -41,7 +41,7 @@ export const usePostLoginUser = () => {
         .post('/api/login', data)
         .then((response: AxiosResponse<LoginResponse>) => onSuccess(response))
         .catch(() => onError())
-      
+
       await fetchMe()
     })
   }

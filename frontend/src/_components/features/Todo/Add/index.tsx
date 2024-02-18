@@ -1,11 +1,11 @@
 'use client'
 
-import { Alert } from '_components/common/Alert'
-import { InputField } from '_components/common/InputField'
 import { usePostCreateTodo } from 'hooks/usePostCreateTodo'
 import { useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TodoCreateRequest } from 'types/todo'
+import { Alert } from '_components/common/Alert'
+import { InputField } from '_components/common/InputField'
 
 export const AddTodoArea = () => {
   const { doPost } = usePostCreateTodo()
@@ -48,10 +48,10 @@ export const AddTodoArea = () => {
 
   return (
     <form
-      className="mt-4 grid gap-4"
+      className='mt-4 grid gap-4'
       onSubmit={handleSubmit(handleOnSubmitCreateTodo)}
     >
-      <div className="grid gap-4">
+      <div className='grid gap-4'>
         <InputField
           control={control}
           name={'title'}
@@ -60,8 +60,8 @@ export const AddTodoArea = () => {
         />
         <InputField control={control} name={'detail'} placeholder={'詳細'} />
         <button
-          type="submit"
-          className="rounded border-2 border-solid border-green-600 bg-green-600 py-2 text-white duration-300 hover:bg-white hover:text-green-600"
+          type='submit'
+          className='rounded border-2 border-solid border-green-600 bg-green-600 py-2 text-white duration-300 hover:bg-white hover:text-green-600'
         >
           {isCreateLoading ? '作成中' : '作成する'}
         </button>

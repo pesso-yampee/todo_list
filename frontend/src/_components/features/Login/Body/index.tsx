@@ -1,7 +1,5 @@
 'use client'
 
-import { PrimaryButton } from '_components/common/Button/Primary'
-import { InputField } from '_components/common/InputField'
 import { PAGE_PATH } from 'constants/pagePath'
 import { EMAIL_REGEX } from 'constants/regexes'
 import { usePostLoginUser } from 'hooks/usePostLoginUser'
@@ -10,12 +8,14 @@ import { useRouter } from 'next/navigation'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { isAuthenticatedAtom } from 'store'
+import { PrimaryButton } from '_components/common/Button/Primary'
+import { InputField } from '_components/common/InputField'
 
 export const LoginBody = () => {
   const router = useRouter()
   const setIsAuthenticated = useSetAtom(isAuthenticatedAtom)
   const { doPost } = usePostLoginUser()
-  
+
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: '',
@@ -29,7 +29,7 @@ export const LoginBody = () => {
       data,
       onSuccess: () => {
         toast.success('ログインに成功しました。')
-        setIsAuthenticated({isAuthenticated: true})
+        setIsAuthenticated({ isAuthenticated: true })
         router.push(PAGE_PATH.TOP)
       },
       onError: () => toast.error('ログインに失敗しました。'),
@@ -37,10 +37,10 @@ export const LoginBody = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmitLogin)} className="w-full">
-      <div className="grid gap-2 p-4">
-        <div className="">
-          <label className="text-sm font-bold">メールアドレス</label>
+    <form onSubmit={handleSubmit(onSubmitLogin)} className='w-full'>
+      <div className='grid gap-2 p-4'>
+        <div className=''>
+          <label className='text-sm font-bold'>メールアドレス</label>
           <InputField
             control={control}
             name={'email'}
@@ -51,16 +51,16 @@ export const LoginBody = () => {
                 message: '正しい形式で入力してください',
               },
             }}
-            type="email"
+            type='email'
           />
         </div>
-        <div className="">
-          <label className="text-sm font-bold">パスワード</label>
+        <div className=''>
+          <label className='text-sm font-bold'>パスワード</label>
           <InputField
             control={control}
             name={'password'}
             rules={{ required: 'パスワードを入力してください' }}
-            type="password"
+            type='password'
           />
         </div>
         <PrimaryButton

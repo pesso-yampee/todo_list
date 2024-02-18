@@ -1,11 +1,11 @@
 'use client'
 
 import { useFetchTodoList } from 'hooks/useFetchTodoList'
+import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
+import { todosAtom } from 'store'
 import { TodoType } from 'types/todo'
 import { TodoItem } from '../Item'
-import { useSetAtom } from 'jotai'
-import { todosAtom } from 'store'
 
 export const TodoList = () => {
   const { data, refetch } = useFetchTodoList()
@@ -19,7 +19,7 @@ export const TodoList = () => {
 
   return (
     <>
-      <ul className="mt-6 grid gap-2">
+      <ul className='mt-6 grid gap-2'>
         {data?.map((item: TodoType) => (
           <TodoItem key={item.id} item={item} refetch={refetch} />
         ))}

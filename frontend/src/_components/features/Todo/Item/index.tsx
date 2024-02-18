@@ -1,13 +1,13 @@
 'use client'
 
 import { Alert, Snackbar } from '@mui/material'
-import { DangerButton } from '_components/common/Button/Danger'
-import { PrimaryButton } from '_components/common/Button/Primary'
 import { usePostDeleteTodo } from 'hooks/usePostDeleteTodo'
 import { useSetAtom } from 'jotai'
 import { useCallback } from 'react'
 import { todoAtom, todoEditModalAtom } from 'store'
 import { TodoType } from 'types/todo'
+import { DangerButton } from '_components/common/Button/Danger'
+import { PrimaryButton } from '_components/common/Button/Primary'
 
 type TodoItemProps = {
   item: TodoType
@@ -32,14 +32,14 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
             refetch()
             return (
               <Snackbar open={true} autoHideDuration={5000}>
-                <Alert severity="success">削除しました</Alert>
+                <Alert severity='success'>削除しました</Alert>
               </Snackbar>
             )
           },
           onError: () => {
             return (
               <Snackbar open={true} autoHideDuration={5000}>
-                <Alert severity="error">削除に失敗しました</Alert>
+                <Alert severity='error'>削除に失敗しました</Alert>
               </Snackbar>
             )
           },
@@ -49,9 +49,9 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
     ),
   }
   return (
-    <li className="flex items-center justify-between">
-      <span className="text-lg">{item.title}</span>
-      <div className="flex gap-2">
+    <li className='flex items-center justify-between'>
+      <span className='text-lg'>{item.title}</span>
+      <div className='flex gap-2'>
         <PrimaryButton
           text={'編集'}
           style={{ width: '100%' }}

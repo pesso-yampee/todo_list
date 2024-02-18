@@ -19,7 +19,9 @@ type TodoEditModalAtomDefault = {
   isOpen: boolean
 }
 
-export const isAuthenticatedAtom = atom<IsAuthenticatedAtomDefault>({ isAuthenticated: false })
+export const isAuthenticatedAtom = atom<IsAuthenticatedAtomDefault>({
+  isAuthenticated: false,
+})
 
 export const todoAtom = atom<TodoAtomDefault>({
   id: '',
@@ -27,6 +29,8 @@ export const todoAtom = atom<TodoAtomDefault>({
   title: '',
 })
 
-export const todoEditModalAtom = atom<TodoEditModalAtomDefault>({ isOpen: false })
+export const todoEditModalAtom = atom<TodoEditModalAtomDefault>({
+  isOpen: false,
+})
 
-export const todosAtom = atom<TodosAtomDefault>({todos: null})
+export const todosAtom = atom<TodosAtomDefault>({ todos: null })

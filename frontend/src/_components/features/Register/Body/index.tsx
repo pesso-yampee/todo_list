@@ -1,9 +1,9 @@
 'use client'
 
-import { PrimaryButton } from '_components/common/Button/Primary'
-import { InputField } from '_components/common/InputField'
 import { usePostRegisterMemberInfo } from 'hooks/usePostRegisterMemberInfo'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
+import { PrimaryButton } from '_components/common/Button/Primary'
+import { InputField } from '_components/common/InputField'
 
 export const RegisterBody = () => {
   const { doPost } = usePostRegisterMemberInfo()
@@ -28,44 +28,44 @@ export const RegisterBody = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmitRegisterMemberInfo)}
-      className="w-full"
+      className='w-full'
     >
-      <div className="grid gap-2 p-4">
-        <div className="">
-          <label className="text-sm font-bold">メールアドレス</label>
+      <div className='grid gap-2 p-4'>
+        <div className=''>
+          <label className='text-sm font-bold'>メールアドレス</label>
           <InputField
             control={control}
             name={'email'}
             rules={{ required: 'メールアドレスを入力してください' }}
-            type="email"
+            type='email'
           />
         </div>
-        <div className="">
-          <label className="text-sm font-bold">ユーザー名</label>
+        <div className=''>
+          <label className='text-sm font-bold'>ユーザー名</label>
           <InputField
             control={control}
             name={'userName'}
             rules={{ required: 'ユーザー名を入力してください' }}
-            type="text"
+            type='text'
           />
         </div>
-        <div className="">
-          <label className="text-sm font-bold">パスワード</label>
+        <div className=''>
+          <label className='text-sm font-bold'>パスワード</label>
           <InputField
             control={control}
             name={'password'}
             rules={{ required: 'パスワードを入力してください' }}
-            type="password"
+            type='password'
           />
         </div>
         {/* パスワード（確認）は別にサーバーに送る必要はない。なぜならサーバー側がほしいのはパスワードの情報だけだから。 */}
-        <div className="">
-          <label className="text-sm font-bold">パスワード（確認）</label>
+        <div className=''>
+          <label className='text-sm font-bold'>パスワード（確認）</label>
           <InputField
             control={control}
             name={'passwordCheck'}
             rules={{ required: '確認用のパスワードを入力してください' }}
-            type="password"
+            type='password'
           />
         </div>
         <PrimaryButton

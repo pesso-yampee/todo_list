@@ -10,7 +10,7 @@ export const Alert = ({ severity, text }: Props) => {
         severity === 'success' ? 'bg-blue-500' : 'bg-red-500'
       }`}
     >
-      <span className="font-bold text-white">{text}</span>
+      <span className='font-bold text-white'>{text}</span>
     </div>
   )
 }

@@ -24,14 +24,14 @@ export const InputField = <T extends FieldValues>({
   } = useController({ control, name, rules })
 
   return (
-    <div className="grid gap-2">
+    <div className='grid gap-2'>
       <input
         {...field}
         type={type}
         placeholder={placeholder}
-        className="w-full rounded border-2 border-solid border-gray-300 px-1 py-2 invalid:border-pink-500 invalid:text-pink-500 focus:invalid:border-pink-500 focus:invalid:text-pink-500"
+        className='w-full rounded border-2 border-solid border-gray-300 px-1 py-2 invalid:border-pink-500 invalid:text-pink-500 focus:invalid:border-pink-500 focus:invalid:text-pink-500'
       />
-      <span className="text-sm text-red-500">
+      <span className='text-sm text-red-500'>
         {error?.message && error.message}
       </span>
     </div>
