@@ -18,7 +18,7 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
   const setTodo = useSetAtom(todoAtom)
   const setTodoEditModal = useSetAtom(todoEditModalAtom)
 
-  const handleOnClick = {
+  const onClickEvents = {
     editTodo: (todo: TodoType) => {
       setTodo({ id: todo.id, detail: todo.detail, title: todo.title })
       setTodoEditModal({ isOpen: true })
@@ -58,15 +58,16 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
       }}
     >
       <Typography fontSize={'20px'}>{item.title}</Typography>
-      <Stack gap={'8px'}>
+      <Stack direction={'row'} gap={1}>
         <Button
           text={'編集'}
           fullWidth
-          onClick={() => handleOnClick.editTodo(item)}
+          onClick={() => onClickEvents.editTodo(item)}
         />
         <Button
           text={'削除'}
-          onClick={() => handleOnClick.deleteTodo(item.id)}
+          color={'error'}
+          onClick={() => onClickEvents.deleteTodo(item.id)}
         />
       </Stack>
     </ListItem>
