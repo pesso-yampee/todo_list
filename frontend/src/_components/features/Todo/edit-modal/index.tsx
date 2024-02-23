@@ -20,11 +20,7 @@ export const TodoEditModal = ({ isOpen }: Props) => {
   const setTodoEditModalState = useSetAtom(todoEditModalAtom)
   const { doPost } = usePutUpdateTodo()
   const dialogRef = useRef<HTMLDivElement>(null)
-  const {
-    control,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<TodoUpdateResponse>({
+  const { control, handleSubmit } = useForm<TodoUpdateResponse>({
     defaultValues: {
       title: todoState.title,
       detail: todoState.detail,
@@ -78,29 +74,28 @@ export const TodoEditModal = ({ isOpen }: Props) => {
           display={'grid'}
           gap={'24px'}
         >
-          <Stack direction={'column'} gap={'4px'}>
-            <Stack direction={'column'} gap={'4px'}>
+          <Stack direction={'column'} gap={3}>
+            <Stack direction={'column'} gap={1}>
               <InputField
                 type={'text'}
                 control={control}
                 name={'title'}
                 placeholder={'名前'}
-                // rules={{
-                //   required: {message: '入力が必須な項目です'}
-                // }}
               />
               <InputField
                 type={'text'}
                 control={control}
                 name={'detail'}
                 placeholder={'詳細'}
-                // rules={{
-                //   required: {message: '入力が必須な項目です'}
-                // }}
               />
             </Stack>
-            <Stack gap={'4px'}>
-              <Button text={'キャンセル'} onClick={handleOnCloseModal} />
+            <Stack direction={'row'} gap={1}>
+              <Button
+                text={'キャンセル'}
+                onClick={handleOnCloseModal}
+                color={'inherit'}
+                fullWidth
+              />
               <Button text={'更新する'} fullWidth />
             </Stack>
           </Stack>
