@@ -66,7 +66,7 @@ export const TodoAddArea = () => {
         <InputField control={control} name={'detail'} placeholder={'詳細'} />
         <Button
           type={'submit'}
-          color={'secondary'}
+          color={'success'}
           text={isCreateLoading ? '作成中' : '作成する'}
         ></Button>
       </Box>
