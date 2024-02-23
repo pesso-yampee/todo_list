@@ -5,9 +5,9 @@ import { usePostCreateTodo } from 'hooks/usePostCreateTodo'
 import { useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { TodoCreateRequest } from 'types/todo'
-import { Alert } from '_components/common/Alert'
-import { Button } from '_components/common/Button'
-import { InputField } from '_components/common/InputField'
+import { Alert } from '_components/common/alert'
+import { Button } from '_components/common/button'
+import { InputField } from '_components/common/input-field'
 
 export const AddTodoArea = () => {
   const { doPost } = usePostCreateTodo()

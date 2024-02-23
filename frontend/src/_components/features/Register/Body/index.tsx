@@ -3,8 +3,8 @@
 import { Box, Stack } from '@mui/material'
 import { usePostRegisterMemberInfo } from 'hooks/usePostRegisterMemberInfo'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
-import { Button } from '_components/common/Button'
-import { InputField } from '_components/common/InputField'
+import { Button } from '_components/common/button'
+import { InputField } from '_components/common/input-field'
 
 export const RegisterBody = () => {
   const { doPost } = usePostRegisterMemberInfo()

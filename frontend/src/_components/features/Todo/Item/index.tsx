@@ -6,7 +6,7 @@ import { useSetAtom } from 'jotai'
 import { useCallback } from 'react'
 import { todoAtom, todoEditModalAtom } from 'store'
 import { TodoType } from 'types/todo'
-import { Button } from '_components/common/Button'
+import { Button } from '_components/common/button'
 
 type TodoItemProps = {
   item: TodoType

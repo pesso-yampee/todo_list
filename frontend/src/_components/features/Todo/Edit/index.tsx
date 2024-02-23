@@ -7,8 +7,8 @@ import { useEffect, useRef } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { todoAtom, todoEditModalAtom } from 'store'
 import { TodoUpdateRequest, TodoUpdateResponse } from 'types/todo'
-import { Button } from '_components/common/Button'
-import { InputField } from '_components/common/InputField'
+import { Button } from '_components/common/button'
+import { InputField } from '_components/common/input-field'
 
 type Props = {
   isOpen: boolean

@@ -18,7 +18,7 @@ import { AddTodoArea } from '_components/features/Todo/Add'
  * ページ読み込み時に必要なJSファイルを削減できるため、ページ表示速度改善にもつながる。
  */
 const DynamicAppSuspense = dynamic(
-  () => import('../_components/common/AppSuspense'),
+  () => import('../_components/common/app-suspense'),
   { ssr: false }
 )
 

@@ -1,7 +1,7 @@
 'use client'
 import { Typography } from '@mui/material'
 import { useEffect } from 'react'
-import { Button } from '_components/common/Button'
+import { Button } from '_components/common/button'
 
 type ErrorProps = {
   error: Error & { digest?: string }

@@ -9,8 +9,8 @@ import { useRouter } from 'next/navigation'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 import { isAuthenticatedAtom } from 'store'
-import { Button } from '_components/common/Button'
-import { InputField } from '_components/common/InputField'
+import { Button } from '_components/common/button'
+import { InputField } from '_components/common/input-field'
 
 export const LoginBody = () => {
   const router = useRouter()
