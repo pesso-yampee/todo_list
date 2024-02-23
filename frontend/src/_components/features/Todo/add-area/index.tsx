@@ -1,15 +1,15 @@
 'use client'
 
+import { usePostCreateTodo } from '@/hooks/usePostCreateTodo'
+import { TodoCreateRequest } from '@/types/todo'
+import { Alert } from '@/_components/common/alert'
+import { Button } from '@/_components/common/button'
+import { InputField } from '@/_components/common/input-field'
 import { Box } from '@mui/material'
-import { usePostCreateTodo } from 'hooks/usePostCreateTodo'
 import { useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { TodoCreateRequest } from 'types/todo'
-import { Alert } from '_components/common/alert'
-import { Button } from '_components/common/button'
-import { InputField } from '_components/common/input-field'
 
-export const AddTodoArea = () => {
+export const TodoAddArea = () => {
   const { doPost } = usePostCreateTodo()
   const [isCreateLoading, setIsCreateLoading] = useState(false)
   const submitProcessing = useRef(false)

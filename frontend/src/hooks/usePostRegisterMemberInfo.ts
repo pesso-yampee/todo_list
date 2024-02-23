@@ -1,4 +1,4 @@
-import { apiClient } from 'constants/apiClient'
+import { apiClient } from '@/constants/apiClient'
 import { FieldValues } from 'react-hook-form'
 
 type Props = {

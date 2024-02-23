@@ -1,16 +1,16 @@
 'use client'
 
+import { PAGE_PATH } from '@/constants/pagePath'
+import { EMAIL_REGEX } from '@/constants/regexes'
+import { usePostLoginUser } from '@/hooks/usePostLoginUser'
+import { isAuthenticatedAtom } from '@/store'
+import { Button } from '@/_components/common/button'
+import { InputField } from '@/_components/common/input-field'
 import { Box, Stack } from '@mui/material'
-import { PAGE_PATH } from 'constants/pagePath'
-import { EMAIL_REGEX } from 'constants/regexes'
-import { usePostLoginUser } from 'hooks/usePostLoginUser'
 import { useSetAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
-import { isAuthenticatedAtom } from 'store'
-import { Button } from '_components/common/button'
-import { InputField } from '_components/common/input-field'
 
 export const LoginBody = () => {
   const router = useRouter()
@@ -31,7 +31,7 @@ export const LoginBody = () => {
       onSuccess: () => {
         toast.success('ログインに成功しました。')
         setIsAuthenticated({ isAuthenticated: true })
-        router.push(PAGE_PATH.TOP)
+        router.push(PAGE_PATH.top)
       },
       onError: () => toast.error('ログインに失敗しました。'),
     })

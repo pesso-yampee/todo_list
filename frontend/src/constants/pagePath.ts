@@ -3,7 +3,8 @@
  * 遷移先定義の際に使用
  */
 export const PAGE_LIST = {
-  TOP: '/',
+  top: '/',
+  login: '/login',
 }
 
 /**
@@ -11,5 +12,6 @@ export const PAGE_LIST = {
  * 画面遷移時に使用
  */
 export const PAGE_PATH = {
-  TOP: '/',
+  top: '/',
+  login: '/login',
 }

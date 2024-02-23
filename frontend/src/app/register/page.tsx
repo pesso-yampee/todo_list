@@ -1,5 +1,5 @@
+import { RegisterBody } from '@/_components/features/register/body'
 import { Box, Stack, Typography } from '@mui/material'
-import { RegisterBody } from '_components/features/Register/Body'
 
 export default function Page() {
   return (

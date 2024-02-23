@@ -1,4 +1,4 @@
-import { apiClient } from 'constants/apiClient'
+import { apiClient } from '@/constants/apiClient'
 
 type Props = {
   onError: () => void

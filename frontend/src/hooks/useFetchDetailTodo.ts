@@ -1,7 +1,7 @@
-import { apiClient } from 'constants/apiClient'
+import { apiClient } from '@/constants/apiClient'
+import { TodoType } from '@/types/todo'
 import { useCallback } from 'react'
 import useSWR, { SWRResponse } from 'swr'
-import { TodoType } from 'types/todo'
 
 export const useFetchDetailTodo = (id: number) => {
   const fetcher = useCallback(async () => {

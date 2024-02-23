@@ -1,5 +1,5 @@
-import { apiClient } from 'constants/apiClient'
-import { TodoCreateRequest } from 'types/todo'
+import { apiClient } from '@/constants/apiClient'
+import { TodoCreateRequest } from '@/types/todo'
 
 type Props = {
   data: TodoCreateRequest

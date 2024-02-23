@@ -1,5 +1,5 @@
+import { LoginBody } from '@/_components/features/login/body'
 import { Box, Typography } from '@mui/material'
-import { LoginBody } from '_components/features/Login/Body'
 
 export default function Page() {
   return (

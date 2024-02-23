@@ -1,6 +1,6 @@
-import { apiClient } from 'constants/apiClient'
+import { apiClient } from '@/constants/apiClient'
+import { TodoType } from '@/types/todo'
 import useSWR from 'swr'
-import { TodoType } from 'types/todo'
 
 export const useFetchTodoList = () => {
   const fetcher = async (url: string) => {

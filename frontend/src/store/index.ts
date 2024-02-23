@@ -1,5 +1,5 @@
+import { TodoType } from '@/types/todo'
 import { atom } from 'jotai'
-import { TodoType } from 'types/todo'
 
 type TodoAtomDefault = {
   id: string

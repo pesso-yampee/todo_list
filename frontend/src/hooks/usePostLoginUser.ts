@@ -1,8 +1,8 @@
+import { apiClient } from '@/constants/apiClient'
+import { isAuthenticatedAtom } from '@/store'
 import { AxiosResponse } from 'axios'
-import { apiClient } from 'constants/apiClient'
 import { useSetAtom } from 'jotai'
 import { FieldValues } from 'react-hook-form'
-import { isAuthenticatedAtom } from 'store'
 
 type LoginResponse = {
   id: number

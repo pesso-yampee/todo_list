@@ -1,15 +1,15 @@
 'use client'
 
-import { HeaderNavigation } from '_components/common/header-navigation'
-import { EditTodoModal } from '_components/features/Todo/Edit'
+import { HeaderNavigation } from '@/_components/common/header-navigation'
 
+import { TodoList } from '@/_components/features/todo/list'
 import { useAtomValue } from 'jotai'
-import { TodoList } from '_components/features/Todo/List'
 
+import { todoEditModalAtom } from '@/store'
+import { TodoAddArea } from '@/_components/features/todo/add-area'
+import { TodoEditModal } from '@/_components/features/todo/edit-modal'
 import { Box, Container, Typography } from '@mui/material'
 import dynamic from 'next/dynamic'
-import { todoEditModalAtom } from 'store'
-import { AddTodoArea } from '_components/features/Todo/Add'
 
 /**
  * NOTE:
@@ -39,14 +39,14 @@ export default function Page() {
           >
             TODOリスト
           </Typography>
-          <AddTodoArea />
+          <TodoAddArea />
           <DynamicAppSuspense>
             <TodoList />
           </DynamicAppSuspense>
         </Box>
       </Container>
       {todoEditModalState.isOpen && (
-        <EditTodoModal isOpen={todoEditModalState.isOpen} />
+        <TodoEditModal isOpen={todoEditModalState.isOpen} />
       )}
     </>
   )

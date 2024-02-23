@@ -1,12 +1,12 @@
 'use client'
 
+import { useFetchTodoList } from '@/hooks/useFetchTodoList'
+import { todosAtom } from '@/store'
+import { TodoType } from '@/types/todo'
 import { List } from '@mui/material'
-import { useFetchTodoList } from 'hooks/useFetchTodoList'
 import { useSetAtom } from 'jotai'
 import { useEffect } from 'react'
-import { todosAtom } from 'store'
-import { TodoType } from 'types/todo'
-import { TodoItem } from '../Item'
+import { TodoItem } from '../item'
 
 export const TodoList = () => {
   const { data, refetch } = useFetchTodoList()

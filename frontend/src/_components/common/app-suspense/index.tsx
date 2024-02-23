@@ -1,5 +1,5 @@
+import { Loading } from '@/_components/common/loading'
 import { ReactNode, Suspense } from 'react'
-import { Loading } from '../loading'
 
 type Props = {
   children: ReactNode
