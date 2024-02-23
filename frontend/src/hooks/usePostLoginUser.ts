@@ -25,12 +25,10 @@ export const usePostLoginUser = () => {
   const fetchMe = async () => {
     return apiClient
       .get('api/me')
-      .then((response) => {
-        if (response.data) {
-          setIsAuthenticated(true)
-        }
+      .then(() => {
+        setIsAuthenticated(true)
       })
-      .catch((error) => {
+      .catch(() => {
         setIsAuthenticated(false)
       })
   }
