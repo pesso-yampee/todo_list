@@ -9,6 +9,7 @@ import { Box, Stack } from '@mui/material'
 import { useAtomValue, useSetAtom } from 'jotai'
 import { useEffect, useRef } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 type Props = {
   isOpen: boolean
@@ -37,10 +38,10 @@ export const TodoEditModal = ({ isOpen }: Props) => {
       data,
       id: todoState.id,
       onSuccess: () => {
-        console.log('成功しました')
+        toast.success('成功しました')
       },
       onError: (error) => {
-        console.error(error)
+        throw new Error('送信に失敗しました')
       },
     })
   }

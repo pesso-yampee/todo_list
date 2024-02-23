@@ -6,6 +6,7 @@ import { TodoList } from '@/_components/features/todo/list'
 import { useAtomValue } from 'jotai'
 
 import { todoEditModalAtom } from '@/store'
+import { SanctumGuard } from '@/_components/common/sanctum-guard'
 import { TodoAddArea } from '@/_components/features/todo/add-area'
 import { TodoEditModal } from '@/_components/features/todo/edit-modal'
 import { Box, Container, Typography } from '@mui/material'
@@ -26,28 +27,30 @@ export default function Page() {
   const todoEditModalState = useAtomValue(todoEditModalAtom)
 
   return (
-    <>
-      <Container sx={{ marginTop: '56px', paddingTop: '20px' }}>
-        <HeaderNavigation />
-        <Box>
-          <Typography
-            variant={'h1'}
-            gutterBottom={false}
-            textAlign={'center'}
-            fontSize={'24px'}
-            fontWeight={'bold'}
-          >
-            TODOリスト
-          </Typography>
-          <TodoAddArea />
-          <DynamicAppSuspense>
-            <TodoList />
-          </DynamicAppSuspense>
-        </Box>
-      </Container>
-      {todoEditModalState.isOpen && (
-        <TodoEditModal isOpen={todoEditModalState.isOpen} />
-      )}
-    </>
+    <SanctumGuard>
+      <>
+        <Container sx={{ marginTop: '56px', paddingTop: '20px' }}>
+          <HeaderNavigation />
+          <Box>
+            <Typography
+              variant={'h1'}
+              gutterBottom={false}
+              textAlign={'center'}
+              fontSize={'24px'}
+              fontWeight={'bold'}
+            >
+              TODOリスト
+            </Typography>
+            <TodoAddArea />
+            <DynamicAppSuspense>
+              <TodoList />
+            </DynamicAppSuspense>
+          </Box>
+        </Container>
+        {todoEditModalState.isOpen && (
+          <TodoEditModal isOpen={todoEditModalState.isOpen} />
+        )}
+      </>
+    </SanctumGuard>
   )
 }

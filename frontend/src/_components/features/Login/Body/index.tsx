@@ -30,7 +30,7 @@ export const LoginBody = () => {
       data,
       onSuccess: () => {
         toast.success('ログインに成功しました。')
-        setIsAuthenticated({ isAuthenticated: true })
+        setIsAuthenticated(true)
         router.push(PAGE_PATH.top)
       },
       onError: () => toast.error('ログインに失敗しました。'),

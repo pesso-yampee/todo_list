@@ -14,7 +14,7 @@ export const TodoList = () => {
 
   useEffect(() => {
     if (data) {
-      setTodos({ todos: data })
+      setTodos(data)
     }
   }, [data, setTodos])
 

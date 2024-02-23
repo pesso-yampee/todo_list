@@ -27,11 +27,11 @@ export const usePostLoginUser = () => {
       .get('api/me')
       .then((response) => {
         if (response.data) {
-          setIsAuthenticated(() => ({ isAuthenticated: true }))
+          setIsAuthenticated(true)
         }
       })
       .catch((error) => {
-        setIsAuthenticated(() => ({ isAuthenticated: false }))
+        setIsAuthenticated(false)
       })
   }
 
