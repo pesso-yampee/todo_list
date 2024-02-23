@@ -1,8 +1,9 @@
-import { usePostLogoutUser } from 'hooks/usePostLogoutUser'
+import { PAGE_PATH } from '@/constants/pagePath'
+import { usePostLogoutUser } from '@/hooks/usePostLogoutUser'
+import { isAuthenticatedAtom } from '@/store'
 import { useAtomValue } from 'jotai'
 import { useRouter } from 'next/navigation'
 import { toast } from 'react-toastify'
-import { isAuthenticatedAtom } from 'store'
 
 export const useHeaderNavigation = () => {
   const isAuthenticated = useAtomValue(isAuthenticatedAtom)
@@ -10,18 +11,18 @@ export const useHeaderNavigation = () => {
   const { doPost } = usePostLogoutUser()
 
   const onClickLogin = () => {
-    router.push('/login')
+    router.push(PAGE_PATH.login)
   }
 
   const onClickRegister = () => {
-    router.push('/register')
+    router.push(PAGE_PATH.register)
   }
 
   const onClickLogout = () => {
     doPost({
       onSuccess: () => {
         toast.success('ログアウトしました')
-        router.push('/login')
+        router.push(PAGE_PATH.login)
       },
       onError: () => {
         toast.error('ログアウトできませんでした')
