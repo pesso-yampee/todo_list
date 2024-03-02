@@ -20,6 +20,7 @@ class TodosController extends Controller
         $todo = new Todo;
         $todo->title = $request->title;
         $todo->detail = $request->detail;
+        $todo->user_id = $request->user_id;
         $todo->save();
         return response()->json($todo, 200);
     }
