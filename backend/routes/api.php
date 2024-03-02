@@ -1,6 +1,7 @@
 <?php
 use App\Http\Controllers\Api\MeController;
 use App\Http\Controllers\TodosController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,3 +20,6 @@ Route::group(['middleware' => ['auth:sanctum']], function() {
   Route::get('/me', MeController::class);
   Route::apiResource('/todos', TodosController::class);
 });
+
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
