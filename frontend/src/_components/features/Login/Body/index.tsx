@@ -1,21 +1,17 @@
 'use client'
 
-import { PAGE_PATH } from '@/constants/pagePath'
 import { EMAIL_REGEX } from '@/constants/regexes'
-import { usePostLoginUser } from '@/hooks/usePostLoginUser'
-import { isAuthenticatedAtom } from '@/store'
+import { useAuth } from '@/hooks/useAuth'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
-import { Box, Stack } from '@mui/material'
-import { useSetAtom } from 'jotai'
+import { Box,Stack } from '@mui/material'
 import { useRouter } from 'next/navigation'
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
+import { FieldValues,SubmitHandler,useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
 export const LoginBody = () => {
   const router = useRouter()
-  const setIsAuthenticated = useSetAtom(isAuthenticatedAtom)
-  const { doPost } = usePostLoginUser()
+  const { login } = useAuth()
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -26,12 +22,11 @@ export const LoginBody = () => {
   })
 
   const onSubmitLogin: SubmitHandler<FieldValues> = (data) => {
-    doPost({
+    login({
       data,
       onSuccess: () => {
+        router.push(process.env.NEXT_PUBLIC_FRONT_END || '')
         toast.success('ログインに成功しました。')
-        setIsAuthenticated(true)
-        router.push(PAGE_PATH.top)
       },
       onError: () => toast.error('ログインに失敗しました。'),
     })
