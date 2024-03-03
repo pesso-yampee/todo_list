@@ -8,9 +8,10 @@ use Illuminate\Http\Request;
 class TodosController extends Controller
 {
     // TODOの一覧を表示する
-    public function index()
+    public function index(Request $request)
     {
-        $todos = Todo::all();
+        $user = $request->user();
+        $todos = $user->todos()->get();
         return response()->json($todos, 200);
     }
 
@@ -39,7 +40,8 @@ class TodosController extends Controller
         $todo->title = $request->title;
         $todo->detail = $request->detail;
         $todo->save();
-        $todos = Todo::all();
+        $user = $request->user();
+        $todos = $user->todos()->get();
     }
     
     // TODOを削除する
