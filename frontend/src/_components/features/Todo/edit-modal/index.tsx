@@ -22,17 +22,17 @@ export const TodoEditModal = ({ isOpen }: Props) => {
   const dialogRef = useRef<HTMLDivElement>(null)
   const { control, handleSubmit } = useForm<TodoUpdateResponse>({
     defaultValues: {
-      title: todoState.title,
-      detail: todoState.detail,
+      title: todoState?.title ?? '',
+      detail: todoState?.detail ?? '',
     },
   })
   const handleOnCloseModal = () => {
     setTodoEditModalState(() => ({ isOpen: false }))
   }
-  const handleOnSubmit: SubmitHandler<TodoUpdateRequest> = (data) => {
+  const onSubmit: SubmitHandler<TodoUpdateRequest> = (data) => {
     doPost({
       data,
-      id: todoState.id,
+      id: todoState?.id,
       onSuccess: () => {
         toast.success('成功しました')
       },
@@ -67,13 +67,7 @@ export const TodoEditModal = ({ isOpen }: Props) => {
         bgcolor={'#ffffff'}
         padding={'24px'}
       >
-        <Box
-          component={'form'}
-          noValidate
-          onSubmit={handleSubmit(handleOnSubmit)}
-          display={'grid'}
-          gap={'24px'}
-        >
+        <Box component={'form'} noValidate display={'grid'} gap={'24px'}>
           <Stack direction={'column'} gap={3}>
             <Stack direction={'column'} gap={1}>
               <InputField
@@ -96,7 +90,12 @@ export const TodoEditModal = ({ isOpen }: Props) => {
                 color={'inherit'}
                 fullWidth
               />
-              <Button text={'更新する'} fullWidth />
+              <Button
+                text={'更新する'}
+                fullWidth
+                color={'primary'}
+                onClick={handleSubmit(onSubmit)}
+              />
             </Stack>
           </Stack>
         </Box>
