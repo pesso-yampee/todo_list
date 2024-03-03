@@ -1,12 +1,13 @@
 'use client'
 
-import { usePostDeleteTodo } from '@/hooks/usePostDeleteTodo'
+import { useDeleteTodo } from '@/hooks/useDeleteTodo'
 import { todoAtom, todoEditModalAtom } from '@/store'
 import { TodoType } from '@/types/todo'
 import { Button } from '@/_components/common/button'
-import { Alert, ListItem, Snackbar, Stack, Typography } from '@mui/material'
+import { ListItem, Stack, Typography } from '@mui/material'
 import { useSetAtom } from 'jotai'
 import { useCallback } from 'react'
+import { toast } from 'react-toastify'
 
 type TodoItemProps = {
   item: TodoType
@@ -14,7 +15,7 @@ type TodoItemProps = {
 }
 
 export const TodoItem = ({ item, refetch }: TodoItemProps) => {
-  const { doPost } = usePostDeleteTodo()
+  const { doDelete } = useDeleteTodo()
   const setTodo = useSetAtom(todoAtom)
   const setTodoEditModal = useSetAtom(todoEditModalAtom)
 
@@ -25,26 +26,18 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
     },
     deleteTodo: useCallback(
       (todoId: string) => {
-        doPost({
+        doDelete({
           id: todoId,
           onSuccess: () => {
             refetch()
-            return (
-              <Snackbar open={true} autoHideDuration={5000}>
-                <Alert severity='success'>削除しました</Alert>
-              </Snackbar>
-            )
+            toast.success('削除しました')
           },
           onError: () => {
-            return (
-              <Snackbar open={true} autoHideDuration={5000}>
-                <Alert severity='error'>削除に失敗しました</Alert>
-              </Snackbar>
-            )
+            toast.error('削除に失敗しました')
           },
         })
       },
-      [doPost, refetch]
+      [doDelete, refetch]
     ),
   }
   return (
