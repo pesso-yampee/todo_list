@@ -4,6 +4,7 @@ import { Metadata } from 'next'
 import { ReactNode } from 'react'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import './global.css'
 
 export const metadata: Metadata = {
   title: 'Todo List',
