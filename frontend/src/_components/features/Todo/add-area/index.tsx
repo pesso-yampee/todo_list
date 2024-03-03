@@ -1,16 +1,19 @@
 'use client'
 
 import { usePostCreateTodo } from '@/hooks/usePostCreateTodo'
+import { authUserAtom } from '@/store'
 import { TodoCreateRequest } from '@/types/todo'
 import { Alert } from '@/_components/common/alert'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
 import { Box } from '@mui/material'
+import { useAtomValue } from 'jotai'
 import { useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const TodoAddArea = () => {
   const { doPost } = usePostCreateTodo()
+  const authUser = useAtomValue(authUserAtom)
   const [isCreateLoading, setIsCreateLoading] = useState(false)
   const submitProcessing = useRef(false)
   const { control, handleSubmit } = useForm<TodoCreateRequest>({
@@ -21,20 +24,19 @@ export const TodoAddArea = () => {
     mode: 'onBlur',
   })
 
-  const handleOnSubmitCreateTodo: SubmitHandler<TodoCreateRequest> = (
-    data,
-    event
-  ) => {
-    event?.preventDefault()
-    event?.stopPropagation()
+  const handleOnSubmitCreateTodo: SubmitHandler<TodoCreateRequest> = (data) => {
+    if (submitProcessing.current) return
 
-    if (submitProcessing.current) return false
+    const postData = {
+      ...data,
+      user_id: authUser?.id,
+    }
 
     submitProcessing.current = true
     setIsCreateLoading(true)
 
     doPost({
-      data,
+      data: postData,
       onSuccess: () => {
         return <Alert severity={'success'} text={'作成に成功しました'} />
       },
