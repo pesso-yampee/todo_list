@@ -1,4 +1,5 @@
 import { apiClient } from '@/constants/apiClient'
+import { useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 
 type Props = {
@@ -8,11 +9,14 @@ type Props = {
 }
 
 export const usePostRegisterMemberInfo = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const doPost = ({ data, onError, onSuccess }: Props) => {
+    setIsLoading(true)
     apiClient
       .post('/api/member-registeration', data)
       .then(() => onSuccess())
       .catch(() => onError)
+      .finally(() => setIsLoading(true))
   }
-  return { doPost }
+  return { doPost, isLoading }
 }

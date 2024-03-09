@@ -2,7 +2,7 @@ import { apiClient } from '@/constants/apiClient'
 import { authUserAtom } from '@/store'
 import { useAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
-import { useCallback } from 'react'
+import { useCallback, useState } from 'react'
 import { FieldValues } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
@@ -20,6 +20,7 @@ export const useAuth = () => {
   // また、上記理由により isAuthenticated は globalState で管理する必要はなくなる
 
   const [authUser, setAuthUser] = useAtom(authUserAtom)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const router = useRouter()
 
   const fetchMe = useCallback(() => {
@@ -46,6 +47,7 @@ export const useAuth = () => {
 
   const login = useCallback(
     async ({ data, onError, onSuccess }: LoginProps) => {
+      setIsLoading(true)
       apiClient.get('/sanctum/csrf-cookie').then(() => {
         apiClient
           .post('api/login', data)
@@ -54,9 +56,10 @@ export const useAuth = () => {
             fetchMe()
           })
           .catch(() => onError())
+          .finally(() => setIsLoading(false))
       })
     },
-    [fetchMe]
+    [fetchMe, setIsLoading]
   )
 
   return {
@@ -64,5 +67,6 @@ export const useAuth = () => {
     fetchMe,
     logout,
     login,
+    isLoading
   }
 }

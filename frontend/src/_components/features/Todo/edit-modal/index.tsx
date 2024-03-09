@@ -1,24 +1,24 @@
 'use client'
 
 import { usePutUpdateTodo } from '@/hooks/usePutUpdateTodo'
-import { todoAtom, todoEditModalAtom } from '@/store'
-import { TodoUpdateRequest, TodoUpdateResponse } from '@/types/todo'
+import { todoAtom } from '@/store'
+import { TodoUpdateRequest,TodoUpdateResponse } from '@/types/todo'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
-import { Box, Stack } from '@mui/material'
-import { useAtomValue, useSetAtom } from 'jotai'
-import { useEffect, useRef } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { toast } from 'react-toastify'
+import { Box,Stack } from '@mui/material'
+import { useAtomValue } from 'jotai'
+import { useEffect,useRef } from 'react'
+import { SubmitHandler,useForm } from 'react-hook-form'
 
 type Props = {
   isOpen: boolean
+  onClose: () => void
+  refetch: () => void
 }
 
-export const TodoEditModal = ({ isOpen }: Props) => {
+export const TodoEditModal = ({ isOpen, onClose, refetch }: Props) => {
   const todoState = useAtomValue(todoAtom)
-  const setTodoEditModalState = useSetAtom(todoEditModalAtom)
-  const { doPost } = usePutUpdateTodo()
+  const { doPost, isLoading } = usePutUpdateTodo()
   const dialogRef = useRef<HTMLDivElement>(null)
   const { control, handleSubmit } = useForm<TodoUpdateResponse>({
     defaultValues: {
@@ -26,18 +26,16 @@ export const TodoEditModal = ({ isOpen }: Props) => {
       detail: todoState?.detail ?? '',
     },
   })
-  const handleOnCloseModal = () => {
-    setTodoEditModalState(() => ({ isOpen: false }))
-  }
   const onSubmit: SubmitHandler<TodoUpdateRequest> = (data) => {
     doPost({
       data,
       id: todoState?.id,
       onSuccess: () => {
-        toast.success('成功しました')
+        onClose()
+        refetch()
       },
-      onError: (error) => {
-        throw new Error('送信に失敗しました')
+      onError: () => {
+        throw new Error('更新に失敗しました')
       },
     })
   }
@@ -86,7 +84,7 @@ export const TodoEditModal = ({ isOpen }: Props) => {
             <Stack direction={'row'} gap={1}>
               <Button
                 text={'キャンセル'}
-                onClick={handleOnCloseModal}
+                onClick={onClose}
                 color={'inherit'}
                 fullWidth
               />
@@ -95,6 +93,7 @@ export const TodoEditModal = ({ isOpen }: Props) => {
                 fullWidth
                 color={'primary'}
                 onClick={handleSubmit(onSubmit)}
+                isLoading={isLoading}
               />
             </Stack>
           </Stack>
