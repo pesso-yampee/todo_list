@@ -1,3 +1,4 @@
+import { SanctumGuard } from '@/_components/common/sanctum-guard'
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
 import { Provider as JotaiProvider } from 'jotai'
 import { Metadata } from 'next'
@@ -16,7 +17,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <JotaiProvider>
           <AppRouterCacheProvider>
-            {children}
+            <SanctumGuard>{children}</SanctumGuard>
             <ToastContainer />
           </AppRouterCacheProvider>
         </JotaiProvider>

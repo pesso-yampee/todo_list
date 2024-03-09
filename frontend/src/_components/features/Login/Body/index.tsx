@@ -4,14 +4,14 @@ import { EMAIL_REGEX } from '@/constants/regexes'
 import { useAuth } from '@/hooks/useAuth'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
-import { Box,Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import { useRouter } from 'next/navigation'
-import { FieldValues,SubmitHandler,useForm } from 'react-hook-form'
+import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
 export const LoginBody = () => {
   const router = useRouter()
-  const { login } = useAuth()
+  const { login, isLoading } = useAuth()
 
   const { control, handleSubmit } = useForm({
     defaultValues: {
@@ -65,6 +65,7 @@ export const LoginBody = () => {
             variant={'contained'}
             text={'送信'}
             size={'medium'}
+            isLoading={isLoading}
           />
         </Box>
       </Stack>

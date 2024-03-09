@@ -1,7 +1,7 @@
 'use client'
 
 import { useDeleteTodo } from '@/hooks/useDeleteTodo'
-import { todoAtom, todoEditModalAtom } from '@/store'
+import { todoAtom } from '@/store'
 import { TodoType } from '@/types/todo'
 import { Button } from '@/_components/common/button'
 import { ListItem, Stack, Typography } from '@mui/material'
@@ -9,20 +9,20 @@ import { useSetAtom } from 'jotai'
 import { useCallback } from 'react'
 import { toast } from 'react-toastify'
 
-type TodoItemProps = {
+type Props = {
   item: TodoType
   refetch: () => void
+  onOpen: () => void
 }
 
-export const TodoItem = ({ item, refetch }: TodoItemProps) => {
-  const { doDelete } = useDeleteTodo()
+export const TodoItem = ({ item, refetch, onOpen }: Props) => {
+  const { doDelete, isLoading } = useDeleteTodo()
   const setTodo = useSetAtom(todoAtom)
-  const setTodoEditModal = useSetAtom(todoEditModalAtom)
 
   const onClickEvents = {
     editTodo: (todo: TodoType) => {
       setTodo({ id: todo.id, detail: todo.detail, title: todo.title })
-      setTodoEditModal({ isOpen: true })
+      onOpen()
     },
     deleteTodo: useCallback(
       (todoId: string) => {
@@ -56,11 +56,13 @@ export const TodoItem = ({ item, refetch }: TodoItemProps) => {
           text={'編集'}
           fullWidth
           onClick={() => onClickEvents.editTodo(item)}
+          isLoading={isLoading}
         />
         <Button
           text={'削除'}
           color={'error'}
           onClick={() => onClickEvents.deleteTodo(item.id)}
+          isLoading={isLoading}
         />
       </Stack>
     </ListItem>

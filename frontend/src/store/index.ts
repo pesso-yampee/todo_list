@@ -9,10 +9,6 @@ type TodoAtomDefault =
     }
   | undefined
 
-type TodoEditModalAtomDefault = {
-  isOpen: boolean
-}
-
 type TodosAtomDefault = TodoType[] | undefined
 
 type UserInfoDefault =
@@ -27,9 +23,5 @@ type UserInfoDefault =
 export const authUserAtom = atom<UserInfoDefault>(undefined)
 
 export const todoAtom = atom<TodoAtomDefault>(undefined)
-
-export const todoEditModalAtom = atom<TodoEditModalAtomDefault>({
-  isOpen: false,
-})
 
 export const todosAtom = atom<TodosAtomDefault>(undefined)

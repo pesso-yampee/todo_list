@@ -3,15 +3,11 @@
 import { HeaderNavigation } from '@/_components/common/header-navigation'
 
 import { TodoList } from '@/_components/features/todo/list'
-import { useAtomValue } from 'jotai'
 
 import { useAuth } from '@/hooks/useAuth'
-import { todoEditModalAtom } from '@/store'
-import { SanctumGuard } from '@/_components/common/sanctum-guard'
+import AppSuspense from '@/_components/common/app-suspense'
 import { TodoAddArea } from '@/_components/features/todo/add-area'
-import { TodoEditModal } from '@/_components/features/todo/edit-modal'
-import { Box,Container,Typography } from '@mui/material'
-import dynamic from 'next/dynamic'
+import { Box, Container, Typography } from '@mui/material'
 import { useEffect } from 'react'
 
 /**
@@ -20,14 +16,9 @@ import { useEffect } from 'react'
  * オプションに {ssr: false} を指定することで、クライアントサイドでレンダリングすることを可能とする。
  * ページ読み込み時に必要なJSファイルを削減できるため、ページ表示速度改善にもつながる。
  */
-const DynamicAppSuspense = dynamic(
-  () => import('../_components/common/app-suspense'),
-  { ssr: false }
-)
 
 export default function Page() {
   const { fetchMe } = useAuth()
-  const todoEditModalState = useAtomValue(todoEditModalAtom)
 
   // HACK:
   // ログイン時に fetchMe を叩いてるため、結果的に fetchMe を複数回実行していることになる。
@@ -40,7 +31,7 @@ export default function Page() {
   }, [])
 
   return (
-    <SanctumGuard>
+    <>
       <Container sx={{ marginTop: '56px', paddingTop: '20px' }}>
         <HeaderNavigation />
         <Box>
@@ -54,14 +45,11 @@ export default function Page() {
             TODOリスト
           </Typography>
           <TodoAddArea />
-          <DynamicAppSuspense>
+          <AppSuspense>
             <TodoList />
-          </DynamicAppSuspense>
+          </AppSuspense>
         </Box>
       </Container>
-      {todoEditModalState.isOpen && (
-        <TodoEditModal isOpen={todoEditModalState.isOpen} />
-      )}
-    </SanctumGuard>
+    </>
   )
 }

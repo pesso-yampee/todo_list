@@ -7,7 +7,7 @@ import { Box, Stack } from '@mui/material'
 import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
 
 export const RegisterBody = () => {
-  const { doPost } = usePostRegisterMemberInfo()
+  const { doPost, isLoading } = usePostRegisterMemberInfo()
   const { control, handleSubmit } = useForm({
     defaultValues: {
       email: '',
@@ -62,7 +62,11 @@ export const RegisterBody = () => {
           label={'パスワード（確認）'}
           rules={{ required: '確認用のパスワードを入力してください' }}
         />
-        <Button text={'送信'} style={{ marginLeft: 'auto' }} />
+        <Button
+          text={'送信'}
+          style={{ marginLeft: 'auto' }}
+          isLoading={isLoading}
+        />
       </Stack>
     </Box>
   )

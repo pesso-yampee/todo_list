@@ -1,16 +1,18 @@
-import { Button as MUIButton, ButtonTypeMap } from '@mui/material'
+import { LoadingButton } from '@mui/lab'
+import { ButtonTypeMap } from '@mui/material'
 import { ComponentPropsWithoutRef } from 'react'
 
 type ButtonProps = ButtonTypeMap['props'] & ComponentPropsWithoutRef<'button'>
 
 type Props = {
   text: string
+  isLoading?: boolean
 } & ButtonProps
 
-export const Button = ({ text, ...buttonProps }: Props) => {
+export const Button = ({ text, isLoading, ...buttonProps }: Props) => {
   return (
-    <MUIButton variant={'contained'} color={'primary'} {...buttonProps}>
+    <LoadingButton variant={'contained'} color={'primary'} loading={isLoading} {...buttonProps}>
       {text}
-    </MUIButton>
+    </LoadingButton>
   )
 }

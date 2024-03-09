@@ -1,3 +1,5 @@
+'use client'
+
 import { PAGE_PATH } from '@/constants/pagePath'
 import { useAuth } from '@/hooks/useAuth'
 import { useRouter } from 'next/navigation'

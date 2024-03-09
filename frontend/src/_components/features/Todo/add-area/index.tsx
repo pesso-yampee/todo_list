@@ -69,7 +69,8 @@ export const TodoAddArea = () => {
         <Button
           type={'submit'}
           color={'success'}
-          text={isCreateLoading ? '作成中' : '作成する'}
+          text={'作成する'}
+          isLoading={isCreateLoading}
         ></Button>
       </Box>
     </Box>
