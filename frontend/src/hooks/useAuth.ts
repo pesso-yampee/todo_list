@@ -67,6 +67,6 @@ export const useAuth = () => {
     fetchMe,
     logout,
     login,
-    isLoading
+    isLoading,
   }
 }

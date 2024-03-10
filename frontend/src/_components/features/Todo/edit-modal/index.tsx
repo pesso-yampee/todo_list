@@ -2,13 +2,13 @@
 
 import { usePutUpdateTodo } from '@/hooks/usePutUpdateTodo'
 import { todoAtom } from '@/store'
-import { TodoUpdateRequest,TodoUpdateResponse } from '@/types/todo'
+import { TodoUpdateRequest, TodoUpdateResponse } from '@/types/todo'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
-import { Box,Stack } from '@mui/material'
+import { Box, Stack } from '@mui/material'
 import { useAtomValue } from 'jotai'
-import { useEffect,useRef } from 'react'
-import { SubmitHandler,useForm } from 'react-hook-form'
+import { useEffect, useRef } from 'react'
+import { SubmitHandler, useForm } from 'react-hook-form'
 
 type Props = {
   isOpen: boolean

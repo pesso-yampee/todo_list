@@ -1,7 +1,7 @@
 'use client'
 
 import { useAuth } from '@/hooks/useAuth'
-import { AppBar,Container,Link,List,ListItem } from '@mui/material'
+import { AppBar, Container, Link, List, ListItem } from '@mui/material'
 
 export const HeaderNavigation = () => {
   const { logout } = useAuth()
