@@ -11,7 +11,12 @@ type Props = {
 
 export const Button = ({ text, isLoading, ...buttonProps }: Props) => {
   return (
-    <LoadingButton variant={'contained'} color={'primary'} loading={isLoading} {...buttonProps}>
+    <LoadingButton
+      variant={'contained'}
+      color={'primary'}
+      loading={isLoading}
+      {...buttonProps}
+    >
       {text}
     </LoadingButton>
   )

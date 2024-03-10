@@ -4,6 +4,7 @@ import { useDisclosure } from '@/hooks/use-disclosure'
 import { useFetchTodoList } from '@/hooks/useFetchTodoList'
 import { todosAtom } from '@/store'
 import { TodoType } from '@/types/todo'
+import { DeleteCofirmModal } from '@/_components/features/todo/delete-confirm-modal'
 import { TodoEditModal } from '@/_components/features/todo/edit-modal'
 import { List } from '@mui/material'
 import { useSetAtom } from 'jotai'
@@ -13,7 +14,16 @@ import { TodoItem } from '../item'
 export const TodoList = () => {
   const setTodos = useSetAtom(todosAtom)
   const { data, refetch } = useFetchTodoList()
-  const { isOpen, onOpen, onClose } = useDisclosure()
+  const {
+    isOpen: isEditModalOpen,
+    onOpen: onEditModalOpen,
+    onClose: onEditModalClose,
+  } = useDisclosure()
+  const {
+    isOpen: isDeleteConfirmModalOpen,
+    onOpen: onDeleteConfirmModalOpen,
+    onClose: onDeleteConfirmModalClose,
+  } = useDisclosure()
 
   useEffect(() => {
     if (data) {
@@ -32,12 +42,24 @@ export const TodoList = () => {
             key={item.id}
             item={item}
             refetch={refetch}
-            onOpen={onOpen}
+            onEditModalOpen={onEditModalOpen}
+            onDeleteConfirmModalOpen={onDeleteConfirmModalOpen}
           />
         ))}
       </List>
-      {isOpen && (
-        <TodoEditModal isOpen={isOpen} onClose={onClose} refetch={refetch} />
+      {isEditModalOpen && (
+        <TodoEditModal
+          isOpen={isEditModalOpen}
+          onClose={onEditModalClose}
+          refetch={refetch}
+        />
+      )}
+      {isDeleteConfirmModalOpen && (
+        <DeleteCofirmModal
+          isOpen={isDeleteConfirmModalOpen}
+          onClose={onDeleteConfirmModalClose}
+          refetch={refetch}
+        />
       )}
     </>
   )

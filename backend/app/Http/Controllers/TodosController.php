@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 
 class TodosController extends Controller
 {
-    // TODOの一覧を表示する
     public function index(Request $request)
     {
         $user = $request->user();
@@ -15,7 +14,6 @@ class TodosController extends Controller
         return response()->json($todos, 200);
     }
 
-    // TODOを作成する
     public function store(Request $request)
     {
         $todo = new Todo;
@@ -26,14 +24,12 @@ class TodosController extends Controller
         return response()->json($todo, 200);
     }
 
-    // 詳細を表示するためのアクション
     public function show(Request $request)
     {
         $todo = Todo::find($request->id);
         return $todo;
     }
 
-    // データを更新するためのアクション
     public function update(Request $request)
     {
         $todo = Todo::find($request->id);
@@ -44,11 +40,9 @@ class TodosController extends Controller
         $todos = $user->todos()->get();
     }
     
-    // TODOを削除する
-    public function destory(Request $request)
+    public function destroy($id)
     {
-        $todo = Todo::find($request->id);
+        $todo = Todo::find($id);
         $todo->delete();
-        $todos = Todo::all();
     }
 }
