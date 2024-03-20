@@ -1,4 +1,5 @@
 import { apiClient } from '@/constants/apiClient'
+import { PAGE_PATH } from '@/constants/pagePath'
 import { authUserAtom } from '@/store'
 import { useAtom } from 'jotai'
 import { useRouter } from 'next/navigation'
@@ -38,7 +39,7 @@ export const useAuth = () => {
     apiClient
       .post('api/logout')
       .then(() => {
-        router.push(process.env.NEXT_PUBLIC_FRONT_END || '')
+        router.push(PAGE_PATH.login)
       })
       .catch(() => {
         toast.error('ログアウトできませんでした')
