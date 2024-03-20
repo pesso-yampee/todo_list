@@ -1,9 +1,9 @@
 'use client'
 
+import { useFetchTodoList } from '@/hooks/use-fetch-todo-list'
 import { usePostCreateTodo } from '@/hooks/use-post-create-todo'
 import { authUserAtom } from '@/store'
 import { TodoCreateRequest } from '@/types/todo'
-import { Alert } from '@/_components/common/alert'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
 import { Box } from '@mui/material'
@@ -12,11 +12,12 @@ import { useRef, useState } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 export const TodoAddArea = () => {
+  const { refetch } = useFetchTodoList()
   const { doPost } = usePostCreateTodo()
   const authUser = useAtomValue(authUserAtom)
   const [isCreateLoading, setIsCreateLoading] = useState(false)
   const submitProcessing = useRef(false)
-  const { control, handleSubmit } = useForm<TodoCreateRequest>({
+  const { control, handleSubmit, reset } = useForm<TodoCreateRequest>({
     defaultValues: {
       title: '',
       detail: '',
@@ -38,10 +39,11 @@ export const TodoAddArea = () => {
     doPost({
       data: postData,
       onSuccess: () => {
-        return <Alert severity={'success'} text={'作成に成功しました'} />
+        refetch()
+        reset()
       },
       onError: () => {
-        return <Alert severity={'error'} text={'作成に失敗しました'} />
+        throw new Error('作成できませんでした')
       },
       onFinally: () => {
         submitProcessing.current = false
