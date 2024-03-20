@@ -1,5 +1,5 @@
-import { apiClient } from '@/constants/apiClient'
-import { useAuth } from '@/hooks/useAuth'
+import { apiClient } from '@/constants/api-client'
+import { useAuth } from '@/hooks/use-Auth'
 import { FieldValues } from 'react-hook-form'
 
 type Props = {

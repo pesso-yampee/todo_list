@@ -1,5 +1,5 @@
-import { apiClient } from '@/constants/apiClient'
-import { PAGE_PATH } from '@/constants/pagePath'
+import { apiClient } from '@/constants/api-client'
+import { PAGE_PATH } from '@/constants/page-path'
 import { authUserAtom } from '@/store'
 import { useAtom } from 'jotai'
 import { useRouter } from 'next/navigation'

@@ -1,6 +1,6 @@
 'use client'
 
-import { useDeleteTodo } from '@/hooks/useDeleteTodo'
+import { useDeleteTodo } from '@/hooks/use-delete-todo'
 import { todoAtom } from '@/store'
 import { Button } from '@/_components/common/button'
 import { Box, Stack, Typography } from '@mui/material'

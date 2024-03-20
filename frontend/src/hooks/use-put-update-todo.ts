@@ -1,4 +1,4 @@
-import { apiClient } from '@/constants/apiClient'
+import { apiClient } from '@/constants/api-client'
 import { TodoUpdateRequest } from '@/types/todo'
 import { useState } from 'react'
 

@@ -1,4 +1,4 @@
-import { apiClient } from '@/constants/apiClient'
+import { apiClient } from '@/constants/api-client'
 import { TodoType } from '@/types/todo'
 import useSWR from 'swr'
 

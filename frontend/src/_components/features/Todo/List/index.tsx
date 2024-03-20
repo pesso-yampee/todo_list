@@ -1,7 +1,7 @@
 'use client'
 
 import { useDisclosure } from '@/hooks/use-disclosure'
-import { useFetchTodoList } from '@/hooks/useFetchTodoList'
+import { useFetchTodoList } from '@/hooks/use-fetch-todo-list'
 import { todosAtom } from '@/store'
 import { TodoType } from '@/types/todo'
 import { DeleteCofirmModal } from '@/_components/features/todo/delete-confirm-modal'

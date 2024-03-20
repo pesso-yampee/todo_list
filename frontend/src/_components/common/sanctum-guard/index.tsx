@@ -1,7 +1,7 @@
 'use client'
 
-import { PAGE_PATH } from '@/constants/pagePath'
-import { useAuth } from '@/hooks/useAuth'
+import { PAGE_PATH } from '@/constants/page-path'
+import { useAuth } from '@/hooks/use-Auth'
 import { useRouter } from 'next/navigation'
 import { ReactNode, useEffect } from 'react'
 import { toast } from 'react-toastify'
