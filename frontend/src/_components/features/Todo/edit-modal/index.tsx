@@ -1,6 +1,6 @@
 'use client'
 
-import { usePutUpdateTodo } from '@/hooks/usePutUpdateTodo'
+import { usePutUpdateTodo } from '@/hooks/use-put-update-todo'
 import { todoAtom } from '@/store'
 import { TodoUpdateRequest, TodoUpdateResponse } from '@/types/todo'
 import { Button } from '@/_components/common/button'

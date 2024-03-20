@@ -1,6 +1,6 @@
 'use client'
 
-import { usePostRegisterMemberInfo } from '@/hooks/usePostRegisterMemberInfo'
+import { usePostRegisterMemberInfo } from '@/hooks/use-post-register-member-info'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
 import { Box, Stack } from '@mui/material'

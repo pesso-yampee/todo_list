@@ -1,7 +1,7 @@
 'use client'
 
 import { EMAIL_REGEX } from '@/constants/regexes'
-import { useAuth } from '@/hooks/useAuth'
+import { useAuth } from '@/hooks/use-Auth'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
 import { Box, Stack } from '@mui/material'
