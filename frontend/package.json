@@ -45,7 +45,8 @@
     "tsc": "tsc",
     "lint": "eslint . --ext .ts,.tsx",
     "prettier:base": "prettier --parser typescript --single-quote",
-    "format": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\""
+    "format": "npm run prettier:base -- --write \"src/**/*.{ts,tsx}\"",
+    "prepare": "cd .. && husky frontend/.husky"
   },
   "eslintConfig": {
     "extends": [
@@ -68,7 +69,9 @@
   "devDependencies": {
     "@types/uuid": "^9.0.1",
     "autoprefixer": "^10.4.16",
+    "husky": "^9.0.11",
     "jotai": "^2.6.4",
+    "lint-staged": "^15.2.2",
     "postcss-cli": "^10.1.0",
     "prettier": "^3.1.0",
     "prettier-plugin-tailwindcss": "^0.5.7"

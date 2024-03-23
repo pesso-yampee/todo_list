@@ -5,21 +5,19 @@ module.exports = {
     es2021: true,
   },
   parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
+    ecmaVersion: 'latest',
+    sourceType: 'module',
   },
   plugins: ['@typescript-eslint'],
-  "ignorePatterns": [
-    "*.config.js"
-  ],
+  ignorePatterns: ['*.config.js'],
   extends: [
     'eslint:recommended',
+    'next',
     'plugin:@typescript-eslint/recommended',
-    "plugin:tailwindcss/recommended",
     'prettier',
     'prettier/@typescript-eslint',
   ],
   rules: {
-    "no-console": "error",
-  }
-};
+    'no-console': 'error',
+  },
+}
