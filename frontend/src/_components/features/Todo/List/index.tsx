@@ -1,19 +1,14 @@
 'use client'
 
 import { useDisclosure } from '@/hooks/use-disclosure'
-import { useFetchTodoList } from '@/hooks/use-fetch-todo-list'
-import { todosAtom } from '@/store'
 import { TodoType } from '@/types/todo'
 import { DeleteCofirmModal } from '@/_components/features/todo/delete-confirm-modal'
 import { TodoEditModal } from '@/_components/features/todo/edit-modal'
 import { List } from '@mui/material'
-import { useSetAtom } from 'jotai'
-import { useEffect } from 'react'
 import { TodoItem } from '../item'
+import { useTodos } from './logics/use-todos'
 
 export const TodoList = () => {
-  const setTodos = useSetAtom(todosAtom)
-  const { data, refetch } = useFetchTodoList()
   const {
     isOpen: isEditModalOpen,
     onOpen: onEditModalOpen,
@@ -24,12 +19,7 @@ export const TodoList = () => {
     onOpen: onDeleteConfirmModalOpen,
     onClose: onDeleteConfirmModalClose,
   } = useDisclosure()
-
-  useEffect(() => {
-    if (data) {
-      setTodos(data)
-    }
-  }, [data, setTodos])
+  const { data, refetch } = useTodos()
 
   return (
     <>
@@ -41,7 +31,6 @@ export const TodoList = () => {
           <TodoItem
             key={item.id}
             item={item}
-            refetch={refetch}
             onEditModalOpen={onEditModalOpen}
             onDeleteConfirmModalOpen={onDeleteConfirmModalOpen}
           />

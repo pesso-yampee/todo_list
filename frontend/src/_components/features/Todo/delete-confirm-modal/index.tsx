@@ -1,11 +1,8 @@
 'use client'
 
-import { useDeleteTodo } from '@/hooks/use-delete-todo'
-import { todoAtom } from '@/store'
 import { Button } from '@/_components/common/button'
 import { Box, Stack, Typography } from '@mui/material'
-import { useAtomValue } from 'jotai'
-import { useEffect, useRef } from 'react'
+import { useInputForm } from './logics/use-input-form'
 
 type Props = {
   isOpen: boolean
@@ -14,29 +11,7 @@ type Props = {
 }
 
 export const DeleteCofirmModal = ({ isOpen, onClose, refetch }: Props) => {
-  const todoState = useAtomValue(todoAtom)
-  const { doDelete, isLoading } = useDeleteTodo()
-  const dialogRef = useRef<HTMLDivElement>(null)
-  const onSubmit = () => {
-    doDelete({
-      id: todoState?.id || '',
-      onSuccess: () => {
-        refetch()
-      },
-      onError: () => {
-        throw new Error('削除に失敗しました')
-      },
-      onFinally: () => {
-        onClose()
-      },
-    })
-  }
-
-  useEffect(() => {
-    if (dialogRef.current) {
-      dialogRef.current.focus()
-    }
-  }, [dialogRef])
+  const { dialogRef, isLoading, onSubmit } = useInputForm(onClose, refetch)
 
   return (
     <Stack
