@@ -1,14 +1,9 @@
 'use client'
 
-import { usePutUpdateTodo } from '@/hooks/use-put-update-todo'
-import { todoAtom } from '@/store'
-import { TodoUpdateRequest, TodoUpdateResponse } from '@/types/todo'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
 import { Box, Stack } from '@mui/material'
-import { useAtomValue } from 'jotai'
-import { useEffect, useRef } from 'react'
-import { SubmitHandler, useForm } from 'react-hook-form'
+import { useInputForm } from './logics/use-input-form'
 
 type Props = {
   isOpen: boolean
@@ -17,34 +12,11 @@ type Props = {
 }
 
 export const TodoEditModal = ({ isOpen, onClose, refetch }: Props) => {
-  const todoState = useAtomValue(todoAtom)
-  const { doPost, isLoading } = usePutUpdateTodo()
-  const dialogRef = useRef<HTMLDivElement>(null)
-  const { control, handleSubmit } = useForm<TodoUpdateResponse>({
-    defaultValues: {
-      title: todoState?.title ?? '',
-      detail: todoState?.detail ?? '',
-    },
-  })
-  const onSubmit: SubmitHandler<TodoUpdateRequest> = (data) => {
-    doPost({
-      data,
-      id: todoState?.id,
-      onSuccess: () => {
-        onClose()
-        refetch()
-      },
-      onError: () => {
-        throw new Error('更新に失敗しました')
-      },
-    })
-  }
-
-  useEffect(() => {
-    if (isOpen) {
-      dialogRef.current?.focus()
-    }
-  }, [isOpen])
+  const { dialogRef, control, onSubmit, isLoading } = useInputForm(
+    onClose,
+    refetch,
+    isOpen
+  )
 
   return (
     <Stack
@@ -92,7 +64,7 @@ export const TodoEditModal = ({ isOpen, onClose, refetch }: Props) => {
                 text={'更新する'}
                 fullWidth
                 color={'primary'}
-                onClick={handleSubmit(onSubmit)}
+                onClick={onSubmit}
                 isLoading={isLoading}
               />
             </Stack>

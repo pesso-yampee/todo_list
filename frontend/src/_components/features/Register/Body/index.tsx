@@ -1,37 +1,14 @@
 'use client'
 
-import { usePostRegisterMemberInfo } from '@/hooks/use-post-register-member-info'
 import { Button } from '@/_components/common/button'
 import { InputField } from '@/_components/common/input-field'
 import { Box, Stack } from '@mui/material'
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
-
+import { useInputForm } from './logics/use-input-form'
 export const RegisterBody = () => {
-  const { doPost, isLoading } = usePostRegisterMemberInfo()
-  const { control, handleSubmit } = useForm({
-    defaultValues: {
-      email: '',
-      userName: '',
-      password: '',
-      passwordCheck: '',
-    },
-    mode: 'onBlur',
-  })
-
-  const onSubmitRegisterMemberInfo: SubmitHandler<FieldValues> = (data) => {
-    doPost({
-      data,
-      onSuccess: () => console.log('会員登録しました。'),
-      onError: () => console.log('会員登録できませんでした。'),
-    })
-  }
+  const { control, isLoading, handleSubmit } = useInputForm()
 
   return (
-    <Box
-      component={'form'}
-      width={'100%'}
-      onSubmit={handleSubmit(onSubmitRegisterMemberInfo)}
-    >
+    <Box component={'form'} width={'100%'} onSubmit={handleSubmit}>
       <Stack spacing={2} padding={'16px'}>
         <InputField
           control={control}
