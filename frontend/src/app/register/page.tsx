@@ -1,4 +1,4 @@
-import { RegisterBody } from '@/_components/features/register/body'
+import { RegisterForm } from '@/_components/features/register/form'
 import { Box, Stack, Typography } from '@mui/material'
 
 export default function Page() {
@@ -13,14 +13,13 @@ export default function Page() {
         <Stack
           alignItems={'center'}
           justifyContent={'center'}
-          width={'100%'}
           bgcolor={'#d0d0d0'}
           paddingY={'8px'}
           paddingLeft={'4px'}
         >
           <Typography fontWeight={'bold'}>会員登録</Typography>
         </Stack>
-        <RegisterBody />
+        <RegisterForm />
       </Box>
     </Box>
   )

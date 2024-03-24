@@ -8,15 +8,15 @@ type Props = {
   onSuccess: () => void
 }
 
-export const usePostRegisterMemberInfo = () => {
+export const usePostRegister = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const doPost = ({ data, onError, onSuccess }: Props) => {
     setIsLoading(true)
     apiClient
-      .post('/api/member-registeration', data)
+      .post('/api/register', data)
       .then(() => onSuccess())
       .catch(() => onError)
-      .finally(() => setIsLoading(true))
+      .finally(() => setIsLoading(false))
   }
   return { doPost, isLoading }
 }
