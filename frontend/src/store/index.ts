@@ -9,7 +9,7 @@ type TodoAtomDefault =
     }
   | undefined
 
-type TodosAtomDefault = TodoType[] | undefined
+type TodoListAtomDefault = TodoType[] | undefined
 
 type UserInfoDefault =
   | {
@@ -24,4 +24,4 @@ export const authUserAtom = atom<UserInfoDefault>(undefined)
 
 export const todoAtom = atom<TodoAtomDefault>(undefined)
 
-export const todosAtom = atom<TodosAtomDefault>(undefined)
+export const todoListAtom = atom<TodoListAtomDefault>(undefined)

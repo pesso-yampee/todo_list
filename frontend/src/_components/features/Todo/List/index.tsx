@@ -6,7 +6,7 @@ import { DeleteCofirmModal } from '@/_components/features/todo/delete-confirm-mo
 import { TodoEditModal } from '@/_components/features/todo/edit-modal'
 import { List } from '@mui/material'
 import { TodoItem } from '../item'
-import { useTodos } from './logics/use-todos'
+import { useTodoList } from './logics/use-todo-list'
 
 export const TodoList = () => {
   const {
@@ -19,7 +19,7 @@ export const TodoList = () => {
     onOpen: onDeleteConfirmModalOpen,
     onClose: onDeleteConfirmModalClose,
   } = useDisclosure()
-  const { data, refetch } = useTodos()
+  const { data, refetch } = useTodoList()
 
   return (
     <>
