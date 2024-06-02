@@ -1,5 +1,8 @@
 <?php
-
+use App\Http\Controllers\Api\MeController;
+use App\Http\Controllers\TodosController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +17,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['middleware' => 'api'], function() {
-    Route::get('todos', 'App\Http\Controllers\TodosController@index');
-    Route::post('todos/create', 'App\Http\Controllers\TodosController@create');
-    Route::post('todos/show', 'App\Http\Controllers\TodosController@show');
-    Route::get('todos/edit/{id}', 'App\Http\Controllers\TodosController@edit');
-    Route::put('todos/update/{id}', 'App\Http\Controllers\TodosController@update');
-    Route::get('todos/detail/{id}', 'App\Http\Controllers\TodosController@show');
-    Route::post('todos/delete/{id}', 'App\Http\Controllers\TodosController@delete');
+Route::group(['middleware' => ['auth:sanctum']], function() {
+  Route::get('/me', MeController::class);
+  Route::apiResource('/todos', TodosController::class);
 });
+
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
