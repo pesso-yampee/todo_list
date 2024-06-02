@@ -38,6 +38,7 @@ class TodosController extends Controller
         $todo->save();
         $user = $request->user();
         $todos = $user->todos()->get();
+        return $todos;
     }
     
     public function destroy($id)
